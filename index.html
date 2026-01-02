@@ -85,208 +85,537 @@
         .cta-button:hover {
             background: var(--secondary-color);
         }
+
+        /* ANIMATED COMPONENTS CSS */
         
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
+        /* Spotlight Background */
+        .spotlight-container {
+            position: absolute;
+            inset: 0;
+            z-index: 10;
+            height: 100%;
+            width: 100%;
+            pointer-events: none;
+            opacity: 0;
+            animation: spotlightFadeIn 1.5s ease-out forwards;
         }
-        
-        /* Section Styles */
-        section {
-            margin-bottom: 4rem;
+
+        @keyframes spotlightFadeIn {
+            to { opacity: 1; }
         }
-        
-        .section-title {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            text-align: center;
+
+        .spotlight-left, .spotlight-right {
+            position: absolute;
+            top: 0;
+            height: 100vh;
+            width: 100vw;
+            pointer-events: none;
         }
-        
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            text-align: center;
-            margin-bottom: 3rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+
+        .spotlight-left {
+            left: 0;
+            animation: spotlightMoveLeft 7s ease-in-out infinite alternate;
         }
-        
-        /* About Snapshot */
-        .about-snapshot {
-            background: var(--bg-light);
-            padding: 4rem 2rem;
-            text-align: center;
+
+        .spotlight-right {
+            right: 0;
+            animation: spotlightMoveRight 7s ease-in-out infinite alternate;
         }
-        
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
+
+        @keyframes spotlightMoveLeft {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(100px); }
         }
-        
-        .about-content p {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            margin-bottom: 2rem;
-            line-height: 1.8;
+
+        @keyframes spotlightMoveRight {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(-100px); }
         }
-        
-        /* Services Grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+
+        .spotlight-gradient-1,
+        .spotlight-gradient-2,
+        .spotlight-gradient-3 {
+            position: absolute;
+            top: 0;
         }
-        
-        .service-card {
-            background: var(--white);
-            padding: 2.5rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
+
+        .spotlight-left .spotlight-gradient-1 {
+            left: 0;
+            width: 560px;
+            height: 1380px;
+            transform: translateY(-350px) rotate(-45deg);
+            background: radial-gradient(68.54% 68.72% at 55.02% 31.46%, hsla(336, 100%, 50%, 0.08) 0, hsla(341, 100%, 55%, 0.04) 50%, hsla(336, 100%, 45%, 0) 80%);
         }
-        
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+
+        .spotlight-left .spotlight-gradient-2 {
+            left: 0;
+            width: 240px;
+            height: 1380px;
+            transform: rotate(-45deg) translate(5%, -50%);
+            transform-origin: top left;
+            background: radial-gradient(50% 50% at 50% 50%, hsla(333, 100%, 85%, 0.08) 0, hsla(335, 100%, 55%, 0.04) 80%, transparent 100%);
         }
-        
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
+
+        .spotlight-left .spotlight-gradient-3 {
+            left: 0;
+            width: 240px;
+            height: 1380px;
+            transform: rotate(-45deg) translate(-180%, -70%);
+            transform-origin: top left;
+            background: radial-gradient(50% 50% at 50% 50%, hsla(332, 100%, 85%, 0.06) 0, hsla(327, 100%, 85%, 0.06) 80%, transparent 100%);
         }
-        
-        .service-card h3 {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
+
+        .spotlight-right .spotlight-gradient-1 {
+            right: 0;
+            width: 560px;
+            height: 1380px;
+            transform: translateY(-350px) rotate(45deg);
+            background: radial-gradient(68.54% 68.72% at 55.02% 31.46%, hsla(336, 100%, 50%, 0.08) 0, hsla(341, 100%, 55%, 0.04) 50%, hsla(336, 100%, 45%, 0) 80%);
         }
-        
-        .service-card p {
-            color: var(--text-light);
-            line-height: 1.7;
+
+        .spotlight-right .spotlight-gradient-2 {
+            right: 0;
+            width: 240px;
+            height: 1380px;
+            transform: rotate(45deg) translate(-5%, -50%);
+            transform-origin: top right;
+            background: radial-gradient(50% 50% at 50% 50%, hsla(333, 100%, 85%, 0.08) 0, hsla(335, 100%, 55%, 0.04) 80%, transparent 100%);
         }
-        
-        /* Why Choose Us */
-        .why-choose {
-            background: var(--bg-light);
-            padding: 4rem 2rem;
+
+        .spotlight-right .spotlight-gradient-3 {
+            right: 0;
+            width: 240px;
+            height: 1380px;
+            transform: rotate(45deg) translate(180%, -70%);
+            transform-origin: top right;
+            background: radial-gradient(50% 50% at 50% 50%, hsla(332, 100%, 85%, 0.06) 0, hsla(327, 100%, 85%, 0.06) 80%, transparent 100%);
         }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
+
+        /* Border Beam Animation */
+        .border-beam-container {
+            pointer-events: none;
+            position: absolute;
+            inset: 0;
+            rounded: inherit;
+            border: 1px solid transparent;
+            mask-image: linear-gradient(transparent, transparent), linear-gradient(#000, #000);
+            mask-composite: exclude;
+            -webkit-mask-composite: xor;
+            mask-clip: padding-box, border-box;
+            -webkit-mask-clip: padding-box, border-box;
         }
-        
-        .feature-item {
-            text-align: center;
+
+        .border-beam {
+            position: absolute;
+            aspect-ratio: 1;
+            background: linear-gradient(to left, var(--beam-color-from, #ffaa40), var(--beam-color-via, #9c40ff), transparent);
+            animation: borderBeamMove 8s linear infinite;
         }
-        
-        .feature-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
+
+        .border-beam.reverse {
+            animation: borderBeamMoveReverse 8s linear infinite;
         }
-        
-        .feature-item h3 {
-            font-size: 1.4rem;
-            color: var(--primary-color);
-            margin-bottom: 0.8rem;
+
+        @keyframes borderBeamMove {
+            0% { offset-distance: 0%; }
+            100% { offset-distance: 100%; }
         }
-        
-        .feature-item p {
-            color: var(--text-light);
-            line-height: 1.7;
+
+        @keyframes borderBeamMoveReverse {
+            0% { offset-distance: 100%; }
+            100% { offset-distance: 0%; }
         }
-        
-        /* Associated Business */
-        .associated-business {
-            text-align: center;
-            padding: 4rem 2rem;
+
+        /* Pulse Card Styles */
+        .pulse-card {
+            position: relative;
+            z-index: 30;
+            width: 100%;
+            cursor: pointer;
+            overflow: hidden;
+            border-radius: 1rem;
+            padding: 1.5rem 1.5rem 4rem;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0px 3px 8px rgba(0,0,0,0.04), 0px 12px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease-in-out;
         }
-        
-        .associated-content {
-            max-width: 700px;
-            margin: 0 auto 2rem;
+
+        .pulse-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.05), rgba(255,255,255,0.2));
+            backdrop-filter: blur(50px);
         }
-        
-        .associated-content p {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            line-height: 1.8;
+
+        .pulse-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: linear-gradient(to bottom, transparent, transparent, rgba(255,255,255,0.2));
         }
-        
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: var(--white);
-            padding: 5rem 2rem;
-            text-align: center;
+
+        .pulse-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.03), 0px 25px 35px rgba(0,0,0,0.2);
         }
-        
-        .cta-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
+
+        /* Moving Border on Hover */
+        .pulse-card-border {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            border-radius: inherit;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            -webkit-mask-composite: xor;
+            padding: 2px;
         }
-        
-        .cta-section p {
-            font-size: 1.2rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.95;
+
+        .pulse-card-border-inner {
+            position: absolute;
+            inset: -200%;
+            opacity: 0;
+            transition: opacity 0.3s;
+            background: conic-gradient(from 0deg at 50% 50%, transparent 0deg, transparent 340deg, var(--card-color) 360deg);
+            animation: spin 4s linear infinite;
         }
-        
-        /* Footer */
-        footer {
-            background: var(--primary-color);
-            color: var(--white);
-            padding: 3rem 2rem 1.5rem;
+
+        .pulse-card:hover .pulse-card-border-inner {
+            opacity: 1;
         }
-        
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 2rem;
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
-        
-        .footer-section h3 {
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
+
+        /* Card Icon */
+        .pulse-card-icon {
+            position: relative;
+            z-index: 50;
+            display: table;
+            border-radius: 0.75rem;
+            padding-bottom: 0.5rem;
+            transition: transform 0.3s ease-in-out;
         }
-        
-        .footer-section ul {
-            list-style: none;
+
+        .pulse-card:hover .pulse-card-icon {
+            transform: scale(1.1);
         }
-        
-        .footer-section ul li {
-            margin-bottom: 0.7rem;
+
+        .pulse-card-icon::before {
+            content: '';
+            position: absolute;
+            inset: 4.5px;
+            border-radius: inherit;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0.1));
+            backdrop-filter: blur(50px);
+            transition: all 0.3s;
         }
-        
-        .footer-section a {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
+
+        .pulse-card-icon-inner {
+            position: relative;
+            z-index: 1;
+            display: block;
+            width: 1.75rem;
+            height: 1.75rem;
+            color: rgba(0,0,0,0.6);
             transition: color 0.3s;
         }
-        
-        .footer-section a:hover {
-            color: var(--white);
+
+        .pulse-card:hover .pulse-card-icon-inner {
+            color: var(--card-color);
         }
-        
-        .footer-bottom {
+
+        /* Card Content */
+        .pulse-card-content {
+            position: relative;
+            z-index: 30;
+            margin-top: 0.5rem;
+        }
+
+        .pulse-card-title {
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: rgba(0,0,0,0.8);
+            transition: color 0.3s;
+        }
+
+        .pulse-card:hover .pulse-card-title {
+            color: var(--card-color);
+        }
+
+        .pulse-card-description {
+            margin-top: 0.25rem;
+            font-size: 1rem;
+            color: rgba(0,0,0,0.6);
+            transition: color 0.3s;
+        }
+
+        /* Shine Effect */
+        .pulse-card-shine {
+            position: absolute;
+            inset: 0;
+            z-index: 20;
+            overflow: hidden;
+            border-radius: inherit;
+            opacity: 1;
+            transition: all 0.5s;
+        }
+
+        .pulse-card-shine-inner {
+            position: absolute;
+            bottom: 55%;
+            left: 50%;
+            aspect-ratio: 1;
+            width: 200%;
+            transform: translateX(-50%);
+            border-radius: 50%;
+            filter: blur(40px);
+        }
+
+        /* Variant Colors */
+        .pulse-card.purple {
+            --card-color: rgb(168, 85, 247);
+        }
+
+        .pulse-card.blue {
+            --card-color: rgb(59, 130, 246);
+        }
+
+        .pulse-card.amber {
+            --card-color: rgb(245, 158, 11);
+        }
+
+        .pulse-card.rose {
+            --card-color: rgb(244, 63, 94);
+        }
+
+        .pulse-card.purple .pulse-card-shine-inner {
+            background: conic-gradient(from 205deg, transparent 0deg, hsl(280deg 95% 39%) 20deg, hsl(280deg 100% 85% / 0.3) 280deg, transparent 360deg);
+        }
+
+        .pulse-card.blue .pulse-card-shine-inner {
+            background: conic-gradient(from 205deg, transparent 0deg, hsl(220deg 95% 39%) 20deg, hsl(220deg 100% 85% / 0.3) 280deg, transparent 360deg);
+        }
+
+        .pulse-card.amber .pulse-card-shine-inner {
+            background: conic-gradient(from 205deg, transparent 0deg, hsl(40deg 95% 39%) 20deg, hsl(40deg 100% 85% / 0.3) 280deg, transparent 360deg);
+        }
+
+        .pulse-card.rose .pulse-card-shine-inner {
+            background: conic-gradient(from 205deg, transparent 0deg, hsl(340deg 95% 39%) 20deg, hsl(340deg 100% 85% / 0.3) 280deg, transparent 360deg);
+        }
+
+        /* Mission/Vision Cards */
+        .mission-vision-card {
+            position: relative;
+            display: block;
+            overflow: hidden;
+            border-radius: 1rem;
+            border: 1px solid rgba(226, 232, 240, 0.4);
+            background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+            padding: 2.5rem;
+            backdrop-filter: blur(50px);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .mission-vision-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .mission-vision-icon {
+            display: inline-flex;
+            height: 4rem;
+            width: 4rem;
+            align-items: center;
+            justify-content: center;
+            border-radius: 1rem;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .mission-vision-icon.primary {
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.2), rgba(30, 58, 95, 0.05));
+        }
+
+        .mission-vision-icon.blue {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.05));
+        }
+
+        .mission-vision-icon svg {
+            width: 2rem;
+            height: 2rem;
+        }
+
+        .mission-vision-icon.primary svg {
+            color: var(--primary-color);
+        }
+
+        .mission-vision-icon.blue svg {
+            color: rgb(59, 130, 246);
+        }
+
+        .mission-vision-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.9), rgba(30, 58, 95, 0.7));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .mission-vision-title.blue {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.9), rgba(59, 130, 246, 0.7));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .mission-vision-description {
+            font-size: 1.125rem;
+            line-height: 1.75;
+            color: var(--text-light);
+        }
+
+        /* About Section */
+        .about-section {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding-top: 5rem;
+        }
+
+        .about-container {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .about-header {
+            max-width: 42rem;
+            margin: 0 auto 4rem;
             text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            color: rgba(255,255,255,0.8);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out forwards;
         }
-        
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .about-title {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,1), rgba(0,0,0,0.8));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-subtitle {
+            margin-top: 1.5rem;
+            font-size: 1.25rem;
+            color: var(--text-light);
+        }
+
+        .mission-vision-grid {
+            position: relative;
+            max-width: 80rem;
+            margin: 0 auto 6rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeInUp 0.8s ease-out 0.2s forwards;
+        }
+
+        .values-section {
+            margin-bottom: 6rem;
+        }
+
+        .values-header {
+            margin-bottom: 3rem;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out 0.4s forwards;
+        }
+
+        .values-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,1), rgba(0,0,0,0.8));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .values-description {
+            margin: 1rem auto 0;
+            max-width: 42rem;
+            font-size: 1.125rem;
+            color: var(--text-light);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .value-card-wrapper {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .value-card-wrapper.animate {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .value-card-wrapper:nth-child(1) { animation-delay: 0.6s; }
+        .value-card-wrapper:nth-child(2) { animation-delay: 0.7s; }
+        .value-card-wrapper:nth-child(3) { animation-delay: 0.8s; }
+        .value-card-wrapper:nth-child(4) { animation-delay: 0.9s; }
+
         /* Responsive */
+        @media (min-width: 768px) {
+            .mission-vision-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-title {
+                font-size: 3.75rem;
+            }
+
+            .values-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .values-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
             .header-container {
                 flex-direction: column;
@@ -297,175 +626,14 @@
                 flex-direction: column;
                 gap: 1rem;
             }
-            
-            .section-title {
+
+            .about-title {
+                font-size: 2.5rem;
+            }
+
+            .values-title {
                 font-size: 2rem;
             }
-            
-            .services-grid,
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* MINIMAL HERO CSS - DO NOT MODIFY */
-        @keyframes word-appear {
-          0% {
-            opacity: 0;
-            transform: translateY(30px) scale(0.8);
-            filter: blur(10px);
-          }
-
-          50% {
-            opacity: 0.8;
-            transform: translateY(10px) scale(0.95);
-            filter: blur(2px);
-          }
-
-          100% {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-            filter: blur(0);
-          }
-        }
-
-        @keyframes grid-draw {
-          0% {
-            stroke-dashoffset: 1000;
-            opacity: 0;
-          }
-
-          50% {
-            opacity: 0.3;
-          }
-
-          100% {
-            stroke-dashoffset: 0;
-            opacity: 0.15;
-          }
-        }
-
-        @keyframes pulse-glow {
-
-          0%,
-          100% {
-            opacity: 0.1;
-            transform: scale(1);
-          }
-
-          50% {
-            opacity: 0.3;
-            transform: scale(1.1);
-          }
-        }
-
-        .word {
-          display: inline-block;
-          opacity: 0;
-          margin: 0 0.1em;
-          transition: all 0.3s ease;
-        }
-
-        .word:hover {
-          color: #c8b4a0;
-          transform: translateY(-2px);
-        }
-
-        .grid-line {
-          stroke: #c8b4a0;
-          stroke-width: 0.5;
-          opacity: 0;
-          stroke-dasharray: 5 5;
-          stroke-dashoffset: 1000;
-          animation: grid-draw 2s ease-out forwards;
-        }
-
-        .detail-dot {
-          fill: #c8b4a0;
-          opacity: 0;
-          animation: pulse-glow 3s ease-in-out infinite;
-        }
-
-        .corner-element {
-          position: absolute;
-          width: 40px;
-          height: 40px;
-          border: 1px solid rgba(200, 180, 160, 0.2);
-          opacity: 0;
-          animation: word-appear 1s ease-out forwards;
-        }
-
-        .corner-element::before {
-          content: '';
-          position: absolute;
-          width: 8px;
-          height: 8px;
-          background: rgba(200, 180, 160, 0.3);
-          border-radius: 50%;
-        }
-
-        .text-decoration {
-          position: relative;
-        }
-
-        .text-decoration::after {
-          content: '';
-          position: absolute;
-          bottom: -4px;
-          left: 0;
-          width: 0;
-          height: 1px;
-          background: linear-gradient(90deg, transparent, #c8b4a0, transparent);
-          animation: underline-grow 2s ease-out forwards;
-          animation-delay: 2s;
-        }
-
-        @keyframes underline-grow {
-          to {
-            width: 100%;
-          }
-        }
-
-        .floating-element {
-          position: absolute;
-          width: 2px;
-          height: 2px;
-          background: #c8b4a0;
-          border-radius: 50%;
-          opacity: 0;
-          animation: float 4s ease-in-out infinite;
-        }
-
-        @keyframes float {
-
-          0%,
-          100% {
-            transform: translateY(0) translateX(0);
-            opacity: 0.2;
-          }
-
-          25% {
-            transform: translateY(-10px) translateX(5px);
-            opacity: 0.6;
-          }
-
-          50% {
-            transform: translateY(-5px) translateX(-3px);
-            opacity: 0.4;
-          }
-
-          75% {
-            transform: translateY(-15px) translateX(7px);
-            opacity: 0.8;
-          }
-        }
-
-        .font-primary {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        .font-mono {
-            font-family: 'Courier New', Courier, monospace;
         }
     </style>
 </head>
@@ -484,518 +652,219 @@
         </div>
     </header>
 
-    <!-- MINIMAL HERO SECTION - DO NOT MODIFY -->
-    <div class="font-primary relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-[#1a1d18] via-black to-[#2a2e26] text-[#e6e1d7]" style="background: linear-gradient(135deg, #1a1d18 0%, #000000 50%, #2a2e26 100%); color: #e6e1d7;">
-      <svg
-        class="absolute inset-0 h-full w-full"
-        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <defs>
-          <pattern
-            id="grid"
-            width="60"
-            height="60"
-            patternUnits="userSpaceOnUse"
-          >
-            <path
-              d="M 60 0 L 0 0 0 60"
-              fill="none"
-              stroke="rgba(200,180,160,0.08)"
-              stroke-width="0.5"
-            />
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#grid)" />
-        <line
-          x1="0"
-          y1="20%"
-          x2="100%"
-          y2="20%"
-          class="grid-line"
-          style="animation-delay: 0.5s;"
-        />
-        <line
-          x1="0"
-          y1="80%"
-          x2="100%"
-          y2="80%"
-          class="grid-line"
-          style="animation-delay: 1s;"
-        />
-        <line
-          x1="20%"
-          y1="0"
-          x2="20%"
-          y2="100%"
-          class="grid-line"
-          style="animation-delay: 1.5s;"
-        />
-        <line
-          x1="80%"
-          y1="0"
-          x2="80%"
-          y2="100%"
-          class="grid-line"
-          style="animation-delay: 2s;"
-        />
-        <line
-          x1="50%"
-          y1="0"
-          x2="50%"
-          y2="100%"
-          class="grid-line"
-          style="animation-delay: 2.5s; opacity: 0.05;"
-        />
-        <line
-          x1="0"
-          y1="50%"
-          x2="100%"
-          y2="50%"
-          class="grid-line"
-          style="animation-delay: 3s; opacity: 0.05;"
-        />
-        <circle
-          cx="20%"
-          cy="20%"
-          r="2"
-          class="detail-dot"
-          style="animation-delay: 3s;"
-        />
-        <circle
-          cx="80%"
-          cy="20%"
-          r="2"
-          class="detail-dot"
-          style="animation-delay: 3.2s;"
-        />
-        <circle
-          cx="20%"
-          cy="80%"
-          r="2"
-          class="detail-dot"
-          style="animation-delay: 3.4s;"
-        />
-        <circle
-          cx="80%"
-          cy="80%"
-          r="2"
-          class="detail-dot"
-          style="animation-delay: 3.6s;"
-        />
-        <circle
-          cx="50%"
-          cy="50%"
-          r="1.5"
-          class="detail-dot"
-          style="animation-delay: 4s;"
-        />
-      </svg>
-
-      <div
-        class="corner-element top-8 left-8"
-        style="animation-delay: 4s; position: absolute; top: 2rem; left: 2rem;"
-      >
-        <div
-          class="absolute top-0 left-0 h-2 w-2 opacity-30"
-          style="position: absolute; top: 0; left: 0; height: 0.5rem; width: 0.5rem; opacity: 0.3; background: #c8b4a0;"
-        ></div>
-      </div>
-      <div
-        class="corner-element top-8 right-8"
-        style="animation-delay: 4.2s; position: absolute; top: 2rem; right: 2rem;"
-      >
-        <div
-          class="absolute top-0 right-0 h-2 w-2 opacity-30"
-          style="position: absolute; top: 0; right: 0; height: 0.5rem; width: 0.5rem; opacity: 0.3; background: #c8b4a0;"
-        ></div>
-      </div>
-      <div
-        class="corner-element bottom-8 left-8"
-        style="animation-delay: 4.4s; position: absolute; bottom: 2rem; left: 2rem;"
-      >
-        <div
-          class="absolute bottom-0 left-0 h-2 w-2 opacity-30"
-          style="position: absolute; bottom: 0; left: 0; height: 0.5rem; width: 0.5rem; opacity: 0.3; background: #c8b4a0;"
-        ></div>
-      </div>
-      <div
-        class="corner-element right-8 bottom-8"
-        style="animation-delay: 4.6s; position: absolute; right: 2rem; bottom: 2rem;"
-      >
-        <div
-          class="absolute right-0 bottom-0 h-2 w-2 opacity-30"
-          style="position: absolute; right: 0; bottom: 0; height: 0.5rem; width: 0.5rem; opacity: 0.3; background: #c8b4a0;"
-        ></div>
-      </div>
-
-      <div
-        class="floating-element"
-        style="top: 25%; left: 15%; animation-delay: 5s; position: absolute;"
-      ></div>
-      <div
-        class="floating-element"
-        style="top: 60%; left: 85%; animation-delay: 5.5s; position: absolute;"
-      ></div>
-      <div
-        class="floating-element"
-        style="top: 40%; left: 10%; animation-delay: 6s; position: absolute;"
-      ></div>
-      <div
-        class="floating-element"
-        style="top: 75%; left: 90%; animation-delay: 6.5s; position: absolute;"
-      ></div>
-
-      <div class="relative z-10 flex min-h-screen flex-col items-center justify-between px-8 py-12 md:px-16 md:py-20" style="position: relative; z-index: 10; display: flex; min-height: 100vh; flex-direction: column; align-items: center; justify-content: space-between; padding: 3rem 2rem;">
-        <div class="text-center" style="text-align: center;">
-          <h2
-            class="font-mono text-xs font-light tracking-[0.2em] uppercase opacity-80 md:text-sm"
-            style="font-family: 'Courier New', Courier, monospace; font-size: 0.75rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.8; color: #c8b4a0;"
-          >
-            <span class="word" data-delay="0">
-              Welcome
-            </span>
-            <span class="word" data-delay="200">
-              to
-            </span>
-            <span class="word" data-delay="400">
-              <b>nimblepanda.solutions</b>
-            </span>
-            <span class="word" data-delay="600">
-              — 
-            </span>
-            <span class="word" data-delay="800">
-              Powering
-            </span>
-            <span class="word" data-delay="1000">
-              your
-            </span>
-            <span class="word" data-delay="1200">
-              business
-            </span>
-            <span class="word" data-delay="1400">
-              transformation.
-            </span>
-          </h2>
-          <div
-            class="mt-4 h-px w-16 opacity-30"
-            style="margin-top: 1rem; height: 1px; width: 4rem; opacity: 0.3; background: linear-gradient(to right, transparent, #c8b4a0, transparent); margin-left: auto; margin-right: auto;"
-          ></div>
-        </div>
-
-        <div class="mx-auto max-w-5xl text-center" style="margin: 0 auto; max-width: 80rem; text-align: center;">
-          <h1
-            class="text-decoration text-3xl leading-tight font-extralight tracking-tight md:text-5xl lg:text-6xl"
-            style="font-size: 2.5rem; line-height: 1.2; font-weight: 200; letter-spacing: -0.02em; color: #f8f7f5;"
-          >
-            <div class="mb-4 md:mb-6" style="margin-bottom: 1.5rem;">
-              <span class="word" data-delay="1600">
-                Supercharge
-              </span>
-              <span class="word" data-delay="1750">
-                your
-              </span>
-              <span class="word" data-delay="1900">
-                productivity
-              </span>
-              <span class="word" data-delay="2050">
-                with
-              </span>
-              <span class="word" data-delay="2200">
-                AI-driven
-              </span>
-              <span class="word" data-delay="2350">
-                automation.
-              </span>
+    <!-- About Section with Animated Components -->
+    <section class="about-section">
+        <!-- Spotlight Background -->
+        <div class="spotlight-container">
+            <div class="spotlight-left">
+                <div class="spotlight-gradient-1"></div>
+                <div class="spotlight-gradient-2"></div>
+                <div class="spotlight-gradient-3"></div>
             </div>
-            <div
-              class="text-2xl leading-relaxed font-thin md:text-3xl lg:text-4xl"
-              style="font-size: 1.5rem; line-height: 1.6; font-weight: 100; color: #c8b4a0;"
-            >
-              <span class="word" data-delay="2600">
-                Integrate,
-              </span>
-              <span class="word" data-delay="2750">
-                orchestrate,
-              </span>
-              <span class="word" data-delay="2900">
-                and
-              </span>
-              <span class="word" data-delay="3050">
-                scale
-              </span>
-              <span class="word" data-delay="3200">
-                your
-              </span>
-              <span class="word" data-delay="3350">
-                business
-              </span>
-              <span class="word" data-delay="3500">
-                — all
-              </span>
-              <span class="word" data-delay="3650">
-                in
-              </span>
-              <span class="word" data-delay="3800">
-                one
-              </span>
-              <span class="word" data-delay="3950">
-                secure
-              </span>
-              <span class="word" data-delay="4100">
-                platform.
-              </span>
-            </div>
-          </h1>
-          <div
-            class="absolute top-1/2 -left-8 h-px w-4 opacity-20"
-            style="position: absolute; top: 50%; left: -2rem; height: 1px; width: 1rem; opacity: 0.2; background: #c8b4a0; animation: word-appear 1s ease-out forwards; animation-delay: 3.5s;"
-          ></div>
-          <div
-            class="absolute top-1/2 -right-8 h-px w-4 opacity-20"
-            style="position: absolute; top: 50%; right: -2rem; height: 1px; width: 1rem; opacity: 0.2; background: #c8b4a0; animation: word-appear 1s ease-out forwards; animation-delay: 3.7s;"
-          ></div>
-        </div>
-
-        <div class="text-center" style="text-align: center;">
-          <div
-            class="mb-4 h-px w-16 opacity-30"
-            style="margin-bottom: 1rem; height: 1px; width: 4rem; opacity: 0.3; background: linear-gradient(to right, transparent, #c8b4a0, transparent); margin-left: auto; margin-right: auto;"
-          ></div>
-          <h2
-            class="font-mono text-xs font-light tracking-[0.2em] uppercase opacity-80 md:text-sm"
-            style="font-family: 'Courier New', Courier, monospace; font-size: 0.75rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.8; color: #c8b4a0;"
-          >
-            <span class="word" data-delay="4400">
-              Real-time
-            </span>
-            <span class="word" data-delay="4550">
-              analytics,
-            </span>
-            <span class="word" data-delay="4700">
-              seamless
-            </span>
-            <span class="word" data-delay="4850">
-              integrations,
-            </span>
-            <span class="word" data-delay="5000">
-              enterprise-grade
-            </span>
-            <span class="word" data-delay="5150">
-              security.
-            </span>
-          </h2>
-          <div
-            class="mt-6 flex justify-center space-x-4 opacity-0"
-            style="margin-top: 1.5rem; display: flex; justify-content: center; gap: 1rem; opacity: 0; animation: word-appear 1s ease-out forwards; animation-delay: 4.5s;"
-          >
-            <div
-              class="h-1 w-1 rounded-full opacity-40"
-              style="height: 0.25rem; width: 0.25rem; border-radius: 50%; opacity: 0.4; background: #c8b4a0;"
-            ></div>
-            <div
-              class="h-1 w-1 rounded-full opacity-60"
-              style="height: 0.25rem; width: 0.25rem; border-radius: 50%; opacity: 0.6; background: #c8b4a0;"
-            ></div>
-            <div
-              class="h-1 w-1 rounded-full opacity-40"
-              style="height: 0.25rem; width: 0.25rem; border-radius: 50%; opacity: 0.4; background: #c8b4a0;"
-            ></div>
-          </div>
-        </div>
-      </div>
-
-      <div
-        id="mouse-gradient"
-        class="pointer-events-none fixed h-96 w-96 rounded-full opacity-0 blur-3xl transition-all duration-500 ease-out"
-        style="pointer-events: none; position: fixed; height: 24rem; width: 24rem; border-radius: 50%; opacity: 0; filter: blur(75px); transition: all 0.5s ease-out; background: radial-gradient(circle, rgba(107, 85, 69, 0.05) 0%, transparent 100%);"
-      ></div>
-    </div>
-    <!-- END MINIMAL HERO SECTION -->
-
-    <!-- About Snapshot -->
-    <section class="about-snapshot">
-        <div class="about-content">
-            <h2 class="section-title">About Nimble Panda Solutions</h2>
-            <p>We are a trusted business consulting firm dedicated to helping organizations achieve agile and sustainable growth. With deep industry expertise and a practical approach, we deliver strategic solutions that drive real business outcomes.</p>
-            <p>Our team of experienced consultants works closely with clients to understand their unique challenges and opportunities, providing tailored advisory services in business strategy, financial planning, operational optimization, and market expansion.</p>
-            <a href="about.html" class="cta-button">Learn More About Us</a>
-        </div>
-    </section>
-
-    <!-- Services Overview -->
-    <section class="container">
-        <h2 class="section-title">Our Consulting Services</h2>
-        <p class="section-subtitle">Comprehensive business solutions designed to accelerate your growth and strengthen your competitive position</p>
-        
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">📊</div>
-                <h3>Business Strategy & Growth Planning</h3>
-                <p>Strategic roadmaps, market analysis, competitive positioning, and growth frameworks tailored to your business objectives and market dynamics.</p>
-            </div>
-            
-            <div class="service-card">
-                <div class="service-icon">💼</div>
-                <h3>Financial & Operational Advisory</h3>
-                <p>Financial planning, operational efficiency, process optimization, and performance management to maximize profitability and operational excellence.</p>
-            </div>
-            
-            <div class="service-card">
-                <div class="service-icon">🌐</div>
-                <h3>Market Expansion & Strategic Advisory</h3>
-                <p>Market entry strategies, expansion planning, partnership development, and strategic advisory for sustainable business growth and market leadership.</p>
+            <div class="spotlight-right">
+                <div class="spotlight-gradient-1"></div>
+                <div class="spotlight-gradient-2"></div>
+                <div class="spotlight-gradient-3"></div>
             </div>
         </div>
-    </section>
 
-    <!-- Why Choose Us -->
-    <section class="why-choose">
-        <div class="container">
-            <h2 class="section-title">Why Choose Nimble Panda Solutions</h2>
-            <p class="section-subtitle">Partner with consultants who understand your business and deliver results</p>
-            
-            <div class="features-grid">
-                <div class="feature-item">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Agile & Practical Approach</h3>
-                    <p>We deliver actionable strategies with a focus on implementation, ensuring rapid results and sustainable impact for your business.</p>
+        <div class="about-container">
+            <!-- Header -->
+            <div class="about-header">
+                <h1 class="about-title">About Us</h1>
+                <p class="about-subtitle">
+                    Building the future of web development with beautiful, reusable components.
+                </p>
+            </div>
+
+            <!-- Mission & Vision -->
+            <div class="mission-vision-grid">
+                <!-- Mission Card -->
+                <div class="mission-vision-card">
+                    <div class="border-beam-container">
+                        <div class="border-beam" style="width: 300px; offset-path: rect(0 auto auto 0 round 300px); --beam-color-from: transparent; --beam-color-via: rgba(30, 58, 95, 0.4);"></div>
+                    </div>
+                    <div class="mission-vision-icon primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+                            <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+                            <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
+                            <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="mission-vision-title">Our Mission</h2>
+                        <p class="mission-vision-description">
+                            Our mission is to democratize web development by providing high-quality, customizable components that help developers build stunning websites quickly and efficiently.
+                        </p>
+                    </div>
                 </div>
-                
-                <div class="feature-item">
-                    <div class="feature-icon">🎓</div>
-                    <h3>Experienced Consultants</h3>
-                    <p>Our team brings decades of combined experience across industries, providing deep expertise and proven methodologies.</p>
+
+                <!-- Vision Card -->
+                <div class="mission-vision-card">
+                    <div class="border-beam-container">
+                        <div class="border-beam reverse" style="width: 300px; offset-path: rect(0 auto auto 0 round 300px); --beam-color-from: transparent; --beam-color-via: rgba(59, 130, 246, 0.4);"></div>
+                    </div>
+                    <div class="mission-vision-icon blue">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <circle cx="12" cy="12" r="6"/>
+                            <circle cx="12" cy="12" r="2"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="mission-vision-title blue">Our Vision</h2>
+                        <p class="mission-vision-description">
+                            We envision a world where creating beautiful websites is accessible to everyone, regardless of their design or development experience.
+                        </p>
+                    </div>
                 </div>
-                
-                <div class="feature-item">
-                    <div class="feature-icon">🤝</div>
-                    <h3>Strong Business Network</h3>
-                    <p>Leverage our extensive network of industry partners, investors, and business leaders to unlock new opportunities and accelerate growth.</p>
+            </div>
+
+            <!-- Core Values -->
+            <div class="values-section">
+                <div class="values-header">
+                    <h2 class="values-title">Our Core Values</h2>
+                    <p class="values-description">
+                        The principles that guide everything we do and every decision we make.
+                    </p>
+                </div>
+
+                <div class="values-grid">
+                    <!-- Innovation Card -->
+                    <div class="value-card-wrapper">
+                        <div class="pulse-card purple">
+                            <div class="pulse-card-border">
+                                <div class="pulse-card-border-inner"></div>
+                            </div>
+                            <span class="pulse-card-icon">
+                                <span class="pulse-card-icon-inner">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/>
+                                        <path d="M9 18h6"/>
+                                        <path d="M10 22h4"/>
+                                    </svg>
+                                </span>
+                            </span>
+                            <div class="pulse-card-content">
+                                <h3 class="pulse-card-title">Innovation</h3>
+                                <p class="pulse-card-description">
+                                    We constantly push boundaries and explore new possibilities to create cutting-edge solutions.
+                                </p>
+                            </div>
+                            <div class="pulse-card-shine">
+                                <div class="pulse-card-shine-inner"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Collaboration Card -->
+                    <div class="value-card-wrapper">
+                        <div class="pulse-card blue">
+                            <div class="pulse-card-border">
+                                <div class="pulse-card-border-inner"></div>
+                            </div>
+                            <span class="pulse-card-icon">
+                                <span class="pulse-card-icon-inner">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                        <circle cx="9" cy="7" r="4"/>
+                                        <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                    </svg>
+                                </span>
+                            </span>
+                            <div class="pulse-card-content">
+                                <h3 class="pulse-card-title">Collaboration</h3>
+                                <p class="pulse-card-description">
+                                    We believe in the power of teamwork and diverse perspectives to achieve extraordinary results.
+                                </p>
+                            </div>
+                            <div class="pulse-card-shine">
+                                <div class="pulse-card-shine-inner"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Excellence Card -->
+                    <div class="value-card-wrapper">
+                        <div class="pulse-card amber">
+                            <div class="pulse-card-border">
+                                <div class="pulse-card-border-inner"></div>
+                            </div>
+                            <span class="pulse-card-icon">
+                                <span class="pulse-card-icon-inner">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
+                                        <path d="M5 3v4"/>
+                                        <path d="M19 17v4"/>
+                                        <path d="M3 5h4"/>
+                                        <path d="M17 19h4"/>
+                                    </svg>
+                                </span>
+                            </span>
+                            <div class="pulse-card-content">
+                                <h3 class="pulse-card-title">Excellence</h3>
+                                <p class="pulse-card-description">
+                                    We strive for perfection in everything we do, consistently delivering high-quality work.
+                                </p>
+                            </div>
+                            <div class="pulse-card-shine">
+                                <div class="pulse-card-shine-inner"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Impact Card -->
+                    <div class="value-card-wrapper">
+                        <div class="pulse-card rose">
+                            <div class="pulse-card-border">
+                                <div class="pulse-card-border-inner"></div>
+                            </div>
+                            <span class="pulse-card-icon">
+                                <span class="pulse-card-icon-inner">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+                                        <path d="M2 12h20"/>
+                                    </svg>
+                                </span>
+                            </span>
+                            <div class="pulse-card-content">
+                                <h3 class="pulse-card-title">Impact</h3>
+                                <p class="pulse-card-description">
+                                    We measure our success by the positive difference we make in people's lives and businesses.
+                                </p>
+                            </div>
+                            <div class="pulse-card-shine">
+                                <div class="pulse-card-shine-inner"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Associated Business Preview -->
-    <section class="associated-business">
-        <div class="container">
-            <h2 class="section-title">Our Associated Businesses</h2>
-            <div class="associated-content">
-                <p>We collaborate with a network of trusted partners and associated businesses to provide comprehensive solutions and expanded capabilities for our clients. Our ecosystem approach ensures you have access to the right expertise and resources.</p>
-            </div>
-            <a href="associated.html" class="cta-button">View Our Associated Businesses</a>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <h2>Ready to Transform Your Business?</h2>
-        <p>Let's discuss how our consulting expertise can help you achieve your business goals</p>
-        <a href="contact.html" class="cta-button" style="background: white; color: var(--primary-color);">Schedule a Consultation</a>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Nimble Panda Solutions</h3>
-                <p>Professional business consulting for agile and sustainable growth.</p>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="associated.html">Associated Business</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Contact Information</h3>
-                <ul>
-                    <li>Email: contact@nimblepanda.solutions</li>
-                    <li>Professional Consulting Services</li>
-                    <li>Trusted Business Advisory</li>
-                </ul>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2024 Nimble Panda Solutions. All rights reserved.</p>
-        </div>
-    </footer>
 
     <script>
-        // Animate words
-        const words = document.querySelectorAll('.word');
-        words.forEach((word) => {
-          const delay = parseInt(word.getAttribute('data-delay') || '0', 10);
-          setTimeout(() => {
-            word.style.animation = 'word-appear 0.8s ease-out forwards';
-          }, delay);
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.3,
+            rootMargin: '0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        // Observe value cards
+        document.querySelectorAll('.value-card-wrapper').forEach(card => {
+            observer.observe(card);
         });
-
-        // Mouse gradient
-        const gradient = document.getElementById('mouse-gradient');
-        function onMouseMove(e) {
-          if (gradient) {
-            gradient.style.left = e.clientX - 192 + 'px';
-            gradient.style.top = e.clientY - 192 + 'px';
-            gradient.style.opacity = '1';
-          }
-        }
-        function onMouseLeave() {
-          if (gradient) gradient.style.opacity = '0';
-        }
-        document.addEventListener('mousemove', onMouseMove);
-        document.addEventListener('mouseleave', onMouseLeave);
-
-        // Word hover effects
-        words.forEach((word) => {
-          word.addEventListener('mouseenter', () => {
-            word.style.textShadow = '0 0 20px rgba(200, 180, 160, 0.5)';
-          });
-          word.addEventListener('mouseleave', () => {
-            word.style.textShadow = 'none';
-          });
-        });
-
-        // Click ripple effect
-        function onClick(e) {
-          const ripple = document.createElement('div');
-          ripple.style.position = 'fixed';
-          ripple.style.left = e.clientX + 'px';
-          ripple.style.top = e.clientY + 'px';
-          ripple.style.width = '4px';
-          ripple.style.height = '4px';
-          ripple.style.background = 'rgba(200, 180, 160, 0.6)';
-          ripple.style.borderRadius = '50%';
-          ripple.style.transform = 'translate(-50%, -50%)';
-          ripple.style.pointerEvents = 'none';
-          ripple.style.animation = 'pulse-glow 1s ease-out forwards';
-          document.body.appendChild(ripple);
-          setTimeout(() => ripple.remove(), 1000);
-        }
-        document.addEventListener('click', onClick);
-
-        // Floating elements on scroll
-        let scrolled = false;
-        function onScroll() {
-          if (!scrolled) {
-            scrolled = true;
-            document
-              .querySelectorAll('.floating-element')
-              .forEach((el, index) => {
-                setTimeout(() => {
-                  el.style.animationPlayState = 'running';
-                }, index * 200);
-              });
-          }
-        }
-        window.addEventListener('scroll', onScroll);
     </script>
 </body>
 </html>
