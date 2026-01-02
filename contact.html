@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Contact Nimble Panda Solutions for professional business consulting services. Get in touch with our expert team today.">
     <title>Contact Us - Nimble Panda Solutions</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -85,198 +86,371 @@
         .cta-button:hover {
             background: var(--secondary-color);
         }
-        
-        /* Page Header */
-        .page-header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: var(--white);
-            padding: 4rem 2rem;
-            text-align: center;
+
+        /* ContactUs1 Component Styles - EXACT DUPLICATION */
+        .contact-us-section {
+            background: var(--white);
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding: 4rem 0;
         }
-        
-        .page-header h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+
+        @media (min-width: 768px) {
+            .contact-us-section {
+                padding: 6rem 0;
+            }
         }
-        
-        .page-header p {
-            font-size: 1.2rem;
-            opacity: 0.95;
-            max-width: 700px;
-            margin: 0 auto;
+
+        .gradient-blur-1 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 500px;
+            width: 500px;
+            border-radius: 50%;
+            opacity: 0.2;
+            filter: blur(120px);
+            background: radial-gradient(circle at center, #e60a64, transparent 70%);
         }
-        
-        /* Container */
-        .container {
+
+        .gradient-blur-2 {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            height: 300px;
+            width: 300px;
+            border-radius: 50%;
+            opacity: 0.1;
+            filter: blur(100px);
+            background: radial-gradient(circle at center, #e60a64, transparent 70%);
+        }
+
+        .contact-container {
+            position: relative;
+            z-index: 10;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: 0 1rem;
         }
-        
-        /* Contact Section */
-        .contact-wrapper {
+
+        @media (min-width: 768px) {
+            .contact-container {
+                padding: 0 1.5rem;
+            }
+        }
+
+        .contact-card {
+            border: 1px solid rgba(226, 232, 240, 0.4);
+            background: rgba(247, 250, 252, 0.2);
+            max-width: 80rem;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 28px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            backdrop-filter: blur(8px);
+        }
+
+        .contact-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            margin-top: 2rem;
+            grid-template-columns: 1fr;
         }
-        
-        /* Contact Form */
+
+        @media (min-width: 768px) {
+            .contact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .form-section {
+            position: relative;
+            padding: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .form-section {
+                padding: 2.5rem;
+            }
+        }
+
+        .form-header {
+            display: flex;
+            width: 100%;
+            gap: 0.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s ease-out 0.1s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-title-contact {
+            background: linear-gradient(to right, var(--text-dark), rgba(45, 55, 72, 0.8));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+        }
+
+        @media (min-width: 768px) {
+            .form-title-contact {
+                font-size: 3rem;
+            }
+        }
+
+        .form-title-us {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            color: #e60a64;
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            font-style: italic;
+        }
+
+        @media (min-width: 768px) {
+            .form-title-us {
+                font-size: 3rem;
+            }
+        }
+
+        .sparkles-container {
+            position: absolute;
+            inset: 0;
+            top: 0;
+            height: 6rem;
+            width: 100%;
+            pointer-events: none;
+        }
+
+        .sparkles-canvas {
+            width: 100%;
+            height: 100%;
+        }
+
         .contact-form {
-            background: var(--white);
-            padding: 3rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin-top: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s ease-out 0.3s forwards;
         }
-        
-        .contact-form h2 {
-            font-size: 2rem;
-            color: var(--primary-color);
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
             margin-bottom: 1.5rem;
         }
-        
+
+        @media (min-width: 768px) {
+            .form-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         .form-group {
-            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(10px);
         }
-        
-        .form-group label {
+
+        .form-group.animate-1 {
+            animation: fadeInUp 0.5s ease-out 0.4s forwards;
+        }
+
+        .form-group.animate-2 {
+            animation: fadeInUp 0.5s ease-out 0.5s forwards;
+        }
+
+        .form-group.animate-3 {
+            animation: fadeInUp 0.5s ease-out 0.6s forwards;
+        }
+
+        .form-label {
             display: block;
             margin-bottom: 0.5rem;
-            color: var(--text-dark);
+            font-size: 0.875rem;
             font-weight: 500;
+            color: var(--text-dark);
         }
-        
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
+
+        .form-input,
+        .form-textarea {
             width: 100%;
-            padding: 0.9rem;
-            border: 2px solid var(--border-color);
-            border-radius: 6px;
-            font-size: 1rem;
+            padding: 0.625rem 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
             font-family: inherit;
-            transition: border-color 0.3s;
+            background: var(--white);
+            transition: all 0.2s;
         }
-        
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
+
+        .form-input:focus,
+        .form-textarea:focus {
             outline: none;
-            border-color: var(--accent-color);
+            border-color: #e60a64;
+            box-shadow: 0 0 0 3px rgba(230, 10, 100, 0.1);
         }
-        
-        .form-group textarea {
-            resize: vertical;
-            min-height: 150px;
+
+        .form-textarea {
+            height: 10rem;
+            resize: none;
         }
-        
-        .submit-btn {
-            background: var(--primary-color);
-            color: var(--white);
-            padding: 1rem 2.5rem;
-            border: none;
-            border-radius: 6px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.3s, transform 0.3s;
+
+        .submit-button-wrapper {
             width: 100%;
+            transition: transform 0.2s;
         }
-        
-        .submit-btn:hover {
-            background: var(--secondary-color);
-            transform: translateY(-2px);
+
+        .submit-button-wrapper:hover {
+            transform: scale(1.02);
         }
-        
-        /* Contact Info */
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
+
+        .submit-button-wrapper:active {
+            transform: scale(0.98);
         }
-        
-        .info-card {
-            background: var(--bg-light);
-            padding: 2.5rem;
-            border-radius: 10px;
-            border-left: 4px solid var(--accent-color);
-        }
-        
-        .info-card h3 {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
+
+        .submit-button {
+            width: 100%;
+            padding: 0.625rem 1rem;
+            background: linear-gradient(to bottom, rgb(244, 63, 94), rgb(190, 18, 60));
+            color: white;
+            border: none;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            box-shadow: 0px 2px 0px 0px rgba(255, 255, 255, 0.3) inset;
+            transition: all 0.2s;
             display: flex;
             align-items: center;
-            gap: 0.8rem;
+            justify-content: center;
+            gap: 0.5rem;
         }
-        
-        .info-icon {
-            font-size: 2rem;
+
+        .submit-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
         }
-        
-        .info-card p {
-            color: var(--text-light);
-            line-height: 1.8;
-            margin-bottom: 0.8rem;
+
+        .loader-icon {
+            width: 1rem;
+            height: 1rem;
+            animation: spin 1s linear infinite;
         }
-        
-        .info-card a {
-            color: var(--accent-color);
-            text-decoration: none;
-            font-weight: 500;
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
         }
-        
-        .info-card a:hover {
-            text-decoration: underline;
+
+        .check-icon {
+            width: 1rem;
+            height: 1rem;
         }
-        
-        /* Why Contact Section */
-        .why-contact {
-            background: var(--bg-light);
-            padding: 4rem 2rem;
-            margin-top: 4rem;
+
+        .globe-section {
+            position: relative;
+            margin: 2rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding-right: 2rem;
+            opacity: 0;
+            transform: translateX(20px);
+            animation: fadeInRight 0.5s ease-out 0.5s forwards;
         }
-        
-        .why-contact h2 {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            text-align: center;
-            margin-bottom: 3rem;
+
+        @keyframes fadeInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
-        
-        .reasons-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
+
+        .globe-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .globe-card {
+            position: relative;
             margin: 0 auto;
+            height: 350px;
+            min-height: 15rem;
+            max-width: 450px;
+            overflow: hidden;
+            border-radius: 1.5rem;
+            border: 1px solid rgba(226, 232, 240, 0.4);
+            background: linear-gradient(to bottom, #e60a64, rgba(230, 10, 100, 0.05));
+            padding: 1.5rem;
+            font-size: 1.875rem;
+            letter-spacing: -0.025em;
+            color: white;
+            line-height: 1.05;
         }
-        
-        .reason-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+
+        @media (min-width: 768px) {
+            .globe-card {
+                height: 450px;
+                min-height: 20rem;
+                padding: 2rem;
+                font-size: 2.25rem;
+            }
         }
-        
-        .reason-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+
+        @media (min-width: 1024px) {
+            .globe-card {
+                font-size: 3rem;
+            }
         }
-        
-        .reason-card h3 {
-            font-size: 1.3rem;
-            color: var(--primary-color);
-            margin-bottom: 0.8rem;
+
+        .globe-container {
+            position: absolute;
+            right: -5rem;
+            bottom: -5rem;
+            z-index: 10;
+            margin: 0 auto;
+            display: flex;
+            height: 100%;
+            width: 100%;
+            max-width: 300px;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.7s;
         }
-        
-        .reason-card p {
-            color: var(--text-light);
-            line-height: 1.7;
+
+        @media (min-width: 768px) {
+            .globe-container {
+                right: -7rem;
+                bottom: -7rem;
+                max-width: 550px;
+            }
         }
-        
+
+        .globe-container:hover {
+            transform: scale(1.05);
+        }
+
+        .globe-canvas {
+            width: 100%;
+            height: 100%;
+        }
+
         /* Footer */
         footer {
             background: var(--primary-color);
@@ -322,7 +496,7 @@
             border-top: 1px solid rgba(255,255,255,0.2);
             color: rgba(255,255,255,0.8);
         }
-        
+
         /* Responsive */
         @media (max-width: 768px) {
             .header-container {
@@ -333,23 +507,6 @@
             nav {
                 flex-direction: column;
                 gap: 1rem;
-            }
-            
-            .page-header h1 {
-                font-size: 2rem;
-            }
-            
-            .contact-wrapper {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .contact-form {
-                padding: 2rem;
-            }
-            
-            .reasons-grid {
-                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -369,124 +526,79 @@
         </div>
     </header>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <h1>Get in Touch</h1>
-        <p>Let's discuss how we can help your business achieve its strategic objectives</p>
-    </section>
+    <!-- ContactUs1 Component Section - EXACT DUPLICATION -->
+    <section class="contact-us-section">
+        <div class="gradient-blur-1"></div>
+        <div class="gradient-blur-2"></div>
 
-    <!-- Contact Section -->
-    <section class="container">
-        <div class="contact-wrapper">
-            <!-- Contact Form -->
-            <div class="contact-form">
-                <h2>Send Us a Message</h2>
-                <form action="#" method="POST">
-                    <div class="form-group">
-                        <label for="name">Full Name *</label>
-                        <input type="text" id="name" name="name" required placeholder="John Smith">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email Address *</label>
-                        <input type="email" id="email" name="email" required placeholder="john@company.com">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="company">Company Name</label>
-                        <input type="text" id="company" name="company" placeholder="Your Company">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="service">Service Interest</label>
-                        <select id="service" name="service">
-                            <option value="">Select a service</option>
-                            <option value="strategy">Business Strategy & Growth Planning</option>
-                            <option value="financial">Financial & Operational Advisory</option>
-                            <option value="expansion">Market Expansion & Strategic Advisory</option>
-                            <option value="general">General Inquiry</option>
-                            <option value="partnership">Partnership Opportunities</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Message *</label>
-                        <textarea id="message" name="message" required placeholder="Tell us about your business needs and how we can help..."></textarea>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">Send Message</button>
-                </form>
-            </div>
-            
-            <!-- Contact Info -->
-            <div class="contact-info">
-                <div class="info-card">
-                    <h3><span class="info-icon">📧</span> Email Us</h3>
-                    <p>For general inquiries and consultation requests:</p>
-                    <p><a href="mailto:contact@nimblepanda.solutions">contact@nimblepanda.solutions</a></p>
-                    <p style="margin-top: 1rem; font-size: 0.95rem;">We typically respond within 24 hours during business days.</p>
-                </div>
-                
-                <div class="info-card">
-                    <h3><span class="info-icon">💼</span> Business Hours</h3>
-                    <p><strong>Monday - Friday:</strong> 9:00 AM - 6:00 PM</p>
-                    <p><strong>Saturday:</strong> 10:00 AM - 2:00 PM</p>
-                    <p><strong>Sunday:</strong> Closed</p>
-                    <p style="margin-top: 1rem; font-size: 0.95rem;">Emergency consultations available by appointment.</p>
-                </div>
-                
-                <div class="info-card">
-                    <h3><span class="info-icon">🤝</span> Schedule a Consultation</h3>
-                    <p>Ready to discuss your business needs? Schedule a free initial consultation with our expert team.</p>
-                    <p style="margin-top: 1rem;">We offer both in-person and virtual meetings to accommodate your preferences.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        <div class="contact-container">
+            <div class="contact-card">
+                <div class="contact-grid">
+                    <!-- Form Section -->
+                    <div class="form-section">
+                        <div class="form-header">
+                            <h2 class="form-title-contact">Contact</h2>
+                            <span class="form-title-us">Us</span>
+                            <div class="sparkles-container">
+                                <canvas id="sparkles-canvas" class="sparkles-canvas"></canvas>
+                            </div>
+                        </div>
 
-    <!-- Why Contact Us -->
-    <section class="why-contact">
-        <h2>Why Reach Out to Us?</h2>
-        <div class="reasons-grid">
-            <div class="reason-card">
-                <div class="reason-icon">⚡</div>
-                <h3>Quick Response</h3>
-                <p>We value your time and respond promptly to all inquiries within 24 hours.</p>
-            </div>
-            
-            <div class="reason-card">
-                <div class="reason-icon">🎯</div>
-                <h3>Free Consultation</h3>
-                <p>Get a complimentary initial consultation to discuss your business challenges and opportunities.</p>
-            </div>
-            
-            <div class="reason-card">
-                <div class="reason-icon">🔒</div>
-                <h3>Confidential</h3>
-                <p>All discussions are strictly confidential and protected by professional consulting standards.</p>
-            </div>
-            
-            <div class="reason-card">
-                <div class="reason-icon">💡</div>
-                <h3>Expert Guidance</h3>
-                <p>Connect directly with experienced consultants who understand your industry and challenges.</p>
-            </div>
-            
-            <div class="reason-card">
-                <div class="reason-icon">📊</div>
-                <h3>Tailored Solutions</h3>
-                <p>Receive customized recommendations based on your specific business needs and goals.</p>
-            </div>
-            
-            <div class="reason-card">
-                <div class="reason-icon">🌟</div>
-                <h3>No Obligation</h3>
-                <p>Explore our services with no commitment required. We're here to help you make informed decisions.</p>
+                        <form class="contact-form" id="contact-form">
+                            <div class="form-row">
+                                <div class="form-group animate-1">
+                                    <label for="name" class="form-label">Name</label>
+                                    <input
+                                        type="text"
+                                        id="name"
+                                        class="form-input"
+                                        placeholder="Enter your name"
+                                        required
+                                    />
+                                </div>
+
+                                <div class="form-group animate-2">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        class="form-input"
+                                        placeholder="Enter your email"
+                                        required
+                                    />
+                                </div>
+                            </div>
+
+                            <div class="form-group animate-3">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea
+                                    id="message"
+                                    class="form-textarea"
+                                    placeholder="Enter your message"
+                                    required
+                                ></textarea>
+                            </div>
+
+                            <div class="submit-button-wrapper">
+                                <button type="submit" class="submit-button" id="submit-btn">
+                                    <span id="button-text">Send Message</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Globe Section -->
+                    <div class="globe-section">
+                        <div class="globe-wrapper">
+                            <article class="globe-card">
+                                Presenting you with the best UI possible.
+                                <div class="globe-container">
+                                    <canvas id="globe-canvas" class="globe-canvas"></canvas>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -523,5 +635,216 @@
             <p>&copy; 2024 Nimble Panda Solutions. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // SparklesCore Implementation
+        class SparklesCore {
+            constructor(canvasId, options) {
+                this.canvas = document.getElementById(canvasId);
+                this.ctx = this.canvas.getContext('2d');
+                this.options = {
+                    minSize: options.minSize || 0.6,
+                    maxSize: options.maxSize || 1.4,
+                    particleDensity: options.particleDensity || 500,
+                    particleColor: options.particleColor || '#e60a64'
+                };
+                this.particles = [];
+                this.init();
+            }
+
+            init() {
+                this.canvas.width = this.canvas.offsetWidth;
+                this.canvas.height = this.canvas.offsetHeight;
+                this.createParticles();
+                this.animate();
+            }
+
+            createParticles() {
+                const area = this.canvas.width * this.canvas.height;
+                const count = Math.floor(area / this.options.particleDensity);
+                
+                for (let i = 0; i < count; i++) {
+                    this.particles.push({
+                        x: Math.random() * this.canvas.width,
+                        y: Math.random() * this.canvas.height,
+                        size: Math.random() * (this.options.maxSize - this.options.minSize) + this.options.minSize,
+                        speedX: (Math.random() - 0.5) * 0.5,
+                        speedY: (Math.random() - 0.5) * 0.5,
+                        opacity: Math.random()
+                    });
+                }
+            }
+
+            animate() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                
+                this.particles.forEach(particle => {
+                    particle.x += particle.speedX;
+                    particle.y += particle.speedY;
+                    
+                    if (particle.x < 0 || particle.x > this.canvas.width) particle.speedX *= -1;
+                    if (particle.y < 0 || particle.y > this.canvas.height) particle.speedY *= -1;
+                    
+                    particle.opacity += (Math.random() - 0.5) * 0.1;
+                    particle.opacity = Math.max(0.1, Math.min(1, particle.opacity));
+                    
+                    this.ctx.beginPath();
+                    this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                    this.ctx.fillStyle = this.options.particleColor;
+                    this.ctx.globalAlpha = particle.opacity;
+                    this.ctx.fill();
+                });
+                
+                this.ctx.globalAlpha = 1;
+                requestAnimationFrame(() => this.animate());
+            }
+        }
+
+        // Earth Globe Implementation
+        class Earth {
+            constructor(canvasId, options) {
+                this.canvas = document.getElementById(canvasId);
+                this.options = {
+                    scale: options.scale || 1.1,
+                    baseColor: options.baseColor || [1, 0, 0.3],
+                    markerColor: options.markerColor || [0, 0, 0],
+                    glowColor: options.glowColor || [1, 0.3, 0.4]
+                };
+                this.init();
+            }
+
+            init() {
+                this.scene = new THREE.Scene();
+                this.camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+                this.renderer = new THREE.WebGLRenderer({ 
+                    canvas: this.canvas, 
+                    alpha: true,
+                    antialias: true 
+                });
+                
+                this.renderer.setSize(this.canvas.offsetWidth, this.canvas.offsetHeight);
+                this.camera.position.z = 2;
+
+                // Create sphere
+                const geometry = new THREE.SphereGeometry(1 * this.options.scale, 64, 64);
+                const material = new THREE.MeshPhongMaterial({
+                    color: new THREE.Color(...this.options.baseColor),
+                    emissive: new THREE.Color(...this.options.glowColor).multiplyScalar(0.2),
+                    shininess: 30,
+                    transparent: true,
+                    opacity: 0.9
+                });
+                
+                this.globe = new THREE.Mesh(geometry, material);
+                this.scene.add(this.globe);
+
+                // Add lights
+                const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+                this.scene.add(ambientLight);
+
+                const pointLight = new THREE.PointLight(0xffffff, 1);
+                pointLight.position.set(5, 5, 5);
+                this.scene.add(pointLight);
+
+                // Add glow
+                const glowGeometry = new THREE.SphereGeometry(1.15 * this.options.scale, 64, 64);
+                const glowMaterial = new THREE.MeshBasicMaterial({
+                    color: new THREE.Color(...this.options.glowColor),
+                    transparent: true,
+                    opacity: 0.15,
+                    side: THREE.BackSide
+                });
+                const glow = new THREE.Mesh(glowGeometry, glowMaterial);
+                this.scene.add(glow);
+
+                this.animate();
+            }
+
+            animate() {
+                requestAnimationFrame(() => this.animate());
+                this.globe.rotation.y += 0.002;
+                this.renderer.render(this.scene, this.camera);
+            }
+        }
+
+        // Form Handling
+        const form = document.getElementById('contact-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const buttonText = document.getElementById('button-text');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Show loading state
+            submitBtn.disabled = true;
+            buttonText.innerHTML = `
+                <svg class="loader-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Sending...
+            `;
+
+            try {
+                // Simulate form submission
+                const formData = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    message: document.getElementById('message').value
+                };
+                
+                console.log('Form submitted:', formData);
+                await new Promise(resolve => setTimeout(resolve, 1000));
+
+                // Show success state
+                buttonText.innerHTML = `
+                    <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    Message Sent!
+                `;
+
+                // Reset form
+                form.reset();
+
+                // Reset button after 5 seconds
+                setTimeout(() => {
+                    submitBtn.disabled = false;
+                    buttonText.textContent = 'Send Message';
+                }, 5000);
+
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                submitBtn.disabled = false;
+                buttonText.textContent = 'Send Message';
+            }
+        });
+
+        // Initialize components
+        window.addEventListener('DOMContentLoaded', () => {
+            // Initialize Sparkles
+            new SparklesCore('sparkles-canvas', {
+                minSize: 0.6,
+                maxSize: 1.4,
+                particleDensity: 500,
+                particleColor: '#e60a64'
+            });
+
+            // Initialize Earth Globe
+            new Earth('globe-canvas', {
+                scale: 1.1,
+                baseColor: [1, 0, 0.3],
+                markerColor: [0, 0, 0],
+                glowColor: [1, 0.3, 0.4]
+            });
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            const sparklesCanvas = document.getElementById('sparkles-canvas');
+            sparklesCanvas.width = sparklesCanvas.offsetWidth;
+            sparklesCanvas.height = sparklesCanvas.offsetHeight;
+        });
+    </script>
 </body>
 </html>
