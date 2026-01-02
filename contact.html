@@ -13,87 +13,21 @@
             box-sizing: border-box;
         }
         
-        :root {
-            --primary-color: #1e3a5f;
-            --secondary-color: #2c5f8d;
-            --accent-color: #3a7ca5;
-            --text-dark: #2d3748;
-            --text-light: #4a5568;
-            --bg-light: #f7fafc;
-            --white: #ffffff;
-            --border-color: #e2e8f0;
-        }
-        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: var(--text-dark);
-            background-color: var(--white);
-        }
-        
-        /* Header */
-        header {
-            background: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1.2rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-        
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-        
-        nav a {
-            color: var(--text-dark);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        nav a:hover, nav a.active {
-            color: var(--accent-color);
-        }
-        
-        .cta-button {
-            background: var(--primary-color);
-            color: var(--white);
-            padding: 0.7rem 1.5rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background 0.3s;
-        }
-        
-        .cta-button:hover {
-            background: var(--secondary-color);
+            background-color: #0a0a0a;
+            color: #ffffff;
         }
 
-        /* ContactUs1 Component Styles - EXACT DUPLICATION */
+        /* ContactUs1 Component Styles - EXACT DUPLICATION - DARK THEME */
         .contact-us-section {
-            background: var(--white);
+            background: #0a0a0a;
             position: relative;
             width: 100%;
             overflow: hidden;
             padding: 4rem 0;
+            min-height: 100vh;
         }
 
         @media (min-width: 768px) {
@@ -141,13 +75,13 @@
         }
 
         .contact-card {
-            border: 1px solid rgba(226, 232, 240, 0.4);
-            background: rgba(247, 250, 252, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(20, 20, 20, 0.5);
             max-width: 80rem;
             margin: 0 auto;
             overflow: hidden;
             border-radius: 28px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
             backdrop-filter: blur(8px);
         }
 
@@ -190,7 +124,7 @@
         }
 
         .form-title-contact {
-            background: linear-gradient(to right, var(--text-dark), rgba(45, 55, 72, 0.8));
+            background: linear-gradient(to right, #ffffff, rgba(255, 255, 255, 0.8));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -279,26 +213,33 @@
             margin-bottom: 0.5rem;
             font-size: 0.875rem;
             font-weight: 500;
-            color: var(--text-dark);
+            color: #e5e5e5;
         }
 
         .form-input,
         .form-textarea {
             width: 100%;
-            padding: 0.625rem 0.75rem;
-            border: 1px solid var(--border-color);
-            border-radius: 0.375rem;
+            padding: 0.75rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0.5rem;
             font-size: 0.875rem;
             font-family: inherit;
-            background: var(--white);
+            background: rgba(30, 30, 30, 0.8);
+            color: #ffffff;
             transition: all 0.2s;
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: rgba(255, 255, 255, 0.4);
         }
 
         .form-input:focus,
         .form-textarea:focus {
             outline: none;
             border-color: #e60a64;
-            box-shadow: 0 0 0 3px rgba(230, 10, 100, 0.1);
+            box-shadow: 0 0 0 3px rgba(230, 10, 100, 0.2);
+            background: rgba(40, 40, 40, 0.9);
         }
 
         .form-textarea {
@@ -321,13 +262,13 @@
 
         .submit-button {
             width: 100%;
-            padding: 0.625rem 1rem;
-            background: linear-gradient(to bottom, rgb(244, 63, 94), rgb(190, 18, 60));
+            padding: 0.75rem 1rem;
+            background: linear-gradient(to bottom, #e60a64, #b8004d);
             color: white;
             border: none;
-            border-radius: 0.375rem;
+            border-radius: 0.5rem;
             font-size: 0.875rem;
-            font-weight: 500;
+            font-weight: 600;
             cursor: pointer;
             box-shadow: 0px 2px 0px 0px rgba(255, 255, 255, 0.3) inset;
             transition: all 0.2s;
@@ -335,6 +276,10 @@
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
+        }
+
+        .submit-button:hover {
+            background: linear-gradient(to bottom, #ff0a6e, #d0005a);
         }
 
         .submit-button:disabled {
@@ -395,7 +340,7 @@
             max-width: 450px;
             overflow: hidden;
             border-radius: 1.5rem;
-            border: 1px solid rgba(226, 232, 240, 0.4);
+            border: 1px solid rgba(230, 10, 100, 0.3);
             background: linear-gradient(to bottom, #e60a64, rgba(230, 10, 100, 0.05));
             padding: 1.5rem;
             font-size: 1.875rem;
@@ -450,83 +395,10 @@
             width: 100%;
             height: 100%;
         }
-
-        /* Footer */
-        footer {
-            background: var(--primary-color);
-            color: var(--white);
-            padding: 3rem 2rem 1.5rem;
-        }
-        
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 2rem;
-        }
-        
-        .footer-section h3 {
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-        
-        .footer-section ul {
-            list-style: none;
-        }
-        
-        .footer-section ul li {
-            margin-bottom: 0.7rem;
-        }
-        
-        .footer-section a {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-section a:hover {
-            color: var(--white);
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            color: rgba(255,255,255,0.8);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            nav {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="header-container">
-            <a href="index.html" class="logo">Nimble Panda Solutions</a>
-            <nav>
-                <a href="index.html">Home</a>
-                <a href="about.html">About Us</a>
-                <a href="associated.html">Associated Business</a>
-                <a href="contact.html" class="active">Contact Us</a>
-                <a href="contact.html" class="cta-button">Get Consultation</a>
-            </nav>
-        </div>
-    </header>
-
-    <!-- ContactUs1 Component Section - EXACT DUPLICATION -->
+    <!-- ContactUs1 Component Section - EXACT DUPLICATION - DARK THEME -->
     <section class="contact-us-section">
         <div class="gradient-blur-1"></div>
         <div class="gradient-blur-2"></div>
@@ -603,39 +475,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Nimble Panda Solutions</h3>
-                <p>Professional business consulting for agile and sustainable growth.</p>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="associated.html">Associated Business</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Contact Information</h3>
-                <ul>
-                    <li>Email: contact@nimblepanda.solutions</li>
-                    <li>Professional Consulting Services</li>
-                    <li>Trusted Business Advisory</li>
-                </ul>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2024 Nimble Panda Solutions. All rights reserved.</p>
-        </div>
-    </footer>
-
     <script>
         // SparklesCore Implementation
         class SparklesCore {
@@ -700,7 +539,7 @@
             }
         }
 
-        // Earth Globe Implementation
+        // Earth Globe Implementation with Pink/Red Wireframe Dots
         class Earth {
             constructor(canvasId, options) {
                 this.canvas = document.getElementById(canvasId);
@@ -725,24 +564,37 @@
                 this.renderer.setSize(this.canvas.offsetWidth, this.canvas.offsetHeight);
                 this.camera.position.z = 2;
 
-                // Create sphere
+                // Create wireframe sphere with dots
                 const geometry = new THREE.SphereGeometry(1 * this.options.scale, 64, 64);
-                const material = new THREE.MeshPhongMaterial({
+                
+                // Create points material for dotted wireframe effect
+                const pointsMaterial = new THREE.PointsMaterial({
                     color: new THREE.Color(...this.options.baseColor),
-                    emissive: new THREE.Color(...this.options.glowColor).multiplyScalar(0.2),
-                    shininess: 30,
+                    size: 0.02,
                     transparent: true,
-                    opacity: 0.9
+                    opacity: 0.8,
+                    sizeAttenuation: true
                 });
                 
-                this.globe = new THREE.Mesh(geometry, material);
+                this.globe = new THREE.Points(geometry, pointsMaterial);
                 this.scene.add(this.globe);
+
+                // Add wireframe lines
+                const wireframeGeometry = new THREE.WireframeGeometry(geometry);
+                const wireframeMaterial = new THREE.LineBasicMaterial({
+                    color: new THREE.Color(...this.options.baseColor),
+                    transparent: true,
+                    opacity: 0.3
+                });
+                const wireframe = new THREE.LineSegments(wireframeGeometry, wireframeMaterial);
+                this.scene.add(wireframe);
+                this.wireframe = wireframe;
 
                 // Add lights
                 const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
                 this.scene.add(ambientLight);
 
-                const pointLight = new THREE.PointLight(0xffffff, 1);
+                const pointLight = new THREE.PointLight(0xff0066, 1);
                 pointLight.position.set(5, 5, 5);
                 this.scene.add(pointLight);
 
@@ -763,6 +615,9 @@
             animate() {
                 requestAnimationFrame(() => this.animate());
                 this.globe.rotation.y += 0.002;
+                if (this.wireframe) {
+                    this.wireframe.rotation.y += 0.002;
+                }
                 this.renderer.render(this.scene, this.camera);
             }
         }
