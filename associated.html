@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore our network of associated businesses and strategic partners that enhance our consulting capabilities and client value.">
+    <title>Associated Business - Nimble Panda Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #1e3a5f;
+            --secondary-color: #2c5f8d;
+            --accent-color: #3a7ca5;
+            --text-dark: #2d3748;
+            --text-light: #4a5568;
+            --bg-light: #f7fafc;
+            --white: #ffffff;
+            --border-color: #e2e8f0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+        }
+        
+        /* Header */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover, nav a.active {
+            color: var(--accent-color);
+        }
+        
+        .cta-button {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 0.7rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .cta-button:hover {
+            background: var(--secondary-color);
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .intro-section {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .intro-section p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        
+        /* Business Cards */
+        .business-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+        
+        .business-card {
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .business-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+        
+        .business-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .business-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .business-header h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .business-category {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .business-content {
+            padding: 2rem;
+        }
+        
+        .business-content p {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        
+        .business-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .business-features li {
+            padding: 0.5rem 0;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+        }
+        
+        .business-features li:before {
+            content: "✓";
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-right: 0.8rem;
+            font-size: 1.2rem;
+        }
+        
+        /* Partnership Benefits */
+        .benefits-section {
+            background: var(--bg-light);
+            padding: 4rem 2rem;
+            margin-top: 4rem;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .benefit-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .benefit-card h3 {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+        }
+        
+        .benefit-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        .btn-primary {
+            background: var(--white);
+            color: var(--primary-color);
+            padding: 1rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 3rem 2rem 1.5rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.7rem;
+        }
+        
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: var(--white);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.8);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .business-grid,
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">Nimble Panda Solutions</a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="associated.html" class="active">Associated Business</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="contact.html" class="cta-button">Get Consultation</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Our Associated Businesses</h1>
+        <p>Strategic partnerships that expand our capabilities and deliver comprehensive solutions</p>
+    </section>
+
+    <!-- Introduction -->
+    <section class="container">
+        <div class="intro-section">
+            <p>At Nimble Panda Solutions, we believe in the power of collaboration. Our network of associated businesses and strategic partners enables us to provide comprehensive, end-to-end solutions that address the full spectrum of our clients' needs.</p>
+            <p>Through these partnerships, we extend our expertise across multiple domains, ensuring that our clients have access to specialized knowledge, resources, and capabilities that complement our core consulting services.</p>
+        </div>
+
+        <h2 class="section-title">Our Partner Network</h2>
+        
+        <div class="business-grid">
+            <!-- Business 1 -->
+            <div class="business-card">
+                <div class="business-header">
+                    <div class="business-icon">💡</div>
+                    <h3>Strategic Advisory Partners</h3>
+                    <p class="business-category">Strategy & Innovation</p>
+                </div>
+                <div class="business-content">
+                    <p>Our strategic advisory partners bring specialized expertise in innovation management, digital transformation, and emerging technologies.</p>
+                    <ul class="business-features">
+                        <li>Digital transformation consulting</li>
+                        <li>Innovation strategy development</li>
+                        <li>Technology assessment and roadmapping</li>
+                        <li>Change management support</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Business 2 -->
+            <div class="business-card">
+                <div class="business-header">
+                    <div class="business-icon">📈</div>
+                    <h3>Financial Services Alliance</h3>
+                    <p class="business-category">Finance & Investment</p>
+                </div>
+                <div class="business-content">
+                    <p>Partnering with leading financial institutions to provide comprehensive financial planning, investment advisory, and capital raising support.</p>
+                    <ul class="business-features">
+                        <li>Investment banking services</li>
+                        <li>Capital raising and funding strategies</li>
+                        <li>Financial modeling and valuation</li>
+                        <li>M&A advisory and due diligence</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Business 3 -->
+            <div class="business-card">
+                <div class="business-header">
+                    <div class="business-icon">🌍</div>
+                    <h3>Global Market Partners</h3>
+                    <p class="business-category">International Expansion</p>
+                </div>
+                <div class="business-content">
+                    <p>International partners providing local market expertise, regulatory guidance, and on-ground support for global expansion initiatives.</p>
+                    <ul class="business-features">
+                        <li>Market entry strategy and execution</li>
+                        <li>Regulatory compliance support</li>
+                        <li>Local partnership facilitation</li>
+                        <li>Cross-border transaction support</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Business 4 -->
+            <div class="business-card">
+                <div class="business-header">
+                    <div class="business-icon">⚙️</div>
+                    <h3>Operations Excellence Network</h3>
+                    <p class="business-category">Operational Efficiency</p>
+                </div>
+                <div class="business-content">
+                    <p>Specialized partners in process optimization, supply chain management, and operational transformation.</p>
+                    <ul class="business-features">
+                        <li>Process reengineering and automation</li>
+                        <li>Supply chain optimization</li>
+                        <li>Quality management systems</li>
+                        <li>Lean and Six Sigma implementation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Business 5 -->
+            <div class="business-card">
+                <div class="business-header">
+                    <div class="business-icon">👥</div>
+                    <h3>Talent & HR Solutions</h3>
+                    <p class="business-category">Human Capital</p>
+                </div>
+                <div class="business-content">
+                    <p>HR consulting partners providing talent acquisition, organizational development, and leadership training services.</p>
+                    <ul class="business-features">
+                        <li>Executive search and recruitment</li>
+                        <li>Organizational design and development</li>
+                        <li>Leadership development programs</li>
+                        <li>Performance management systems</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Business 6 -->
+            <div class="business-card">
+                <div class="business-header">
+                    <div class="business-icon">🔒</div>
+                    <h3>Legal & Compliance Partners</h3>
+                    <p class="business-category">Legal Advisory</p>
+                </div>
+                <div class="business-content">
+                    <p>Trusted legal partners offering corporate law, compliance, intellectual property, and contract management expertise.</p>
+                    <ul class="business-features">
+                        <li>Corporate legal advisory</li>
+                        <li>Regulatory compliance consulting</li>
+                        <li>Contract negotiation and management</li>
+                        <li>Intellectual property protection</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnership Benefits -->
+    <section class="benefits-section">
+        <h2 class="section-title">Partnership Benefits</h2>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">🎯</div>
+                <h3>Comprehensive Solutions</h3>
+                <p>Access to a full spectrum of business services through our integrated partner network.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon">🤝</div>
+                <h3>Seamless Collaboration</h3>
+                <p>Coordinated service delivery ensuring smooth execution across multiple workstreams.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon">⭐</div>
+                <h3>Specialized Expertise</h3>
+                <p>Deep domain knowledge and specialized capabilities across diverse business functions.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon">💼</div>
+                <h3>Cost Efficiency</h3>
+                <p>Optimized resource allocation and competitive pricing through our partner ecosystem.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Interested in Partnership Opportunities?</h2>
+        <p>Connect with us to explore how our network can support your business objectives</p>
+        <a href="contact.html" class="btn-primary">Contact Us</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Nimble Panda Solutions</h3>
+                <p>Professional business consulting for agile and sustainable growth.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="associated.html">Associated Business</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Information</h3>
+                <ul>
+                    <li>Email: contact@nimblepanda.solutions</li>
+                    <li>Professional Consulting Services</li>
+                    <li>Trusted Business Advisory</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 Nimble Panda Solutions. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
