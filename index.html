@@ -85,67 +85,443 @@
         .cta-button:hover {
             background: var(--secondary-color);
         }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+
+        /* Hero Switcher */
+        .hero-switcher {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 2000;
+            background: var(--white);
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .hero-switcher h4 {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .hero-switcher button {
+            display: block;
+            width: 100%;
+            padding: 0.6rem 1rem;
+            margin-bottom: 0.5rem;
+            background: var(--bg-light);
+            border: 2px solid var(--border-color);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            transition: all 0.3s;
+        }
+
+        .hero-switcher button:hover {
+            background: var(--primary-color);
             color: var(--white);
-            padding: 5rem 2rem;
+            border-color: var(--primary-color);
+        }
+
+        .hero-switcher button.active {
+            background: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+        }
+
+        .hero-section {
+            display: none;
+        }
+
+        .hero-section.active {
+            display: block;
+        }
+        
+        /* HERO 1: Grid & Gradient (Inspired by hero-1) */
+        .hero-1 {
+            position: relative;
+            width: 100%;
+            background: linear-gradient(135deg, #0f1419 0%, #1e3a5f 100%);
+            overflow: hidden;
+        }
+
+        .hero-1 .grid-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.3;
+            background-image: 
+                linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 80px 80px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(80px); }
+        }
+
+        .hero-1 .gradient-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(58, 124, 165, 0.2) 0%, transparent 70%);
+        }
+
+        .hero-1 .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
             text-align: center;
         }
-        
-        .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
+
+        .hero-1 .badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 50px;
+            padding: 0.6rem 1.5rem;
+            margin-bottom: 2rem;
+            color: rgba(255,255,255,0.9);
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
         }
-        
-        .hero h1 {
-            font-size: 3rem;
+
+        .hero-1 h1 {
+            font-size: 3.5rem;
+            color: var(--white);
             margin-bottom: 1.5rem;
             line-height: 1.2;
+            font-weight: 700;
         }
-        
-        .hero p {
+
+        .hero-1 .highlight {
+            background: linear-gradient(135deg, #3a7ca5 0%, #5fa3d0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-1 p {
             font-size: 1.25rem;
+            color: rgba(255,255,255,0.85);
             margin-bottom: 2.5rem;
-            opacity: 0.95;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        
-        .hero-buttons {
+
+        .hero-1 .cta-buttons {
             display: flex;
             gap: 1.5rem;
             justify-content: center;
             flex-wrap: wrap;
         }
-        
-        .btn-primary {
+
+        .hero-1 .btn-primary {
             background: var(--white);
             color: var(--primary-color);
-            padding: 1rem 2rem;
-            border-radius: 6px;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            transition: transform 0.3s, box-shadow 0.3s;
+            font-size: 1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255,255,255,0.2);
         }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+
+        .hero-1 .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255,255,255,0.3);
         }
-        
-        .btn-secondary {
+
+        .hero-1 .btn-secondary {
             background: transparent;
             color: var(--white);
-            padding: 1rem 2rem;
-            border: 2px solid var(--white);
-            border-radius: 6px;
+            padding: 1rem 2.5rem;
+            border: 2px solid rgba(255,255,255,0.5);
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            transition: background 0.3s;
+            font-size: 1rem;
+            transition: all 0.3s;
         }
-        
-        .btn-secondary:hover {
+
+        .hero-1 .btn-secondary:hover {
             background: rgba(255,255,255,0.1);
+            border-color: var(--white);
+        }
+
+        /* HERO 2: Gradient Modern (Inspired by gradient-hero) */
+        .hero-2 {
+            position: relative;
+            width: 100%;
+            background: var(--white);
+            overflow: hidden;
+        }
+
+        .hero-2 .gradient-bg {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1000px;
+            height: 1000px;
+            background: radial-gradient(circle, rgba(30, 58, 95, 0.15) 0%, transparent 70%);
+            filter: blur(60px);
+        }
+
+        .hero-2 .dot-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle, rgba(30, 58, 95, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.4;
+        }
+
+        .hero-2 .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero-2 .badge {
+            display: inline-flex;
+            align-items: center;
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            padding: 0.5rem 1.2rem;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .hero-2 .badge-label {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            margin-right: 0.8rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .hero-2 h1 {
+            font-size: 4rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 50%, var(--accent-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .hero-2 p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-2 .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-2 .btn-primary {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(30, 58, 95, 0.2);
+        }
+
+        .hero-2 .btn-primary:hover {
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(30, 58, 95, 0.3);
+        }
+
+        .hero-2 .btn-secondary {
+            background: var(--white);
+            color: var(--primary-color);
+            padding: 1rem 2.5rem;
+            border: 2px solid var(--border-color);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .hero-2 .btn-secondary:hover {
+            border-color: var(--primary-color);
+            background: var(--bg-light);
+        }
+
+        /* HERO 3: Geometric Shapes (Inspired by geometric-hero) */
+        .hero-3 {
+            position: relative;
+            width: 100%;
+            min-height: 90vh;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-3 .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.1) 0%, rgba(58, 124, 165, 0.15) 100%);
+            border: 2px solid rgba(30, 58, 95, 0.2);
+            animation: float 12s ease-in-out infinite;
+        }
+
+        .hero-3 .shape-1 {
+            width: 400px;
+            height: 120px;
+            top: 15%;
+            left: -5%;
+            transform: rotate(12deg);
+            animation-delay: 0s;
+        }
+
+        .hero-3 .shape-2 {
+            width: 350px;
+            height: 100px;
+            top: 70%;
+            right: -3%;
+            transform: rotate(-15deg);
+            animation-delay: 2s;
+        }
+
+        .hero-3 .shape-3 {
+            width: 250px;
+            height: 70px;
+            bottom: 10%;
+            left: 8%;
+            transform: rotate(-8deg);
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(var(--rotate, 0deg)); }
+            50% { transform: translateY(-20px) rotate(var(--rotate, 0deg)); }
+        }
+
+        .hero-3 .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero-3 .badge {
+            display: inline-flex;
+            align-items: center;
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            padding: 0.5rem 1.2rem;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .hero-3 h1 {
+            font-size: 4.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            font-weight: 700;
+        }
+
+        .hero-3 .highlight {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-style: italic;
+        }
+
+        .hero-3 p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-3 .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-3 .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(30, 58, 95, 0.2);
+        }
+
+        .hero-3 .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(30, 58, 95, 0.3);
+        }
+
+        .hero-3 .btn-secondary {
+            background: var(--white);
+            color: var(--primary-color);
+            padding: 1rem 2.5rem;
+            border: 2px solid var(--primary-color);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .hero-3 .btn-secondary:hover {
+            background: var(--primary-color);
+            color: var(--white);
         }
         
         /* Container */
@@ -360,11 +736,11 @@
                 gap: 1rem;
             }
             
-            .hero h1 {
-                font-size: 2rem;
+            .hero-1 h1, .hero-2 h1, .hero-3 h1 {
+                font-size: 2.5rem;
             }
             
-            .hero p {
+            .hero-1 p, .hero-2 p, .hero-3 p {
                 font-size: 1.1rem;
             }
             
@@ -375,6 +751,19 @@
             .services-grid,
             .features-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .hero-switcher {
+                bottom: 1rem;
+                right: 1rem;
+                padding: 0.8rem;
+            }
+
+            .hero-3 .shape-1,
+            .hero-3 .shape-2,
+            .hero-3 .shape-3 {
+                width: 200px;
+                height: 60px;
             }
         }
     </style>
@@ -394,12 +783,67 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
+    <!-- Hero Switcher -->
+    <div class="hero-switcher">
+        <h4>Choose Hero Style:</h4>
+        <button onclick="switchHero(1)" class="active" id="hero-btn-1">Hero 1: Grid & Gradient</button>
+        <button onclick="switchHero(2)" id="hero-btn-2">Hero 2: Modern Gradient</button>
+        <button onclick="switchHero(3)" id="hero-btn-3">Hero 3: Geometric Shapes</button>
+    </div>
+
+    <!-- HERO 1: Grid & Gradient -->
+    <section class="hero-section hero-1 active" id="hero-1">
+        <div class="grid-background"></div>
+        <div class="gradient-overlay"></div>
         <div class="hero-content">
+            <div class="badge">
+                ✨ Professional Business Consulting
+            </div>
+            <h1>
+                Smart Business Consulting for<br>
+                <span class="highlight">Agile & Sustainable Growth</span>
+            </h1>
+            <p>At nimblepanda.solutions, we help businesses adapt faster, operate smarter, and grow sustainably through expert consulting.</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="btn-primary">Get a Free Consultation</a>
+                <a href="contact.html" class="btn-secondary">Talk to Our Experts</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- HERO 2: Gradient Modern -->
+    <section class="hero-section hero-2" id="hero-2">
+        <div class="gradient-bg"></div>
+        <div class="dot-pattern"></div>
+        <div class="hero-content">
+            <div class="badge">
+                <span class="badge-label">Trusted</span>
+                <span>Professional Business Advisory</span>
+            </div>
             <h1>Smart Business Consulting for Agile & Sustainable Growth</h1>
-            <p>We empower businesses with strategic insights, operational excellence, and growth-focused advisory services to navigate complex markets and achieve sustainable success.</p>
-            <div class="hero-buttons">
+            <p>At nimblepanda.solutions, we help businesses adapt faster, operate smarter, and grow sustainably through expert consulting.</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="btn-primary">Get a Free Consultation</a>
+                <a href="contact.html" class="btn-secondary">Talk to Our Experts</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- HERO 3: Geometric Shapes -->
+    <section class="hero-section hero-3" id="hero-3">
+        <div class="shape shape-1" style="--rotate: 12deg;"></div>
+        <div class="shape shape-2" style="--rotate: -15deg;"></div>
+        <div class="shape shape-3" style="--rotate: -8deg;"></div>
+        <div class="hero-content">
+            <div class="badge">
+                🎯 Expert Business Consulting
+            </div>
+            <h1>
+                Smart Business Consulting for<br>
+                <span class="highlight">Agile & Sustainable Growth</span>
+            </h1>
+            <p>At nimblepanda.solutions, we help businesses adapt faster, operate smarter, and grow sustainably through expert consulting.</p>
+            <div class="cta-buttons">
                 <a href="contact.html" class="btn-primary">Get a Free Consultation</a>
                 <a href="contact.html" class="btn-secondary">Talk to Our Experts</a>
             </div>
@@ -485,7 +929,7 @@
     <section class="cta-section">
         <h2>Ready to Transform Your Business?</h2>
         <p>Let's discuss how our consulting expertise can help you achieve your business goals</p>
-        <a href="contact.html" class="btn-primary">Schedule a Consultation</a>
+        <a href="contact.html" class="cta-button" style="background: white; color: var(--primary-color);">Schedule a Consultation</a>
     </section>
 
     <!-- Footer -->
@@ -520,5 +964,23 @@
             <p>&copy; 2024 Nimble Panda Solutions. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        function switchHero(heroNumber) {
+            // Hide all heroes
+            document.querySelectorAll('.hero-section').forEach(hero => {
+                hero.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.hero-switcher button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected hero
+            document.getElementById('hero-' + heroNumber).classList.add('active');
+            document.getElementById('hero-btn-' + heroNumber).classList.add('active');
+        }
+    </script>
 </body>
 </html>
