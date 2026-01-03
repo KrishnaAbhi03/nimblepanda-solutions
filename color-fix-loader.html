@@ -1,0 +1,20 @@
+<!-- Color Fix Loader - Add this ONE LINE to your HTML files -->
+<!-- Place in <head> section: <script src="color-fix.js"></script> -->
+
+<!-- OR copy-paste this complete snippet into <head> section: -->
+<script>
+(function(){const e={primary:"#1e3a5f",primaryRgba:"rgba(30, 58, 95",primaryRgb:[.118,.227,.373],primaryHex:1980255,secondary:"#2c5f8d",accent:"#3a7ca5",accentRgb:[.227,.486,.647]},r=document.createElement("style");r.id="color-fix-styles",r.textContent=`
+:root{--pink-primary:${e.primary}!important}
+.form-title-us{color:${e.primary}!important}
+.gradient-blur-1,.gradient-blur-2{background:radial-gradient(circle at center,${e.primary},transparent 70%)!important}
+.form-input:focus,.form-textarea:focus{border-color:${e.primary}!important;box-shadow:0 0 0 3px ${e.primaryRgba},0.2)!important}
+.submit-button{background:linear-gradient(to bottom,${e.primary},${e.secondary})!important}
+.submit-button:hover{background:linear-gradient(to bottom,${e.secondary},${e.accent})!important}
+.globe-card{border-color:${e.primaryRgba},0.3)!important;background:linear-gradient(to bottom,${e.primary},${e.primaryRgba},0.05))!important}
+.testimonial-card{border-color:${e.primaryRgba},0.1)!important}
+.testimonial-card:hover{border-color:${e.primaryRgba},0.3)!important;box-shadow:0 10px 25px ${e.primaryRgba},0.1)!important}
+.faq-title{background:linear-gradient(to bottom right,transparent,${e.primary},transparent)!important;-webkit-background-clip:text!important;background-clip:text!important}
+.faq-icon,.faq-item.active .faq-question,.faq-trigger:hover .faq-question{color:${e.primary}!important}
+.step-indicator{background:linear-gradient(135deg,${e.primary} 0%,${e.secondary} 100%)!important}
+`,document.head.appendChild(r);const o=window.SparklesCore;"function"==typeof o&&(window.SparklesCore=function(r,t){return t&&t.particleColor&&(t.particleColor.includes("e60a64")||t.particleColor.includes("c00f66")||t.particleColor.includes("192, 15, 102"))&&(t.particleColor=e.primary),new o(r,t)});const t=window.Earth;"function"==typeof t&&(window.Earth=function(r,o){return o&&(o.baseColor&&("[1,0,0.3]"===JSON.stringify(o.baseColor)||"[1,0,0.4]"===JSON.stringify(o.baseColor))&&(o.baseColor=e.primaryRgb),o.glowColor&&(o.glowColor=e.accentRgb)),new t(r,o)});if(void 0!==THREE&&THREE.PointLight){const r=THREE.PointLight;THREE.PointLight=function(o,t,i,n){return(65382===o||15010404===o||12591974===o)&&(o=e.primaryHex),new r(o,t,i,n)},THREE.PointLight.prototype=r.prototype}function i(){const r=document.getElementById("sparkles-canvas");r&&void 0!==SparklesCore&&new SparklesCore("sparkles-canvas",{minSize:.6,maxSize:1.4,particleDensity:500,particleColor:e.primary});const o=document.getElementById("globe-canvas");o&&void 0!==Earth&&new Earth("globe-canvas",{scale:1.1,baseColor:e.primaryRgb,markerColor:[0,0,0],glowColor:e.accentRgb})}"loading"===document.readyState?document.addEventListener("DOMContentLoaded",i):i(),setTimeout(i,500)})();
+</script>
