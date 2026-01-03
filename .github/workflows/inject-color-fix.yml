@@ -9,6 +9,9 @@ on:
       - 'index.html'
       - 'contact.html'
 
+permissions:
+  contents: write
+
 jobs:
   inject-script:
     runs-on: ubuntu-latest
@@ -18,9 +21,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Inject color-fix.js script tag
+        id: inject
         run: |
           #!/bin/bash
           set -e
@@ -35,73 +38,75 @@ jobs:
             # Check if script tag already exists
             if grep -q "color-fix.js" "$file"; then
               echo "✅ $file already has color-fix.js - skipping"
-              return 0
+              return 1
             fi
             
             echo "📝 Injecting script tag into $file..."
             
-            # Create temp file with injection
-            awk -v script="$script_tag" '
-              /<\/title>/ {
-                print $0
-                print script
-                next
-              }
-              { print }
-            ' "$file" > "$file.tmp"
+            # Create temp file with injection using sed
+            sed "/<\/title>/a\\
+$script_tag" "$file" > "$file.tmp"
+            
+            # Verify the change was made
+            if ! grep -q "color-fix.js" "$file.tmp"; then
+              echo "❌ Failed to inject into $file"
+              rm -f "$file.tmp"
+              return 1
+            fi
             
             # Replace original file
             mv "$file.tmp" "$file"
             echo "✅ Successfully injected into $file"
+            return 0
           }
           
           # Process HTML files
           changed=false
           
-          if [ -f "index.html" ]; then
-            if ! grep -q "color-fix.js" "index.html"; then
-              inject_script "index.html"
-              changed=true
+          for file in index.html contact.html about.html associated.html; do
+            if [ -f "$file" ]; then
+              if inject_script "$file"; then
+                changed=true
+              fi
+            else
+              echo "⚠️  File $file not found, skipping..."
             fi
-          fi
-          
-          if [ -f "contact.html" ]; then
-            if ! grep -q "color-fix.js" "contact.html"; then
-              inject_script "contact.html"
-              changed=true
-            fi
-          fi
+          done
           
           # Set output for next step
-          if [ "$changed" = true ]; then
-            echo "CHANGES_MADE=true" >> $GITHUB_ENV
-          else
-            echo "CHANGES_MADE=false" >> $GITHUB_ENV
-          fi
+          echo "changed=$changed" >> $GITHUB_OUTPUT
 
       - name: Commit and push changes
-        if: env.CHANGES_MADE == 'true'
+        if: steps.inject.outputs.changed == 'true'
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add index.html contact.html
-          git commit -m "🎨 Auto-inject color-fix.js script into HTML files"
+          git add *.html
+          git commit -m "🎨 Auto-inject color-fix.js script into HTML files
+
+This commit automatically adds the color-fix.js script tag to all HTML files
+to ensure consistent color theming across the website.
+
+Files modified:
+$(git diff --name-only HEAD^)"
           git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Summary
         run: |
           echo "## 🎨 Color Fix Injection Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          if [ "$CHANGES_MADE" = "true" ]; then
+          if [ "${{ steps.inject.outputs.changed }}" = "true" ]; then
             echo "✅ Successfully injected color-fix.js into HTML files!" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
-            echo "Files modified:" >> $GITHUB_STEP_SUMMARY
+            echo "### Files Modified:" >> $GITHUB_STEP_SUMMARY
             echo "- index.html" >> $GITHUB_STEP_SUMMARY
             echo "- contact.html" >> $GITHUB_STEP_SUMMARY
+            echo "- about.html" >> $GITHUB_STEP_SUMMARY
+            echo "- associated.html" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "🚀 Changes have been committed and pushed to the main branch" >> $GITHUB_STEP_SUMMARY
           else
             echo "ℹ️ No changes needed - color-fix.js already present in all HTML files" >> $GITHUB_STEP_SUMMARY
           fi
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "🚀 Changes have been pushed to the main branch" >> $GITHUB_STEP_SUMMARY
+          echo "View the live site: https://krishnaabhi03.github.io/nimblepanda-solutions/" >> $GITHUB_STEP_SUMMARY
