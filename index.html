@@ -21,6 +21,7 @@
             --bg-light: #f7fafc;
             --white: #ffffff;
             --border-color: #e2e8f0;
+            --pink-primary: #c00f66;
         }
         
         body {
@@ -467,6 +468,273 @@
         .font-mono {
             font-family: 'Courier New', Courier, monospace;
         }
+
+        /* FeatureSteps Component Styles - EXACT DUPLICATION */
+        .feature-steps-section {
+            padding: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .feature-steps-section {
+                padding: 3rem;
+            }
+        }
+
+        .feature-steps-container {
+            margin: 0 auto;
+            width: 100%;
+            max-width: 80rem;
+        }
+
+        .feature-steps-header {
+            position: relative;
+            margin: 0 auto 3rem;
+            max-width: 42rem;
+        }
+
+        @media (min-width: 640px) {
+            .feature-steps-header {
+                text-align: center;
+            }
+        }
+
+        .feature-steps-header-inner {
+            position: relative;
+            z-index: 10;
+        }
+
+        .feature-steps-title {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1.875rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            margin-bottom: 0.75rem;
+        }
+
+        @media (min-width: 768px) {
+            .feature-steps-title {
+                font-size: 2.25rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .feature-steps-title {
+                font-size: 3rem;
+            }
+        }
+
+        .feature-steps-subtitle {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: rgba(0, 0, 0, 0.6);
+            margin-top: 0.75rem;
+        }
+
+        .feature-steps-blur {
+            position: absolute;
+            inset: 0;
+            margin: 0 auto;
+            height: 11rem;
+            max-width: 20rem;
+            filter: blur(118px);
+            background: linear-gradient(152.92deg, rgba(192, 15, 102, 0.2) 4.54%, rgba(192, 11, 109, 0.26) 34.2%, rgba(192, 15, 102, 0.1) 77.55%);
+        }
+
+        .feature-steps-divider {
+            background: rgba(0, 0, 0, 0.3);
+            margin: 0 auto 2.5rem;
+            height: 1px;
+            width: 50%;
+        }
+
+        .feature-steps-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .feature-steps-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2.5rem;
+            }
+        }
+
+        .feature-steps-list {
+            order: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .feature-steps-list {
+                order: 1;
+            }
+        }
+
+        .feature-step-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            opacity: 0.3;
+            transform: translateX(-20px);
+            transition: all 0.5s;
+        }
+
+        @media (min-width: 768px) {
+            .feature-step-item {
+                gap: 2rem;
+            }
+        }
+
+        .feature-step-item.active {
+            opacity: 1;
+            transform: translateX(0) scale(1.05);
+        }
+
+        .feature-step-icon {
+            display: flex;
+            height: 3rem;
+            width: 3rem;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 2px solid #9ca3af;
+            background: #f3f4f6;
+            transition: all 0.3s;
+        }
+
+        @media (min-width: 768px) {
+            .feature-step-icon {
+                height: 3.5rem;
+                width: 3.5rem;
+            }
+        }
+
+        .feature-step-icon.active {
+            border-color: var(--pink-primary);
+            background: rgba(192, 15, 102, 0.1);
+            color: var(--pink-primary);
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(192, 15, 102, 0.3);
+        }
+
+        .feature-step-icon svg {
+            height: 1.5rem;
+            width: 1.5rem;
+        }
+
+        .feature-step-content {
+            flex: 1;
+        }
+
+        .feature-step-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        @media (min-width: 768px) {
+            .feature-step-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        .feature-step-text {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        @media (min-width: 768px) {
+            .feature-step-text {
+                font-size: 1rem;
+            }
+        }
+
+        .feature-steps-image-container {
+            position: relative;
+            order: 1;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(192, 15, 102, 0.2);
+            box-shadow: 0 5px 30px -15px rgba(192, 15, 102, 0.3);
+        }
+
+        @media (min-width: 768px) {
+            .feature-steps-image-container {
+                order: 2;
+                height: 300px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .feature-steps-image-container {
+                height: 400px;
+            }
+        }
+
+        .feature-steps-image-wrapper {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            opacity: 0;
+            transform: translateY(100px) rotateX(-20deg);
+            transition: all 0.5s ease-in-out;
+        }
+
+        .feature-steps-image-wrapper.active {
+            opacity: 1;
+            transform: translateY(0) rotateX(0);
+        }
+
+        .feature-steps-image-wrapper.exit {
+            opacity: 0;
+            transform: translateY(-100px) rotateX(20deg);
+        }
+
+        .feature-steps-image {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .feature-steps-image:hover {
+            transform: scale(1.05);
+        }
+
+        .feature-steps-image-gradient {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            height: 66.666667%;
+            background: linear-gradient(to top, var(--white), rgba(255, 255, 255, 0.5), transparent);
+        }
+
+        .feature-steps-image-badge {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            border-radius: 0.5rem;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            padding: 0.5rem;
+        }
+
+        .feature-steps-image-badge-text {
+            color: var(--pink-primary);
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* Lucide Icons - Inline SVG styles */
+        .lucide-icon {
+            display: inline-block;
+            vertical-align: middle;
+        }
     </style>
 </head>
 <body>
@@ -485,7 +753,7 @@
     </header>
 
     <!-- MINIMAL HERO SECTION - DO NOT MODIFY -->
-    <div class="font-primary relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-[#1a1d18] via-black to-[#2a2e26] text-[#e6e1d7]" style="background: linear-gradient(135deg, #1a1d18 0%, #000000 50%, #2a2e26 100%); color: #e6e1d7;">
+    <div class="font-primary relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-[#1a1d18] via-black to-[#2a2e26] text-[#e6e1d7]" style="background: linear-gradient(135deg, #1a1d18 0%, #000000 50%, #2a2e26 100%); color: #e6e1d7; min-height: 100vh; width: 100%; overflow: hidden; position: relative;">
       <svg
         class="absolute inset-0 h-full w-full"
         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
@@ -501,302 +769,184 @@
             <path
               d="M 60 0 L 0 0 0 60"
               fill="none"
-              stroke="rgba(200,180,160,0.08)"
-              stroke-width="0.5"
+              class="grid-line"
+              style="animation-delay: 0s;"
             />
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill="url(#grid)" />
-        <line
-          x1="0"
-          y1="20%"
-          x2="100%"
-          y2="20%"
-          class="grid-line"
-          style="animation-delay: 0.5s;"
-        />
-        <line
-          x1="0"
-          y1="80%"
-          x2="100%"
-          y2="80%"
-          class="grid-line"
-          style="animation-delay: 1s;"
-        />
-        <line
-          x1="20%"
-          y1="0"
-          x2="20%"
-          y2="100%"
-          class="grid-line"
-          style="animation-delay: 1.5s;"
-        />
-        <line
-          x1="80%"
-          y1="0"
-          x2="80%"
-          y2="100%"
-          class="grid-line"
-          style="animation-delay: 2s;"
-        />
-        <line
-          x1="50%"
-          y1="0"
-          x2="50%"
-          y2="100%"
-          class="grid-line"
-          style="animation-delay: 2.5s; opacity: 0.05;"
-        />
-        <line
-          x1="0"
-          y1="50%"
-          x2="100%"
-          y2="50%"
-          class="grid-line"
-          style="animation-delay: 3s; opacity: 0.05;"
-        />
-        <circle
-          cx="20%"
-          cy="20%"
-          r="2"
-          class="detail-dot"
-          style="animation-delay: 3s;"
-        />
-        <circle
-          cx="80%"
-          cy="20%"
-          r="2"
-          class="detail-dot"
-          style="animation-delay: 3.2s;"
-        />
-        <circle
-          cx="20%"
-          cy="80%"
-          r="2"
-          class="detail-dot"
-          style="animation-delay: 3.4s;"
-        />
-        <circle
-          cx="80%"
-          cy="80%"
-          r="2"
-          class="detail-dot"
-          style="animation-delay: 3.6s;"
-        />
-        <circle
-          cx="50%"
-          cy="50%"
-          r="1.5"
-          class="detail-dot"
-          style="animation-delay: 4s;"
-        />
+        <circle cx="10%" cy="20%" r="2" class="detail-dot" style="animation-delay: 0.5s;" />
+        <circle cx="90%" cy="30%" r="2" class="detail-dot" style="animation-delay: 1s;" />
+        <circle cx="20%" cy="80%" r="2" class="detail-dot" style="animation-delay: 1.5s;" />
+        <circle cx="80%" cy="70%" r="2" class="detail-dot" style="animation-delay: 2s;" />
       </svg>
 
       <div
-        class="corner-element top-8 left-8"
-        style="animation-delay: 4s; position: absolute; top: 2rem; left: 2rem;"
+        class="relative z-10 flex min-h-screen flex-col items-center justify-center px-4"
+        style="position: relative; z-index: 10; display: flex; min-height: 100vh; flex-direction: column; align-items: center; justify-content: center; padding: 0 1rem;"
       >
         <div
-          class="absolute top-0 left-0 h-2 w-2 opacity-30"
-          style="position: absolute; top: 0; left: 0; height: 0.5rem; width: 0.5rem; opacity: 0.3; background: #c8b4a0;"
-        ></div>
-      </div>
-      <div
-        class="corner-element top-8 right-8"
-        style="animation-delay: 4.2s; position: absolute; top: 2rem; right: 2rem;"
-      >
+          class="corner-element"
+          style="top: 10%; left: 10%; animation-delay: 0.3s;"
+        >
+          <div style="top: 0; left: 0;"></div>
+        </div>
         <div
-          class="absolute top-0 right-0 h-2 w-2 opacity-30"
-          style="position: absolute; top: 0; right: 0; height: 0.5rem; width: 0.5rem; opacity: 0.3; background: #c8b4a0;"
-        ></div>
-      </div>
-      <div
-        class="corner-element bottom-8 left-8"
-        style="animation-delay: 4.4s; position: absolute; bottom: 2rem; left: 2rem;"
-      >
+          class="corner-element"
+          style="top: 10%; right: 10%; animation-delay: 0.6s;"
+        >
+          <div style="top: 0; right: 0;"></div>
+        </div>
         <div
-          class="absolute bottom-0 left-0 h-2 w-2 opacity-30"
-          style="position: absolute; bottom: 0; left: 0; height: 0.5rem; width: 0.5rem; opacity: 0.3; background: #c8b4a0;"
-        ></div>
-      </div>
-      <div
-        class="corner-element right-8 bottom-8"
-        style="animation-delay: 4.6s; position: absolute; right: 2rem; bottom: 2rem;"
-      >
+          class="corner-element"
+          style="bottom: 10%; left: 10%; animation-delay: 0.9s;"
+        >
+          <div style="bottom: 0; left: 0;"></div>
+        </div>
         <div
-          class="absolute right-0 bottom-0 h-2 w-2 opacity-30"
-          style="position: absolute; right: 0; bottom: 0; height: 0.5rem; width: 0.5rem; opacity: 0.3; background: #c8b4a0;"
-        ></div>
-      </div>
-
-      <div
-        class="floating-element"
-        style="top: 25%; left: 15%; animation-delay: 5s; position: absolute;"
-      ></div>
-      <div
-        class="floating-element"
-        style="top: 60%; left: 85%; animation-delay: 5.5s; position: absolute;"
-      ></div>
-      <div
-        class="floating-element"
-        style="top: 40%; left: 10%; animation-delay: 6s; position: absolute;"
-      ></div>
-      <div
-        class="floating-element"
-        style="top: 75%; left: 90%; animation-delay: 6.5s; position: absolute;"
-      ></div>
-
-      <div class="relative z-10 flex min-h-screen flex-col items-center justify-between px-8 py-12 md:px-16 md:py-20" style="position: relative; z-index: 10; display: flex; min-height: 100vh; flex-direction: column; align-items: center; justify-content: space-between; padding: 3rem 2rem;">
-        <div class="text-center" style="text-align: center;">
-          <h2
-            class="font-mono text-xs font-light tracking-[0.2em] uppercase opacity-80 md:text-sm"
-            style="font-family: 'Courier New', Courier, monospace; font-size: 0.75rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.8; color: #c8b4a0;"
-          >
-            <span class="word" data-delay="0">
-              Welcome
-            </span>
-            <span class="word" data-delay="200">
-              to
-            </span>
-            <span class="word" data-delay="400">
-              <b>nimblepanda.solutions</b>
-            </span>
-            <span class="word" data-delay="600">
-              — 
-            </span>
-            <span class="word" data-delay="800">
-              Powering
-            </span>
-            <span class="word" data-delay="1000">
-              your
-            </span>
-            <span class="word" data-delay="1200">
-              business
-            </span>
-            <span class="word" data-delay="1400">
-              transformation.
-            </span>
-          </h2>
-          <div
-            class="mt-4 h-px w-16 opacity-30"
-            style="margin-top: 1rem; height: 1px; width: 4rem; opacity: 0.3; background: linear-gradient(to right, transparent, #c8b4a0, transparent); margin-left: auto; margin-right: auto;"
-          ></div>
+          class="corner-element"
+          style="bottom: 10%; right: 10%; animation-delay: 1.2s;"
+        >
+          <div style="bottom: 0; right: 0;"></div>
         </div>
 
-        <div class="mx-auto max-w-5xl text-center" style="margin: 0 auto; max-width: 80rem; text-align: center;">
-          <h1
-            class="text-decoration text-3xl leading-tight font-extralight tracking-tight md:text-5xl lg:text-6xl"
-            style="font-size: 2.5rem; line-height: 1.2; font-weight: 200; letter-spacing: -0.02em; color: #f8f7f5;"
+        <div
+          class="font-mono mb-6 text-sm tracking-widest opacity-60"
+          style="font-family: 'Courier New', Courier, monospace; margin-bottom: 1.5rem; font-size: 0.875rem; letter-spacing: 0.1em; opacity: 0.6;"
+        >
+          <span class="word" data-delay="0">BUSINESS</span>
+          <span class="word" data-delay="100">CONSULTING</span>
+          <span class="word" data-delay="200">EXCELLENCE</span>
+        </div>
+
+        <h1
+          class="text-decoration mb-8 max-w-4xl text-center text-4xl font-light leading-tight tracking-wide md:text-6xl lg:text-7xl"
+          style="margin-bottom: 2rem; max-width: 56rem; text-align: center; font-size: 2.25rem; font-weight: 300; line-height: 1.25; letter-spacing: 0.025em;"
+        >
+          <span class="word" data-delay="300">Nimble</span>
+          <span class="word" data-delay="400">Panda</span>
+          <span class="word" data-delay="500">Solutions</span>
+          <br />
+          <span class="word" data-delay="600">Strategic</span>
+          <span class="word" data-delay="700">Growth</span>
+          <span class="word" data-delay="800">Partners</span>
+        </h1>
+
+        <p
+          class="mb-12 max-w-2xl text-center text-base leading-relaxed opacity-80 md:text-lg"
+          style="margin-bottom: 3rem; max-width: 42rem; text-align: center; font-size: 1rem; line-height: 1.75; opacity: 0.8;"
+        >
+          <span class="word" data-delay="900">Professional</span>
+          <span class="word" data-delay="1000">business</span>
+          <span class="word" data-delay="1100">consulting</span>
+          <span class="word" data-delay="1200">for</span>
+          <span class="word" data-delay="1300">agile</span>
+          <span class="word" data-delay="1400">and</span>
+          <span class="word" data-delay="1500">sustainable</span>
+          <span class="word" data-delay="1600">growth.</span>
+        </p>
+
+        <div
+          class="flex flex-col gap-4 sm:flex-row"
+          style="display: flex; flex-direction: column; gap: 1rem;"
+        >
+          <a
+            href="contact.html"
+            class="word group relative overflow-hidden rounded-sm border border-[#c8b4a0] bg-transparent px-8 py-3 text-[#c8b4a0] transition-all hover:bg-[#c8b4a0] hover:text-[#1a1d18]"
+            data-delay="1700"
+            style="position: relative; overflow: hidden; border-radius: 0.125rem; border: 1px solid #c8b4a0; background: transparent; padding: 0.75rem 2rem; color: #c8b4a0; transition: all 0.3s; text-decoration: none; display: inline-block;"
           >
-            <div class="mb-4 md:mb-6" style="margin-bottom: 1.5rem;">
-              <span class="word" data-delay="1600">
-                Supercharge
-              </span>
-              <span class="word" data-delay="1750">
-                your
-              </span>
-              <span class="word" data-delay="1900">
-                productivity
-              </span>
-              <span class="word" data-delay="2050">
-                with
-              </span>
-              <span class="word" data-delay="2200">
-                AI-driven
-              </span>
-              <span class="word" data-delay="2350">
-                automation.
-              </span>
-            </div>
+            Get Consultation
+          </a>
+          <a
+            href="about.html"
+            class="word rounded-sm border border-transparent px-8 py-3 text-[#e6e1d7] transition-all hover:border-[#c8b4a0]"
+            data-delay="1800"
+            style="border-radius: 0.125rem; border: 1px solid transparent; padding: 0.75rem 2rem; color: #e6e1d7; transition: all 0.3s; text-decoration: none; display: inline-block;"
+          >
+            Learn More
+          </a>
+        </div>
+
+        <div
+          class="mt-20 grid grid-cols-3 gap-8 opacity-60"
+          style="margin-top: 5rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; opacity: 0.6;"
+        >
+          <div
+            class="word text-center"
+            data-delay="1900"
+            style="text-align: center;"
+          >
             <div
-              class="text-2xl leading-relaxed font-thin md:text-3xl lg:text-4xl"
-              style="font-size: 1.5rem; line-height: 1.6; font-weight: 100; color: #c8b4a0;"
+              class="font-mono text-2xl font-light"
+              style="font-family: 'Courier New', Courier, monospace; font-size: 1.5rem; font-weight: 300;"
             >
-              <span class="word" data-delay="2600">
-                Integrate,
-              </span>
-              <span class="word" data-delay="2750">
-                orchestrate,
-              </span>
-              <span class="word" data-delay="2900">
-                and
-              </span>
-              <span class="word" data-delay="3050">
-                scale
-              </span>
-              <span class="word" data-delay="3200">
-                your
-              </span>
-              <span class="word" data-delay="3350">
-                business
-              </span>
-              <span class="word" data-delay="3500">
-                — all
-              </span>
-              <span class="word" data-delay="3650">
-                in
-              </span>
-              <span class="word" data-delay="3800">
-                one
-              </span>
-              <span class="word" data-delay="3950">
-                secure
-              </span>
-              <span class="word" data-delay="4100">
-                platform.
-              </span>
+              Strategy
             </div>
-          </h1>
+            <div
+              class="mt-1 text-xs tracking-wider"
+              style="margin-top: 0.25rem; font-size: 0.75rem; letter-spacing: 0.05em;"
+            >
+              Business Planning
+            </div>
+          </div>
           <div
-            class="absolute top-1/2 -left-8 h-px w-4 opacity-20"
-            style="position: absolute; top: 50%; left: -2rem; height: 1px; width: 1rem; opacity: 0.2; background: #c8b4a0; animation: word-appear 1s ease-out forwards; animation-delay: 3.5s;"
-          ></div>
+            class="word text-center"
+            data-delay="2000"
+            style="text-align: center;"
+          >
+            <div
+              class="font-mono text-2xl font-light"
+              style="font-family: 'Courier New', Courier, monospace; font-size: 1.5rem; font-weight: 300;"
+            >
+              Advisory
+            </div>
+            <div
+              class="mt-1 text-xs tracking-wider"
+              style="margin-top: 0.25rem; font-size: 0.75rem; letter-spacing: 0.05em;"
+            >
+              Financial Guidance
+            </div>
+          </div>
           <div
-            class="absolute top-1/2 -right-8 h-px w-4 opacity-20"
-            style="position: absolute; top: 50%; right: -2rem; height: 1px; width: 1rem; opacity: 0.2; background: #c8b4a0; animation: word-appear 1s ease-out forwards; animation-delay: 3.7s;"
-          ></div>
+            class="word text-center"
+            data-delay="2100"
+            style="text-align: center;"
+          >
+            <div
+              class="font-mono text-2xl font-light"
+              style="font-family: 'Courier New', Courier, monospace; font-size: 1.5rem; font-weight: 300;"
+            >
+              Growth
+            </div>
+            <div
+              class="mt-1 text-xs tracking-wider"
+              style="margin-top: 0.25rem; font-size: 0.75rem; letter-spacing: 0.05em;"
+            >
+              Market Expansion
+            </div>
+          </div>
         </div>
 
-        <div class="text-center" style="text-align: center;">
+        <div class="floating-element" style="top: 20%; left: 15%; animation-delay: 0s;"></div>
+        <div class="floating-element" style="top: 40%; right: 20%; animation-delay: 1s;"></div>
+        <div class="floating-element" style="bottom: 30%; left: 25%; animation-delay: 2s;"></div>
+        <div class="floating-element" style="bottom: 20%; right: 15%; animation-delay: 3s;"></div>
+
+        <div
+          class="absolute bottom-8 left-1/2 -translate-x-1/2"
+          style="position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);"
+        >
           <div
-            class="mb-4 h-px w-16 opacity-30"
-            style="margin-bottom: 1rem; height: 1px; width: 4rem; opacity: 0.3; background: linear-gradient(to right, transparent, #c8b4a0, transparent); margin-left: auto; margin-right: auto;"
-          ></div>
-          <h2
-            class="font-mono text-xs font-light tracking-[0.2em] uppercase opacity-80 md:text-sm"
-            style="font-family: 'Courier New', Courier, monospace; font-size: 0.75rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.8; color: #c8b4a0;"
-          >
-            <span class="word" data-delay="4400">
-              Real-time
-            </span>
-            <span class="word" data-delay="4550">
-              analytics,
-            </span>
-            <span class="word" data-delay="4700">
-              seamless
-            </span>
-            <span class="word" data-delay="4850">
-              integrations,
-            </span>
-            <span class="word" data-delay="5000">
-              enterprise-grade
-            </span>
-            <span class="word" data-delay="5150">
-              security.
-            </span>
-          </h2>
-          <div
-            class="mt-6 flex justify-center space-x-4 opacity-0"
-            style="margin-top: 1.5rem; display: flex; justify-content: center; gap: 1rem; opacity: 0; animation: word-appear 1s ease-out forwards; animation-delay: 4.5s;"
+            class="flex flex-col items-center gap-2 opacity-40"
+            style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem; opacity: 0.4;"
           >
             <div
-              class="h-1 w-1 rounded-full opacity-40"
-              style="height: 0.25rem; width: 0.25rem; border-radius: 50%; opacity: 0.4; background: #c8b4a0;"
-            ></div>
-            <div
-              class="h-1 w-1 rounded-full opacity-60"
-              style="height: 0.25rem; width: 0.25rem; border-radius: 50%; opacity: 0.6; background: #c8b4a0;"
-            ></div>
+              class="font-mono text-xs tracking-widest"
+              style="font-family: 'Courier New', Courier, monospace; font-size: 0.75rem; letter-spacing: 0.1em;"
+            >
+              SCROLL
+            </div>
             <div
               class="h-1 w-1 rounded-full opacity-40"
               style="height: 0.25rem; width: 0.25rem; border-radius: 50%; opacity: 0.4; background: #c8b4a0;"
@@ -812,6 +962,153 @@
       ></div>
     </div>
     <!-- END MINIMAL HERO SECTION -->
+
+    <!-- FeatureSteps Component Section - EXACT DUPLICATION -->
+    <section class="feature-steps-section">
+        <div class="feature-steps-container">
+            <div class="feature-steps-header">
+                <div class="feature-steps-header-inner">
+                    <h2 class="feature-steps-title">
+                        Build Your MVP in Three Steps
+                    </h2>
+                    <p class="feature-steps-subtitle">
+                        MVPBlocks helps you create, customize, and deploy your product
+                        faster than ever before.
+                    </p>
+                </div>
+                <div class="feature-steps-blur"></div>
+            </div>
+            <hr class="feature-steps-divider" />
+
+            <div class="feature-steps-grid">
+                <div class="feature-steps-list">
+                    <div class="feature-step-item" data-index="0">
+                        <div class="feature-step-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon">
+                                <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+                                <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+                                <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
+                                <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
+                            </svg>
+                        </div>
+                        <div class="feature-step-content">
+                            <h3 class="feature-step-title">Build Faster</h3>
+                            <p class="feature-step-text">
+                                Create your MVP in record time with our pre-built blocks and components.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="feature-step-item" data-index="1">
+                        <div class="feature-step-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon">
+                                <path d="M12 2v4"/>
+                                <path d="m16 6-4 4-4-4"/>
+                                <path d="M12 18v4"/>
+                                <path d="m8 18 4-4 4 4"/>
+                                <path d="M4 12h4"/>
+                                <path d="m6 16 4-4-4-4"/>
+                                <path d="M20 12h-4"/>
+                                <path d="m18 8-4 4 4 4"/>
+                            </svg>
+                        </div>
+                        <div class="feature-step-content">
+                            <h3 class="feature-step-title">Customize Easily</h3>
+                            <p class="feature-step-text">
+                                Tailor every component to your needs with our intuitive design system and flexible architecture.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="feature-step-item" data-index="2">
+                        <div class="feature-step-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon">
+                                <polyline points="16 18 22 12 16 6"/>
+                                <polyline points="8 6 2 12 8 18"/>
+                            </svg>
+                        </div>
+                        <div class="feature-step-content">
+                            <h3 class="feature-step-title">Deploy Confidently</h3>
+                            <p class="feature-step-text">
+                                Launch your product with confidence using our optimized, responsive, and accessible components.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="feature-step-item" data-index="3">
+                        <div class="feature-step-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon">
+                                <polyline points="16 18 22 12 16 6"/>
+                                <polyline points="8 6 2 12 8 18"/>
+                            </svg>
+                        </div>
+                        <div class="feature-step-content">
+                            <h3 class="feature-step-title">Add Yours!</h3>
+                            <p class="feature-step-text">
+                                Contribute your own blocks and become part of the MVPBlocks community.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-steps-image-container">
+                    <div class="feature-steps-image-wrapper" data-index="0">
+                        <img
+                            src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=2070&auto=format&fit=crop"
+                            alt="Build Faster"
+                            class="feature-steps-image"
+                            width="1000"
+                            height="500"
+                        />
+                        <div class="feature-steps-image-gradient"></div>
+                        <div class="feature-steps-image-badge">
+                            <span class="feature-steps-image-badge-text">Step 1</span>
+                        </div>
+                    </div>
+                    <div class="feature-steps-image-wrapper" data-index="1">
+                        <img
+                            src="https://images.unsplash.com/photo-1618761714954-0b8cd0026356?q=80&w=2070&auto=format&fit=crop"
+                            alt="Customize Easily"
+                            class="feature-steps-image"
+                            width="1000"
+                            height="500"
+                        />
+                        <div class="feature-steps-image-gradient"></div>
+                        <div class="feature-steps-image-badge">
+                            <span class="feature-steps-image-badge-text">Step 2</span>
+                        </div>
+                    </div>
+                    <div class="feature-steps-image-wrapper" data-index="2">
+                        <img
+                            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
+                            alt="Deploy Confidently"
+                            class="feature-steps-image"
+                            width="1000"
+                            height="500"
+                        />
+                        <div class="feature-steps-image-gradient"></div>
+                        <div class="feature-steps-image-badge">
+                            <span class="feature-steps-image-badge-text">Step 3</span>
+                        </div>
+                    </div>
+                    <div class="feature-steps-image-wrapper" data-index="3">
+                        <img
+                            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
+                            alt="Add Yours!"
+                            class="feature-steps-image"
+                            width="1000"
+                            height="500"
+                        />
+                        <div class="feature-steps-image-gradient"></div>
+                        <div class="feature-steps-image-badge">
+                            <span class="feature-steps-image-badge-text">Step 4</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END FeatureSteps Component Section -->
 
     <!-- About Snapshot -->
     <section class="about-snapshot">
@@ -996,6 +1293,75 @@
           }
         }
         window.addEventListener('scroll', onScroll);
+
+        // FeatureSteps Component Logic - EXACT DUPLICATION
+        let currentFeature = 0;
+        let progress = 0;
+        const features = [
+            {
+                step: 'Step 1',
+                title: 'Build Faster',
+                content: 'Create your MVP in record time with our pre-built blocks and components.',
+                image: 'https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=2070&auto=format&fit=crop',
+            },
+            {
+                step: 'Step 2',
+                title: 'Customize Easily',
+                content: 'Tailor every component to your needs with our intuitive design system and flexible architecture.',
+                image: 'https://images.unsplash.com/photo-1618761714954-0b8cd0026356?q=80&w=2070&auto=format&fit=crop',
+            },
+            {
+                step: 'Step 3',
+                title: 'Deploy Confidently',
+                content: 'Launch your product with confidence using our optimized, responsive, and accessible components.',
+                image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop',
+            },
+            {
+                step: 'Step 4',
+                title: 'Add Yours!',
+                content: 'Contribute your own blocks and become part of the MVPBlocks community.',
+                image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop',
+            },
+        ];
+
+        function updateFeatureSteps() {
+            // Update step items
+            const stepItems = document.querySelectorAll('.feature-step-item');
+            const stepIcons = document.querySelectorAll('.feature-step-icon');
+            
+            stepItems.forEach((item, index) => {
+                if (index === currentFeature) {
+                    item.classList.add('active');
+                    stepIcons[index].classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                    stepIcons[index].classList.remove('active');
+                }
+            });
+
+            // Update images
+            const imageWrappers = document.querySelectorAll('.feature-steps-image-wrapper');
+            imageWrappers.forEach((wrapper, index) => {
+                wrapper.classList.remove('active', 'exit');
+                if (index === currentFeature) {
+                    wrapper.classList.add('active');
+                }
+            });
+        }
+
+        // Auto-switch features
+        setInterval(() => {
+            if (progress < 100) {
+                progress += 100 / (4000 / 100);
+            } else {
+                currentFeature = (currentFeature + 1) % features.length;
+                progress = 0;
+                updateFeatureSteps();
+            }
+        }, 100);
+
+        // Initialize
+        updateFeatureSteps();
     </script>
 </body>
 </html>
