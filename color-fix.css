@@ -1,0 +1,153 @@
+/* Color Override CSS - Replaces all pink colors with approved palette */
+
+:root {
+    /* Remove pink and use approved colors */
+    --pink-primary: #1e3a5f !important;
+    --primary-color: #1e3a5f;
+    --secondary-color: #2c5f8d;
+    --accent-color: #3a7ca5;
+}
+
+/* Override any hardcoded pink colors */
+[style*="#c00f66"], [style*="rgb(192, 15, 102"], [style*="rgba(192, 15, 102"] {
+    color: #1e3a5f !important;
+    background-color: transparent !important;
+}
+
+[style*="#e60a64"], [style*="rgb(230, 10, 100"], [style*="rgba(230, 10, 100"] {
+    color: #1e3a5f !important;
+    background-color: transparent !important;
+}
+
+/* Fix gradients */
+.gradient-blur-1, .gradient-blur-2 {
+    background: radial-gradient(circle at center, #1e3a5f, transparent 70%) !important;
+}
+
+/* Fix form inputs */
+.form-input:focus, .form-textarea:focus {
+    border-color: #1e3a5f !important;
+    box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.2) !important;
+}
+
+/* Fix buttons */
+.submit-button {
+    background: linear-gradient(to bottom, #1e3a5f, #2c5f8d) !important;
+}
+
+.submit-button:hover {
+    background: linear-gradient(to bottom, #2c5f8d, #3a7ca5) !important;
+}
+
+/* Fix globe card */
+.globe-card {
+    border-color: rgba(30, 58, 95, 0.3) !important;
+    background: linear-gradient(to bottom, #1e3a5f, rgba(30, 58, 95, 0.05)) !important;
+}
+
+/* Fix testimonial cards */
+.testimonial-card {
+    border-color: rgba(30, 58, 95, 0.1) !important;
+}
+
+.testimonial-card:hover {
+    border-color: rgba(30, 58, 95, 0.3) !important;
+    box-shadow: 0 10px 25px rgba(30, 58, 95, 0.1) !important;
+}
+
+.testimonial-gradient-1 {
+    background: radial-gradient(circle at top left, rgba(30, 58, 95, 0.05) 0%, transparent 50%) !important;
+}
+
+.testimonial-gradient-2 {
+    background: radial-gradient(circle at bottom right, rgba(30, 58, 95, 0.03) 0%, transparent 50%) !important;
+}
+
+.testimonial-quote-icon {
+    color: rgba(30, 58, 95, 0.2) !important;
+}
+
+.testimonial-avatar {
+    border-color: rgba(30, 58, 95, 0.2) !important;
+    box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.05) !important;
+}
+
+/* Fix FAQ section */
+.faq-title {
+    background: linear-gradient(to bottom right, transparent, var(--primary-color), transparent) !important;
+}
+
+.faq-item-wrapper:hover {
+    border-color: rgba(30, 58, 95, 0.3) !important;
+    background: linear-gradient(to bottom left, rgba(30, 58, 95, 0.05), transparent) !important;
+    box-shadow: 0 0 20px 3px rgba(58, 124, 165, 0.15) !important;
+}
+
+.faq-item-wrapper.active {
+    background: rgba(30, 58, 95, 0.2) !important;
+    border-color: rgba(30, 58, 95, 0.3) !important;
+    box-shadow: 0 0 20px 3px rgba(58, 124, 165, 0.15) !important;
+}
+
+.faq-item.active {
+    border-color: rgba(30, 58, 95, 0.3) !important;
+    background: linear-gradient(to top, rgba(30, 58, 95, 0.1), transparent) !important;
+}
+
+.faq-item:hover {
+    border-color: rgba(30, 58, 95, 0.3) !important;
+}
+
+.faq-item.active .faq-question,
+.faq-trigger:hover .faq-question {
+    color: var(--primary-color) !important;
+}
+
+.faq-icon {
+    color: var(--primary-color) !important;
+}
+
+.faq-content.active {
+    border-top-color: rgba(30, 58, 95, 0.5) !important;
+}
+
+.faq-trigger:hover + .faq-content {
+    border-top-color: rgba(30, 58, 95, 0.5) !important;
+}
+
+.faq-cta-section {
+    border-color: rgba(30, 58, 95, 0.3) !important;
+    background: linear-gradient(to top left, rgba(30, 58, 95, 0.3), rgba(30, 58, 95, 0.1), rgba(30, 58, 95, 0.05)) !important;
+    box-shadow: 0 0 45px 10px rgba(30, 58, 95, 0.15) !important;
+}
+
+.faq-cta-section:hover {
+    box-shadow: 0 0 45px 10px rgba(30, 58, 95, 0.2) !important;
+}
+
+.faq-cta-border-beam {
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent) !important;
+}
+
+/* Fix form title */
+.form-title-us {
+    color: #1e3a5f !important;
+}
+
+/* Fix feature steps */
+.step-indicator {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2c5f8d 100%) !important;
+}
+
+.step-card:hover .step-indicator {
+    box-shadow: 0 0 30px rgba(30, 58, 95, 0.4) !important;
+}
+
+/* Fix CTA buttons */
+.cta-button {
+    background: linear-gradient(135deg, #1e3a5f, #2c5f8d) !important;
+}
+
+.cta-button:hover {
+    background: linear-gradient(135deg, #2c5f8d, #3a7ca5) !important;
+}
