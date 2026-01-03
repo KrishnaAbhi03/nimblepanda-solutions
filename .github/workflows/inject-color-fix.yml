@@ -1,0 +1,107 @@
+name: Inject color-fix.js into HTML files
+
+on:
+  workflow_dispatch:  # Allows manual trigger
+  push:
+    branches:
+      - main
+    paths:
+      - 'index.html'
+      - 'contact.html'
+
+jobs:
+  inject-script:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Inject color-fix.js script tag
+        run: |
+          #!/bin/bash
+          set -e
+          
+          echo "🔍 Checking HTML files for color-fix.js injection..."
+          
+          # Function to inject script tag after </title>
+          inject_script() {
+            local file=$1
+            local script_tag='    <script src="color-fix.js"></script>'
+            
+            # Check if script tag already exists
+            if grep -q "color-fix.js" "$file"; then
+              echo "✅ $file already has color-fix.js - skipping"
+              return 0
+            fi
+            
+            echo "📝 Injecting script tag into $file..."
+            
+            # Create temp file with injection
+            awk -v script="$script_tag" '
+              /<\/title>/ {
+                print $0
+                print script
+                next
+              }
+              { print }
+            ' "$file" > "$file.tmp"
+            
+            # Replace original file
+            mv "$file.tmp" "$file"
+            echo "✅ Successfully injected into $file"
+          }
+          
+          # Process HTML files
+          changed=false
+          
+          if [ -f "index.html" ]; then
+            if ! grep -q "color-fix.js" "index.html"; then
+              inject_script "index.html"
+              changed=true
+            fi
+          fi
+          
+          if [ -f "contact.html" ]; then
+            if ! grep -q "color-fix.js" "contact.html"; then
+              inject_script "contact.html"
+              changed=true
+            fi
+          fi
+          
+          # Set output for next step
+          if [ "$changed" = true ]; then
+            echo "CHANGES_MADE=true" >> $GITHUB_ENV
+          else
+            echo "CHANGES_MADE=false" >> $GITHUB_ENV
+          fi
+
+      - name: Commit and push changes
+        if: env.CHANGES_MADE == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add index.html contact.html
+          git commit -m "🎨 Auto-inject color-fix.js script into HTML files"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Summary
+        run: |
+          echo "## 🎨 Color Fix Injection Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ "$CHANGES_MADE" = "true" ]; then
+            echo "✅ Successfully injected color-fix.js into HTML files!" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Files modified:" >> $GITHUB_STEP_SUMMARY
+            echo "- index.html" >> $GITHUB_STEP_SUMMARY
+            echo "- contact.html" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "ℹ️ No changes needed - color-fix.js already present in all HTML files" >> $GITHUB_STEP_SUMMARY
+          fi
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "🚀 Changes have been pushed to the main branch" >> $GITHUB_STEP_SUMMARY
