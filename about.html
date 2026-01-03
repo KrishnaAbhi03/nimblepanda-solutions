@@ -134,25 +134,35 @@
             margin-bottom: 1.5rem;
         }
 
-        /* ANIMATED COMPONENTS CSS */
+        /* ============================================ */
+        /* NEW ABOUT US SECTION - CONVERTED FROM REACT */
+        /* ============================================ */
         
-        /* Spotlight Background */
-        .spotlight-container {
+        .new-about-section {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding: 5rem 0;
+            background: var(--white);
+        }
+
+        .new-about-spotlight {
             position: absolute;
             inset: 0;
-            z-index: 10;
+            z-index: 1;
             height: 100%;
             width: 100%;
             pointer-events: none;
             opacity: 0;
-            animation: spotlightFadeIn 1.5s ease-out forwards;
+            animation: newAboutSpotlightFadeIn 1.5s ease-out forwards;
         }
 
-        @keyframes spotlightFadeIn {
+        @keyframes newAboutSpotlightFadeIn {
             to { opacity: 1; }
         }
 
-        .spotlight-left, .spotlight-right {
+        .new-about-spotlight-left,
+        .new-about-spotlight-right {
             position: absolute;
             top: 0;
             height: 100vh;
@@ -160,34 +170,32 @@
             pointer-events: none;
         }
 
-        .spotlight-left {
+        .new-about-spotlight-left {
             left: 0;
-            animation: spotlightMoveLeft 7s ease-in-out infinite alternate;
+            animation: newAboutSpotlightMoveLeft 7s ease-in-out infinite alternate;
         }
 
-        .spotlight-right {
+        .new-about-spotlight-right {
             right: 0;
-            animation: spotlightMoveRight 7s ease-in-out infinite alternate;
+            animation: newAboutSpotlightMoveRight 7s ease-in-out infinite alternate;
         }
 
-        @keyframes spotlightMoveLeft {
+        @keyframes newAboutSpotlightMoveLeft {
             0%, 100% { transform: translateX(0); }
             50% { transform: translateX(100px); }
         }
 
-        @keyframes spotlightMoveRight {
+        @keyframes newAboutSpotlightMoveRight {
             0%, 100% { transform: translateX(0); }
             50% { transform: translateX(-100px); }
         }
 
-        .spotlight-gradient-1,
-        .spotlight-gradient-2,
-        .spotlight-gradient-3 {
+        .new-about-spotlight-gradient {
             position: absolute;
             top: 0;
         }
 
-        .spotlight-left .spotlight-gradient-1 {
+        .new-about-spotlight-left .new-about-spotlight-gradient:nth-child(1) {
             left: 0;
             width: 560px;
             height: 1380px;
@@ -195,7 +203,7 @@
             background: radial-gradient(68.54% 68.72% at 55.02% 31.46%, hsla(336, 100%, 50%, 0.08) 0, hsla(341, 100%, 55%, 0.04) 50%, hsla(336, 100%, 45%, 0) 80%);
         }
 
-        .spotlight-left .spotlight-gradient-2 {
+        .new-about-spotlight-left .new-about-spotlight-gradient:nth-child(2) {
             left: 0;
             width: 240px;
             height: 1380px;
@@ -204,7 +212,7 @@
             background: radial-gradient(50% 50% at 50% 50%, hsla(333, 100%, 85%, 0.08) 0, hsla(335, 100%, 55%, 0.04) 80%, transparent 100%);
         }
 
-        .spotlight-left .spotlight-gradient-3 {
+        .new-about-spotlight-left .new-about-spotlight-gradient:nth-child(3) {
             left: 0;
             width: 240px;
             height: 1380px;
@@ -213,7 +221,7 @@
             background: radial-gradient(50% 50% at 50% 50%, hsla(332, 100%, 85%, 0.06) 0, hsla(327, 100%, 85%, 0.06) 80%, transparent 100%);
         }
 
-        .spotlight-right .spotlight-gradient-1 {
+        .new-about-spotlight-right .new-about-spotlight-gradient:nth-child(1) {
             right: 0;
             width: 560px;
             height: 1380px;
@@ -221,7 +229,7 @@
             background: radial-gradient(68.54% 68.72% at 55.02% 31.46%, hsla(336, 100%, 50%, 0.08) 0, hsla(341, 100%, 55%, 0.04) 50%, hsla(336, 100%, 45%, 0) 80%);
         }
 
-        .spotlight-right .spotlight-gradient-2 {
+        .new-about-spotlight-right .new-about-spotlight-gradient:nth-child(2) {
             right: 0;
             width: 240px;
             height: 1380px;
@@ -230,7 +238,7 @@
             background: radial-gradient(50% 50% at 50% 50%, hsla(333, 100%, 85%, 0.08) 0, hsla(335, 100%, 55%, 0.04) 80%, transparent 100%);
         }
 
-        .spotlight-right .spotlight-gradient-3 {
+        .new-about-spotlight-right .new-about-spotlight-gradient:nth-child(3) {
             right: 0;
             width: 240px;
             height: 1380px;
@@ -239,258 +247,453 @@
             background: radial-gradient(50% 50% at 50% 50%, hsla(332, 100%, 85%, 0.06) 0, hsla(327, 100%, 85%, 0.06) 80%, transparent 100%);
         }
 
-        /* Border Beam Animation */
-        .border-beam-container {
-            pointer-events: none;
-            position: absolute;
-            inset: 0;
-            rounded: inherit;
-            border: 1px solid transparent;
-            mask-image: linear-gradient(transparent, transparent), linear-gradient(#000, #000);
-            mask-composite: exclude;
-            -webkit-mask-composite: xor;
-            mask-clip: padding-box, border-box;
-            -webkit-mask-clip: padding-box, border-box;
-        }
-
-        .border-beam {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: linear-gradient(90deg, var(--beam-color-from, transparent), var(--beam-color-via, rgba(30, 58, 95, 0.4)), var(--beam-color-from, transparent));
-            animation: border-beam-animation 8s linear infinite;
-            offset-path: rect(0 auto auto 0 round 300px);
-        }
-
-        .border-beam.reverse {
-            animation-direction: reverse;
-        }
-
-        @keyframes border-beam-animation {
-            0% {
-                offset-distance: 0%;
-            }
-            100% {
-                offset-distance: 100%;
-            }
-        }
-
-        /* About Section */
-        .about-section {
+        .new-about-container {
             position: relative;
-            padding: 5rem 0;
-            overflow: hidden;
-        }
-
-        .about-container {
+            z-index: 10;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 1rem;
-            position: relative;
-            z-index: 20;
-        }
-
-        /* Mission & Vision Grid */
-        .mission-vision-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            margin-bottom: 5rem;
         }
 
         @media (min-width: 768px) {
-            .mission-vision-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 3rem;
+            .new-about-container {
+                padding: 0 1.5rem;
             }
         }
 
-        .mission-vision-card {
-            position: relative;
-            background: var(--white);
-            border: 1px solid var(--border-color);
-            border-radius: 1rem;
-            padding: 2.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s;
-            overflow: hidden;
-        }
-
-        .mission-vision-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .mission-vision-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 4rem;
-            height: 4rem;
-            border-radius: 50%;
-            margin-bottom: 1.5rem;
-        }
-
-        .mission-vision-icon.primary {
-            background: rgba(30, 58, 95, 0.1);
-            color: var(--primary-color);
-        }
-
-        .mission-vision-icon.blue {
-            background: rgba(59, 130, 246, 0.1);
-            color: #3b82f6;
-        }
-
-        .mission-vision-title {
-            font-size: 1.75rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--text-dark);
-        }
-
-        .mission-vision-title.blue {
-            color: #3b82f6;
-        }
-
-        .mission-vision-description {
-            color: var(--text-light);
-            line-height: 1.7;
-        }
-
-        /* Values Section */
-        .values-section {
-            margin-top: 4rem;
-        }
-
-        .values-header {
+        /* Header Section */
+        .new-about-header {
+            max-width: 42rem;
+            margin: 0 auto 4rem;
             text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .values-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 1rem;
-        }
-
-        .values-description {
-            color: var(--text-light);
-            font-size: 1.1rem;
-        }
-
-        .values-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-
-        @media (min-width: 768px) {
-            .values-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2.5rem;
-            }
-        }
-
-        .value-card-wrapper {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(20px);
+            animation: newAboutFadeInUp 0.8s ease-out forwards;
         }
 
-        .value-card-wrapper.animate {
-            animation: value-card-appear 0.6s ease-out forwards;
-        }
-
-        @keyframes value-card-appear {
+        @keyframes newAboutFadeInUp {
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        .pulse-card {
-            position: relative;
-            background: var(--white);
-            border: 1px solid var(--border-color);
-            border-radius: 1rem;
-            padding: 2rem;
-            overflow: hidden;
-            transition: all 0.3s;
-        }
-
-        .pulse-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .pulse-card-border {
-            position: absolute;
-            inset: 0;
-            border-radius: inherit;
-            padding: 2px;
-            background: linear-gradient(135deg, transparent, rgba(168, 85, 247, 0.3), transparent);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .pulse-card.blue .pulse-card-border {
-            background: linear-gradient(135deg, transparent, rgba(59, 130, 246, 0.3), transparent);
-        }
-
-        .pulse-card.amber .pulse-card-border {
-            background: linear-gradient(135deg, transparent, rgba(245, 158, 11, 0.3), transparent);
-        }
-
-        .pulse-card.rose .pulse-card-border {
-            background: linear-gradient(135deg, transparent, rgba(244, 63, 94, 0.3), transparent);
-        }
-
-        .pulse-card:hover .pulse-card-border {
-            opacity: 1;
-        }
-
-        .pulse-card-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 3.5rem;
-            height: 3.5rem;
-            border-radius: 50%;
-            background: rgba(168, 85, 247, 0.1);
-            color: #a855f7;
+        .new-about-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            line-height: 1.2;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.8));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 1.5rem;
         }
 
-        .pulse-card.blue .pulse-card-icon {
-            background: rgba(59, 130, 246, 0.1);
+        @media (min-width: 640px) {
+            .new-about-title {
+                font-size: 3rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .new-about-title {
+                font-size: 3.75rem;
+            }
+        }
+
+        .new-about-subtitle {
+            font-size: 1.25rem;
+            color: var(--muted-foreground);
+        }
+
+        /* Mission & Vision Grid */
+        .new-about-mission-vision {
+            position: relative;
+            max-width: 80rem;
+            margin: 0 auto 6rem;
+        }
+
+        .new-about-grid {
+            position: relative;
+            z-index: 10;
+            display: grid;
+            gap: 3rem;
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 768px) {
+            .new-about-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .new-about-card {
+            position: relative;
+            display: block;
+            overflow: hidden;
+            border-radius: 1rem;
+            border: 1px solid rgba(226, 232, 240, 0.4);
+            background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            padding: 2.5rem;
+            backdrop-filter: blur(50px);
+            transition: all 0.3s ease-in-out;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .new-about-card.animate {
+            animation: newAboutCardAppear 0.8s ease-out forwards;
+        }
+
+        @keyframes newAboutCardAppear {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .new-about-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Border Beam Effect */
+        .new-about-border-beam {
+            pointer-events: none;
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            overflow: hidden;
+        }
+
+        .new-about-border-beam::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(to left, transparent, rgba(168, 85, 247, 0.4), transparent);
+            animation: newAboutBeamMove 8s linear infinite;
+            offset-path: path('M0,0 L100%,0 L100%,100% L0,100% Z');
+        }
+
+        .new-about-card:nth-child(2) .new-about-border-beam::before {
+            background: linear-gradient(to left, transparent, rgba(59, 130, 246, 0.4), transparent);
+            animation-direction: reverse;
+        }
+
+        @keyframes newAboutBeamMove {
+            0% { offset-distance: 0%; }
+            100% { offset-distance: 100%; }
+        }
+
+        .new-about-card-icon {
+            display: inline-flex;
+            height: 4rem;
+            width: 4rem;
+            align-items: center;
+            justify-content: center;
+            border-radius: 1rem;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .new-about-card:hover .new-about-card-icon {
+            transform: scale(1.1);
+        }
+
+        .new-about-card-icon.primary {
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.2), rgba(30, 58, 95, 0.05));
+        }
+
+        .new-about-card-icon.blue {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.05));
+        }
+
+        .new-about-card-icon svg {
+            width: 2rem;
+            height: 2rem;
+        }
+
+        .new-about-card-icon.primary svg {
+            color: var(--primary-color);
+        }
+
+        .new-about-card-icon.blue svg {
             color: #3b82f6;
         }
 
-        .pulse-card.amber .pulse-card-icon {
-            background: rgba(245, 158, 11, 0.1);
-            color: #f59e0b;
-        }
-
-        .pulse-card.rose .pulse-card-icon {
-            background: rgba(244, 63, 94, 0.1);
-            color: #f43f5e;
-        }
-
-        .pulse-card-title {
-            font-size: 1.5rem;
+        .new-about-card-title {
+            font-size: 1.875rem;
             font-weight: 600;
-            color: var(--text-dark);
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, rgba(30, 58, 95, 0.9), rgba(30, 58, 95, 0.7));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .pulse-card-description {
-            color: var(--text-light);
+        .new-about-card-title.blue {
+            background: linear-gradient(to right, rgba(59, 130, 246, 0.9), rgba(59, 130, 246, 0.7));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .new-about-card-description {
+            color: var(--muted-foreground);
+            font-size: 1.125rem;
             line-height: 1.7;
         }
+
+        /* Values Section */
+        .new-about-values {
+            margin-bottom: 6rem;
+        }
+
+        .new-about-values-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .new-about-values-header.animate {
+            animation: newAboutFadeInUp 0.6s ease-out forwards;
+        }
+
+        .new-about-values-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            line-height: 1.2;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.8));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .new-about-values-title {
+                font-size: 2.25rem;
+            }
+        }
+
+        .new-about-values-subtitle {
+            color: var(--muted-foreground);
+            font-size: 1.125rem;
+            max-width: 42rem;
+            margin: 0 auto;
+        }
+
+        .new-about-values-grid {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 768px) {
+            .new-about-values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .new-about-values-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* Pulse Card Styles */
+        .new-about-pulse-card {
+            position: relative;
+            z-index: 30;
+            width: 100%;
+            cursor: pointer;
+            overflow: hidden;
+            border-radius: 1rem;
+            padding: 1.5rem 1.5rem 4rem;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0px 3px 8px rgba(0,0,0,0.04), 0px 12px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease-in-out;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .new-about-pulse-card.animate {
+            animation: newAboutPulseCardAppear 0.6s ease-out forwards;
+        }
+
+        @keyframes newAboutPulseCardAppear {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .new-about-pulse-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.05), rgba(255,255,255,0.2));
+            backdrop-filter: blur(50px);
+        }
+
+        .new-about-pulse-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.03), 0px 25px 35px rgba(0,0,0,0.2);
+        }
+
+        /* Moving Border on Hover */
+        .new-about-pulse-border {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            border-radius: inherit;
+            padding: 2px;
+        }
+
+        .new-about-pulse-border::before {
+            content: '';
+            position: absolute;
+            inset: -200%;
+            opacity: 0;
+            transition: opacity 0.3s;
+            background: conic-gradient(from 0deg at 50% 50%, transparent 0deg, transparent 340deg, var(--card-color) 360deg);
+            animation: newAboutPulseSpin 4s linear infinite;
+        }
+
+        .new-about-pulse-card:hover .new-about-pulse-border::before {
+            opacity: 1;
+        }
+
+        @keyframes newAboutPulseSpin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Card Icon */
+        .new-about-pulse-icon {
+            position: relative;
+            z-index: 50;
+            display: table;
+            border-radius: 0.75rem;
+            padding-bottom: 0.5rem;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .new-about-pulse-card:hover .new-about-pulse-icon {
+            transform: scale(1.1);
+        }
+
+        .new-about-pulse-icon::before {
+            content: '';
+            position: absolute;
+            inset: 4.5px;
+            border-radius: inherit;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0.1));
+            backdrop-filter: blur(50px);
+            transition: all 0.3s;
+        }
+
+        .new-about-pulse-icon-inner {
+            position: relative;
+            z-index: 1;
+            display: block;
+            width: 1.75rem;
+            height: 1.75rem;
+            color: rgba(0,0,0,0.6);
+            transition: color 0.3s;
+        }
+
+        .new-about-pulse-card:hover .new-about-pulse-icon-inner {
+            color: var(--card-color);
+        }
+
+        /* Card Content */
+        .new-about-pulse-content {
+            position: relative;
+            z-index: 30;
+            margin-top: 0.5rem;
+        }
+
+        .new-about-pulse-title {
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: rgba(0,0,0,0.8);
+            transition: color 0.3s;
+            margin-bottom: 0.5rem;
+        }
+
+        .new-about-pulse-card:hover .new-about-pulse-title {
+            color: var(--card-color);
+        }
+
+        .new-about-pulse-description {
+            margin-top: 0.25rem;
+            font-size: 1rem;
+            color: rgba(0,0,0,0.6);
+            transition: color 0.3s;
+        }
+
+        /* Shine Effect */
+        .new-about-pulse-shine {
+            position: absolute;
+            inset: 0;
+            z-index: 20;
+            overflow: hidden;
+            border-radius: inherit;
+            opacity: 1;
+            transition: all 0.5s;
+        }
+
+        .new-about-pulse-shine-inner {
+            position: absolute;
+            bottom: 55%;
+            left: 50%;
+            aspect-ratio: 1;
+            width: 200%;
+            transform: translateX(-50%);
+            border-radius: 50%;
+            filter: blur(40px);
+        }
+
+        /* Variant Colors */
+        .new-about-pulse-card.purple {
+            --card-color: rgb(168, 85, 247);
+        }
+
+        .new-about-pulse-card.blue {
+            --card-color: rgb(59, 130, 246);
+        }
+
+        .new-about-pulse-card.amber {
+            --card-color: rgb(245, 158, 11);
+        }
+
+        .new-about-pulse-card.rose {
+            --card-color: rgb(244, 63, 94);
+        }
+
+        .new-about-pulse-card.purple .new-about-pulse-shine-inner {
+            background: conic-gradient(from 205deg, transparent 0deg, hsl(280deg 95% 39%) 20deg, hsl(280deg 100% 85% / 0.3) 280deg, transparent 360deg);
+        }
+
+        .new-about-pulse-card.blue .new-about-pulse-shine-inner {
+            background: conic-gradient(from 205deg, transparent 0deg, hsl(220deg 95% 39%) 20deg, hsl(220deg 100% 85% / 0.3) 280deg, transparent 360deg);
+        }
+
+        .new-about-pulse-card.amber .new-about-pulse-shine-inner {
+            background: conic-gradient(from 205deg, transparent 0deg, hsl(40deg 95% 39%) 20deg, hsl(40deg 100% 85% / 0.3) 280deg, transparent 360deg);
+        }
+
+        .new-about-pulse-card.rose .new-about-pulse-shine-inner {
+            background: conic-gradient(from 205deg, transparent 0deg, hsl(340deg 95% 39%) 20deg, hsl(340deg 100% 85% / 0.3) 280deg, transparent 360deg);
+        }
+
+        /* ============================================ */
+        /* END NEW ABOUT US SECTION */
+        /* ============================================ */
 
         /* Footer */
         footer {
@@ -543,422 +746,6 @@
             border-top: 1px solid rgba(255,255,255,0.1);
             opacity: 0.8;
         }
-
-        /* FAQ Section Styles - EXACT DUPLICATION FROM Faq4 */
-        .faq-section {
-            position: relative;
-            display: flex;
-            width: 100%;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 5rem 0;
-        }
-
-        .faq-container {
-            margin: 0 auto;
-            display: flex;
-            min-height: 100vh;
-            width: 100%;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 0.75rem;
-        }
-
-        @media (min-width: 1024px) {
-            .faq-container {
-                padding: 1.25rem;
-            }
-        }
-
-        .faq-header {
-            margin-bottom: 3rem;
-            text-align: center;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: faq-fade-in 0.6s ease-out forwards;
-        }
-
-        @keyframes faq-fade-in {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .faq-title {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: 1.875rem;
-            font-weight: 500;
-            letter-spacing: -0.025em;
-            padding-bottom: 0.5rem;
-            background: linear-gradient(to bottom right, transparent, var(--pink-primary), transparent);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        @media (min-width: 640px) {
-            .faq-title {
-                font-size: 3rem;
-            }
-        }
-
-        .faq-subtitle {
-            color: var(--muted-foreground);
-            font-size: 1rem;
-            margin-top: 0.75rem;
-        }
-
-        @media (min-width: 768px) {
-            .faq-subtitle {
-                font-size: 1.125rem;
-            }
-        }
-
-        .faq-accordion-wrapper {
-            margin-bottom: 2.5rem;
-            width: 100%;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            padding-bottom: 2.5rem;
-        }
-
-        .faq-accordion {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1rem;
-        }
-
-        @media (min-width: 768px) {
-            .faq-accordion {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2.5rem;
-            }
-        }
-
-        .faq-item-wrapper {
-            padding: 1px;
-            height: fit-content;
-            border-radius: 0.375rem;
-            border: 1px solid transparent;
-            transition: all 0.7s;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: faq-item-appear 0.5s ease-out forwards;
-        }
-
-        @keyframes faq-item-appear {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .faq-item-wrapper:hover {
-            border-color: rgba(192, 15, 102, 0.3);
-            background: linear-gradient(to bottom left, rgba(192, 15, 102, 0.05), transparent);
-            box-shadow: 0 0 20px 3px rgba(244, 63, 94, 0.15);
-            transform: scale(1.01);
-        }
-
-        .faq-item-wrapper.active {
-            background: rgba(192, 15, 102, 0.2);
-            border-color: rgba(192, 15, 102, 0.3);
-            box-shadow: 0 0 20px 3px rgba(244, 63, 94, 0.15);
-        }
-
-        .faq-item {
-            background: var(--card);
-            border-radius: 0.125rem;
-            padding: 1.25rem;
-            transition: all 0.7s;
-        }
-
-        .faq-item.active {
-            border-color: rgba(192, 15, 102, 0.3);
-            background: linear-gradient(to top, rgba(192, 15, 102, 0.1), transparent);
-        }
-
-        .faq-item:hover {
-            border-color: rgba(192, 15, 102, 0.3);
-        }
-
-        .faq-trigger {
-            display: flex;
-            width: 100%;
-            align-items: center;
-            justify-content: space-between;
-            cursor: pointer;
-            background: none;
-            border: none;
-            padding: 0;
-            text-align: left;
-            transition: all 0.7s;
-        }
-
-        .faq-question {
-            text-align: left;
-            font-size: 1.125rem;
-            font-weight: 500;
-            transition: all 0.7s;
-        }
-
-        .faq-item.active .faq-question {
-            color: var(--pink-primary);
-        }
-
-        .faq-trigger:hover .faq-question {
-            color: var(--pink-primary);
-        }
-
-        .faq-icon-wrapper {
-            margin-left: 1rem;
-            flex-shrink: 0;
-        }
-
-        .faq-icon {
-            width: 1.5rem;
-            height: 1.5rem;
-            color: var(--pink-primary);
-            transition: transform 0.3s;
-        }
-
-        .faq-item.active .faq-icon {
-            animation: faq-icon-spin 1s linear;
-        }
-
-        .faq-trigger:hover .faq-icon {
-            animation: faq-icon-spin 1s linear;
-        }
-
-        @keyframes faq-icon-spin {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .faq-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out, padding-top 0.3s ease-out;
-            border-top: 1px dashed transparent;
-        }
-
-        .faq-content.active {
-            max-height: 500px;
-            padding-top: 1rem;
-            border-top-color: rgba(192, 15, 102, 0.5);
-        }
-
-        .faq-trigger:hover + .faq-content {
-            border-top-color: rgba(192, 15, 102, 0.5);
-        }
-
-        .faq-answer {
-            color: var(--muted-foreground);
-            line-height: 1.625;
-            opacity: 0;
-            transform: translateY(-10px);
-            transition: opacity 0.3s 0.1s, transform 0.3s 0.1s;
-        }
-
-        .faq-content.active .faq-answer {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .faq-cta-section {
-            position: relative;
-            margin: 0 auto;
-            margin-top: 2.5rem;
-            display: flex;
-            width: 100%;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            border-radius: 0.75rem;
-            border: 1px solid rgba(192, 15, 102, 0.3);
-            background: linear-gradient(to top left, rgba(192, 15, 102, 0.3), rgba(192, 15, 102, 0.1), rgba(192, 15, 102, 0.05));
-            padding: 3rem 2rem;
-            text-align: center;
-            box-shadow: 0 0 45px 10px rgba(192, 15, 102, 0.15);
-            transition: all 0.5s;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: faq-fade-in 0.8s ease-out 0.3s forwards;
-        }
-
-        .faq-cta-section:hover {
-            box-shadow: 0 0 45px 10px rgba(192, 15, 102, 0.2);
-        }
-
-        .faq-cta-border-beam {
-            pointer-events: none;
-            position: absolute;
-            inset: 0;
-            border-radius: inherit;
-            border: 1px solid transparent;
-            background: linear-gradient(90deg, transparent, var(--pink-primary), transparent);
-            mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-            mask-composite: exclude;
-            -webkit-mask-composite: xor;
-            animation: faq-border-beam 12s linear infinite;
-        }
-
-        @keyframes faq-border-beam {
-            0% {
-                background-position: 0% 50%;
-            }
-            100% {
-                background-position: 200% 50%;
-            }
-        }
-
-        .faq-cta-content {
-            position: relative;
-            z-index: 10;
-        }
-
-        .faq-cta-title {
-            color: var(--pink-primary);
-            margin-bottom: 0.75rem;
-            font-size: 1.875rem;
-            font-weight: 600;
-        }
-
-        @media (min-width: 768px) {
-            .faq-cta-title {
-                font-size: 2.25rem;
-            }
-        }
-
-        .faq-cta-description {
-            color: var(--muted-foreground);
-            margin-bottom: 1.5rem;
-            max-width: 36rem;
-            font-size: 1rem;
-        }
-
-        @media (min-width: 768px) {
-            .faq-cta-description {
-                font-size: 1.125rem;
-            }
-        }
-
-        .faq-cta-button {
-            position: relative;
-            z-index: 1;
-            cursor: pointer;
-            overflow: hidden;
-            border-radius: 0.375rem;
-            background: linear-gradient(to top left, var(--pink-primary), rgba(192, 15, 102, 0.6));
-            padding: 0.75rem 2rem;
-            font-weight: 500;
-            color: white;
-            border: none;
-            transition: all 0.7s;
-        }
-
-        .faq-cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            height: 100%;
-            width: 100%;
-            transform: rotate(45deg);
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: all 0.7s;
-        }
-
-        .faq-cta-button:hover {
-            transform: scale(1.1);
-            padding-left: 3rem;
-            padding-right: 3rem;
-            box-shadow: 0 0 20px rgba(192, 15, 102, 0.4);
-        }
-
-        .faq-cta-button:hover::before {
-            left: 100%;
-        }
-
-        .faq-cta-glow-lines {
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            display: flex;
-            height: 100%;
-            width: 100%;
-            align-items: center;
-            justify-content: flex-end;
-        }
-
-        .faq-cta-glow-line {
-            position: absolute;
-            background: rgba(192, 15, 102, 0.9);
-            height: 15rem;
-            width: 0.5rem;
-            border-radius: 9999px;
-            transition: all 1s;
-        }
-
-        .faq-cta-section:hover .faq-cta-glow-line {
-            transform: translateY(-100%);
-        }
-
-        .faq-cta-glow-line:nth-child(1) {
-            bottom: 0;
-            right: 2.5rem;
-            transition-delay: 0s;
-        }
-
-        .faq-cta-glow-line:nth-child(2) {
-            bottom: -2.5rem;
-            right: 5rem;
-            transition-delay: 0.1s;
-        }
-
-        .faq-cta-glow-line:nth-child(3) {
-            bottom: -5rem;
-            right: 7.5rem;
-            transition-delay: 0.2s;
-        }
-
-        .faq-cta-glow-line:nth-child(4) {
-            bottom: -7.5rem;
-            right: 10rem;
-            transition-delay: 0.3s;
-        }
-
-        .faq-cta-glow-line:nth-child(5) {
-            bottom: -10rem;
-            right: 12.5rem;
-            transition-delay: 0.4s;
-        }
-
-        .faq-background-image {
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: -10;
-            margin: auto;
-            display: flex;
-            height: 100vh;
-            width: 100%;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .faq-background-image img {
-            opacity: 0.05;
-            filter: grayscale(100%);
-        }
     </style>
 </head>
 <body>
@@ -993,243 +780,182 @@
         </div>
     </div>
 
-    <!-- ANIMATED SECTION - Mission, Vision & Values -->
-    <section class="about-section">
+    <!-- ============================================ -->
+    <!-- NEW ABOUT US SECTION - CONVERTED FROM REACT -->
+    <!-- ============================================ -->
+    <section class="new-about-section">
         <!-- Spotlight Background -->
-        <div class="spotlight-container">
-            <div class="spotlight-left">
-                <div class="spotlight-gradient-1"></div>
-                <div class="spotlight-gradient-2"></div>
-                <div class="spotlight-gradient-3"></div>
+        <div class="new-about-spotlight">
+            <div class="new-about-spotlight-left">
+                <div class="new-about-spotlight-gradient"></div>
+                <div class="new-about-spotlight-gradient"></div>
+                <div class="new-about-spotlight-gradient"></div>
             </div>
-            <div class="spotlight-right">
-                <div class="spotlight-gradient-1"></div>
-                <div class="spotlight-gradient-2"></div>
-                <div class="spotlight-gradient-3"></div>
+            <div class="new-about-spotlight-right">
+                <div class="new-about-spotlight-gradient"></div>
+                <div class="new-about-spotlight-gradient"></div>
+                <div class="new-about-spotlight-gradient"></div>
             </div>
         </div>
 
-        <div class="about-container">
-            <!-- Mission & Vision -->
-            <div class="mission-vision-grid">
-                <!-- Mission Card -->
-                <div class="mission-vision-card">
-                    <div class="border-beam-container">
-                        <div class="border-beam" style="width: 300px; offset-path: rect(0 auto auto 0 round 300px); --beam-color-from: transparent; --beam-color-via: rgba(30, 58, 95, 0.4);"></div>
-                    </div>
-                    <div class="mission-vision-icon primary">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
-                            <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
-                            <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
-                            <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <h2 class="mission-vision-title">Our Mission</h2>
-                        <p class="mission-vision-description">
+        <div class="new-about-container">
+            <!-- Header Section -->
+            <div class="new-about-header">
+                <h2 class="new-about-title">About Us</h2>
+                <p class="new-about-subtitle">
+                    Building the future of web development with beautiful, reusable components.
+                </p>
+            </div>
+
+            <!-- Mission & Vision Section -->
+            <div class="new-about-mission-vision">
+                <div class="new-about-grid">
+                    <!-- Mission Card -->
+                    <div class="new-about-card" data-animate="mission">
+                        <div class="new-about-border-beam"></div>
+                        <div class="new-about-card-icon primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+                                <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+                                <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
+                                <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
+                            </svg>
+                        </div>
+                        <h3 class="new-about-card-title">Our Mission</h3>
+                        <p class="new-about-card-description">
                             Our mission is to democratize web development by providing high-quality, customizable components that help developers build stunning websites quickly and efficiently.
                         </p>
                     </div>
-                </div>
 
-                <!-- Vision Card -->
-                <div class="mission-vision-card">
-                    <div class="border-beam-container">
-                        <div class="border-beam reverse" style="width: 300px; offset-path: rect(0 auto auto 0 round 300px); --beam-color-from: transparent; --beam-color-via: rgba(59, 130, 246, 0.4);"></div>
-                    </div>
-                    <div class="mission-vision-icon blue">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"/>
-                            <circle cx="12" cy="12" r="6"/>
-                            <circle cx="12" cy="12" r="2"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <h2 class="mission-vision-title blue">Our Vision</h2>
-                        <p class="mission-vision-description">
+                    <!-- Vision Card -->
+                    <div class="new-about-card" data-animate="vision">
+                        <div class="new-about-border-beam"></div>
+                        <div class="new-about-card-icon blue">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/>
+                                <circle cx="12" cy="12" r="6"/>
+                                <circle cx="12" cy="12" r="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="new-about-card-title blue">Our Vision</h3>
+                        <p class="new-about-card-description">
                             We envision a world where creating beautiful websites is accessible to everyone, regardless of their design or development experience.
                         </p>
                     </div>
                 </div>
             </div>
 
-            <!-- Core Values -->
-            <div class="values-section">
-                <div class="values-header">
-                    <h2 class="values-title">Our Core Values</h2>
-                    <p class="values-description">
+            <!-- Values Section -->
+            <div class="new-about-values">
+                <div class="new-about-values-header" data-animate="values-header">
+                    <h2 class="new-about-values-title">Our Core Values</h2>
+                    <p class="new-about-values-subtitle">
                         The principles that guide everything we do and every decision we make.
                     </p>
                 </div>
 
-                <div class="values-grid">
+                <div class="new-about-values-grid">
                     <!-- Innovation Card -->
-                    <div class="value-card-wrapper">
-                        <div class="pulse-card purple">
-                            <div class="pulse-card-border">
-                                <div class="pulse-card-border-inner"></div>
-                            </div>
-                            <span class="pulse-card-icon">
-                                <span class="pulse-card-icon-inner">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/>
-                                        <path d="M9 18h6"/>
-                                        <path d="M10 22h4"/>
-                                    </svg>
-                                </span>
+                    <div class="new-about-pulse-card purple" data-animate="value" data-delay="0">
+                        <div class="new-about-pulse-border"></div>
+                        <span class="new-about-pulse-icon">
+                            <span class="new-about-pulse-icon-inner">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/>
+                                    <path d="M9 18h6"/>
+                                    <path d="M10 22h4"/>
+                                </svg>
                             </span>
-                            <div class="pulse-card-content">
-                                <h3 class="pulse-card-title">Innovation</h3>
-                                <p class="pulse-card-description">
-                                    We constantly push boundaries and explore new possibilities to create cutting-edge solutions.
-                                </p>
-                            </div>
-                            <div class="pulse-card-shine">
-                                <div class="pulse-card-shine-inner"></div>
-                            </div>
+                        </span>
+                        <div class="new-about-pulse-content">
+                            <h3 class="new-about-pulse-title">Innovation</h3>
+                            <p class="new-about-pulse-description">
+                                We constantly push boundaries and explore new possibilities to create cutting-edge solutions.
+                            </p>
+                        </div>
+                        <div class="new-about-pulse-shine">
+                            <div class="new-about-pulse-shine-inner"></div>
                         </div>
                     </div>
 
                     <!-- Collaboration Card -->
-                    <div class="value-card-wrapper">
-                        <div class="pulse-card blue">
-                            <div class="pulse-card-border">
-                                <div class="pulse-card-border-inner"></div>
-                            </div>
-                            <span class="pulse-card-icon">
-                                <span class="pulse-card-icon-inner">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-                                        <circle cx="9" cy="7" r="4"/>
-                                        <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
-                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                                    </svg>
-                                </span>
+                    <div class="new-about-pulse-card blue" data-animate="value" data-delay="1">
+                        <div class="new-about-pulse-border"></div>
+                        <span class="new-about-pulse-icon">
+                            <span class="new-about-pulse-icon-inner">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                    <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                </svg>
                             </span>
-                            <div class="pulse-card-content">
-                                <h3 class="pulse-card-title">Collaboration</h3>
-                                <p class="pulse-card-description">
-                                    We believe in the power of teamwork and diverse perspectives to achieve extraordinary results.
-                                </p>
-                            </div>
-                            <div class="pulse-card-shine">
-                                <div class="pulse-card-shine-inner"></div>
-                            </div>
+                        </span>
+                        <div class="new-about-pulse-content">
+                            <h3 class="new-about-pulse-title">Collaboration</h3>
+                            <p class="new-about-pulse-description">
+                                We believe in the power of teamwork and diverse perspectives to achieve extraordinary results.
+                            </p>
+                        </div>
+                        <div class="new-about-pulse-shine">
+                            <div class="new-about-pulse-shine-inner"></div>
                         </div>
                     </div>
 
                     <!-- Excellence Card -->
-                    <div class="value-card-wrapper">
-                        <div class="pulse-card amber">
-                            <div class="pulse-card-border">
-                                <div class="pulse-card-border-inner"></div>
-                            </div>
-                            <span class="pulse-card-icon">
-                                <span class="pulse-card-icon-inner">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
-                                        <path d="M5 3v4"/>
-                                        <path d="M19 17v4"/>
-                                        <path d="M3 5h4"/>
-                                        <path d="M17 19h4"/>
-                                    </svg>
-                                </span>
+                    <div class="new-about-pulse-card amber" data-animate="value" data-delay="2">
+                        <div class="new-about-pulse-border"></div>
+                        <span class="new-about-pulse-icon">
+                            <span class="new-about-pulse-icon-inner">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
+                                    <path d="M5 3v4"/>
+                                    <path d="M19 17v4"/>
+                                    <path d="M3 5h4"/>
+                                    <path d="M17 19h4"/>
+                                </svg>
                             </span>
-                            <div class="pulse-card-content">
-                                <h3 class="pulse-card-title">Excellence</h3>
-                                <p class="pulse-card-description">
-                                    We strive for perfection in everything we do, consistently delivering high-quality work.
-                                </p>
-                            </div>
-                            <div class="pulse-card-shine">
-                                <div class="pulse-card-shine-inner"></div>
-                            </div>
+                        </span>
+                        <div class="new-about-pulse-content">
+                            <h3 class="new-about-pulse-title">Excellence</h3>
+                            <p class="new-about-pulse-description">
+                                We strive for perfection in everything we do, consistently delivering high-quality work.
+                            </p>
+                        </div>
+                        <div class="new-about-pulse-shine">
+                            <div class="new-about-pulse-shine-inner"></div>
                         </div>
                     </div>
 
                     <!-- Impact Card -->
-                    <div class="value-card-wrapper">
-                        <div class="pulse-card rose">
-                            <div class="pulse-card-border">
-                                <div class="pulse-card-border-inner"></div>
-                            </div>
-                            <span class="pulse-card-icon">
-                                <span class="pulse-card-icon-inner">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <circle cx="12" cy="12" r="10"/>
-                                        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
-                                        <path d="M2 12h20"/>
-                                    </svg>
-                                </span>
+                    <div class="new-about-pulse-card rose" data-animate="value" data-delay="3">
+                        <div class="new-about-pulse-border"></div>
+                        <span class="new-about-pulse-icon">
+                            <span class="new-about-pulse-icon-inner">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+                                    <path d="M2 12h20"/>
+                                </svg>
                             </span>
-                            <div class="pulse-card-content">
-                                <h3 class="pulse-card-title">Impact</h3>
-                                <p class="pulse-card-description">
-                                    We measure our success by the positive difference we make in people's lives and businesses.
-                                </p>
-                            </div>
-                            <div class="pulse-card-shine">
-                                <div class="pulse-card-shine-inner"></div>
-                            </div>
+                        </span>
+                        <div class="new-about-pulse-content">
+                            <h3 class="new-about-pulse-title">Impact</h3>
+                            <p class="new-about-pulse-description">
+                                We measure our success by the positive difference we make in people's lives and businesses.
+                            </p>
+                        </div>
+                        <div class="new-about-pulse-shine">
+                            <div class="new-about-pulse-shine-inner"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- FAQ Section - EXACT DUPLICATION FROM Faq4 -->
-    <section class="faq-section">
-        <div class="faq-container">
-            <div class="faq-header">
-                <h2 class="faq-title">
-                    Frequently Asked Questions
-                </h2>
-                <p class="faq-subtitle">
-                    Find quick answers to common questions about our services and features.
-                </p>
-            </div>
-
-            <div class="faq-accordion-wrapper">
-                <div class="faq-accordion" id="faq-accordion">
-                    <!-- FAQ items will be dynamically inserted here -->
-                </div>
-            </div>
-
-            <div class="faq-cta-section">
-                <div class="faq-cta-border-beam"></div>
-                <div class="faq-cta-border-beam" style="animation-direction: reverse;"></div>
-                <div class="faq-cta-content">
-                    <h3 class="faq-cta-title">Still have questions ?</h3>
-                    <p class="faq-cta-description">
-                        Can't find the answer you're looking for ?
-                        <br class="hidden md:block" />
-                        Reach out to our friendly support team we're here to help.
-                    </p>
-                    <button class="faq-cta-button">
-                        Get in Touch
-                    </button>
-                </div>
-
-                <div class="faq-cta-glow-lines">
-                    <div class="faq-cta-glow-line"></div>
-                    <div class="faq-cta-glow-line"></div>
-                    <div class="faq-cta-glow-line"></div>
-                    <div class="faq-cta-glow-line"></div>
-                    <div class="faq-cta-glow-line"></div>
-                </div>
-            </div>
-        </div>
-        <div class="faq-background-image">
-            <img
-                src="https://i.postimg.cc/j5dW4vFd/Mvpblocks.webp"
-                alt="logo"
-                width="5000"
-                height="5000"
-            />
-        </div>
-    </section>
-    <!-- END FAQ Section -->
+    <!-- ============================================ -->
+    <!-- END NEW ABOUT US SECTION -->
+    <!-- ============================================ -->
 
     <!-- Footer -->
     <footer>
@@ -1266,141 +992,35 @@
 
     <script>
         // Intersection Observer for scroll animations
-        const observerOptions = {
+        const newAboutObserverOptions = {
             threshold: 0.3,
             rootMargin: '0px'
         };
 
-        const observer = new IntersectionObserver((entries) => {
+        const newAboutObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('animate');
                 }
             });
-        }, observerOptions);
+        }, newAboutObserverOptions);
 
-        // Observe value cards
-        document.querySelectorAll('.value-card-wrapper').forEach(card => {
-            observer.observe(card);
+        // Observe mission/vision cards
+        document.querySelectorAll('[data-animate="mission"], [data-animate="vision"]').forEach(card => {
+            newAboutObserver.observe(card);
         });
 
-        // FAQ Section Logic - EXACT DUPLICATION FROM Faq4
-        const faqData = [
-            {
-                id: '1',
-                question: 'How can I start using your amazing service?',
-                answer: 'Getting started is easy! Simply sign up for an account, complete your profile, and you can begin using our services immediately. No credit card required for the first 14 days.',
-            },
-            {
-                id: '2',
-                question: 'Which payment methods are supported on your platform?',
-                answer: 'We accept all major credit cards (Visa, MasterCard, American Express), PayPal, and bank transfers for annual plans. All payments are securely processed through encrypted channels.',
-            },
-            {
-                id: '3',
-                question: 'Can I cancel my subscription anytime I want?',
-                answer: 'Yes, you can cancel your subscription at any time from your account settings. There are no cancellation fees, and you will continue to have access until the end of your billing period.',
-            },
-            {
-                id: '4',
-                question: 'Do you provide enterprise custom solutions for businesses?',
-                answer: 'Absolutely! We provide custom enterprise solutions with dedicated support, advanced features, and personalized onboarding. Contact our sales team to discuss your specific requirements.',
-            },
-            {
-                id: '5',
-                question: 'How secure is user data on your platform?',
-                answer: 'We take security seriously. Our platform uses bank-level encryption, regular security audits, and complies with industry standards. Your data is stored in secure SOC 2 certified data centers.',
-            },
-            {
-                id: '6',
-                question: 'Is a completely free trial currently available now?',
-                answer: 'Yes! We offer a 14-day free trial with full access to all features. No credit card is required to sign up for the trial.',
-            },
-            {
-                id: '7',
-                question: 'Do you provide customer support for all users?',
-                answer: 'Absolutely! Our dedicated support team is available 24/7 via chat and email to help you resolve any issues.',
-            },
-            {
-                id: '8',
-                question: 'Can I upgrade or downgrade my plan anytime?',
-                answer: 'Yes, you can change your subscription plan at any time from your account settings. Your billing will be adjusted automatically.',
-            },
-            {
-                id: '9',
-                question: 'Do you integrate with any popular third-party tools?',
-                answer: 'We integrate with popular platforms like Slack, Google Workspace, and Zapier to streamline your workflow.',
-            },
-            {
-                id: '10',
-                question: 'What happens after the free trial period ends?',
-                answer: 'When your trial ends, you can choose a subscription plan to continue using the service. Your data will remain saved for 30 days.',
-            },
-            {
-                id: '11',
-                question: 'Do you offer refunds for unsatisfied subscribed users?',
-                answer: "Yes, we offer a 7-day money-back guarantee if you're not satisfied with the service. Please contact support for assistance.",
-            },
-            {
-                id: '12',
-                question: 'Is my information shared with any third parties?',
-                answer: 'No, we do not share or sell your personal information. Your privacy and data security are our top priorities.',
-            },
-        ];
+        // Observe values header
+        document.querySelectorAll('[data-animate="values-header"]').forEach(header => {
+            newAboutObserver.observe(header);
+        });
 
-        let openFaqItems = [];
-
-        function createFaqItem(faq, index) {
-            return `
-                <div class="faq-item-wrapper" style="animation-delay: ${index * 0.1}s">
-                    <div class="faq-item" data-faq-id="${faq.id}">
-                        <button class="faq-trigger" onclick="toggleFaq('${faq.id}')">
-                            <span class="faq-question">${faq.question}</span>
-                            <div class="faq-icon-wrapper">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon">
-                                    <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
-                                    <circle cx="12" cy="12" r="3"/>
-                                </svg>
-                            </div>
-                        </button>
-                        <div class="faq-content" data-faq-content="${faq.id}">
-                            <div class="faq-answer">${faq.answer}</div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        function toggleFaq(faqId) {
-            const faqItem = document.querySelector(`[data-faq-id="${faqId}"]`);
-            const faqContent = document.querySelector(`[data-faq-content="${faqId}"]`);
-            const faqWrapper = faqItem.parentElement;
-            
-            const isOpen = openFaqItems.includes(faqId);
-            
-            if (isOpen) {
-                openFaqItems = openFaqItems.filter(id => id !== faqId);
-                faqItem.classList.remove('active');
-                faqContent.classList.remove('active');
-                faqWrapper.classList.remove('active');
-            } else {
-                openFaqItems.push(faqId);
-                faqItem.classList.add('active');
-                faqContent.classList.add('active');
-                faqWrapper.classList.add('active');
-            }
-        }
-
-        function initFaqAccordion() {
-            const accordion = document.getElementById('faq-accordion');
-            if (!accordion) return;
-
-            const faqHTML = faqData.map((faq, index) => createFaqItem(faq, index)).join('');
-            accordion.innerHTML = faqHTML;
-        }
-
-        // Initialize FAQ accordion
-        initFaqAccordion();
+        // Observe value cards with staggered animation
+        document.querySelectorAll('[data-animate="value"]').forEach((card, index) => {
+            const delay = parseInt(card.getAttribute('data-delay')) || 0;
+            card.style.animationDelay = `${delay * 0.1 + 0.2}s`;
+            newAboutObserver.observe(card);
+        });
     </script>
 </body>
 </html>
