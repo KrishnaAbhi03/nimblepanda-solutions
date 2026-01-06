@@ -22,7 +22,7 @@ export const VARIANTS = {
     shine:
       '205deg, transparent 0deg, hsl(160deg 95% 39%) 20deg, hsl(160deg 100% 85% / 0.3) 280deg',
     border: 'rose-500/20',
-    color: 'rgb(60 178 250)',
+    color: 'rgb(244 63 94)',
   },
   blue: {
     accent: 'blue-500',
@@ -30,7 +30,7 @@ export const VARIANTS = {
     shine:
       '205deg, transparent 0deg, hsl(220deg 95% 39%) 20deg, hsl(220deg 100% 85% / 0.3) 280deg',
     border: 'blue-500/20',
-    color: 'rgb(60 178 250)',
+    color: 'rgb(244 63 94)',
   },
   purple: {
     accent: 'purple-500',
@@ -38,7 +38,7 @@ export const VARIANTS = {
     shine:
       '205deg, transparent 0deg, hsl(280deg 95% 39%) 20deg, hsl(280deg 100% 85% / 0.3) 280deg',
     border: 'purple-500/20',
-    color: 'rgb(60 178 250)',
+    color: 'rgb(244 63 94)',
   },
   amber: {
     accent: 'amber-500',
@@ -46,7 +46,7 @@ export const VARIANTS = {
     shine:
       '205deg, transparent 0deg, hsl(40deg 95% 39%) 20deg, hsl(40deg 100% 85% / 0.3) 280deg',
     border: 'amber-500/20',
-    color: 'rgb(60 178 250)',
+    color: 'rgb(244 63 94)',
   },
   rose: {
     accent: 'rose-500',
@@ -54,7 +54,7 @@ export const VARIANTS = {
     shine:
       '205deg, transparent 0deg, hsl(340deg 95% 39%) 20deg, hsl(340deg 100% 85% / 0.3) 280deg',
     border: 'rose-500/20',
-    color: 'rgb(60 178 250)',
+    color: 'rgb(244 63 94)',
   },
 };
 
