@@ -92,8 +92,6 @@
             color: var(--white);
             padding: 4rem 2rem;
             text-align: center;
-            opacity: 0;
-            animation: fadeIn 0.8s ease-out forwards;
         }
         
         .page-header h1 {
@@ -117,9 +115,6 @@
         
         .content-section {
             margin-bottom: 4rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.8s ease-out forwards;
         }
         
         .section-title {
@@ -139,8 +134,6 @@
         .founder-section {
             background: var(--bg-light);
             padding: 5rem 2rem;
-            opacity: 0;
-            animation: fadeIn 0.8s ease-out 0.3s forwards;
         }
 
         .founder-container {
@@ -156,9 +149,6 @@
             position: relative;
             max-width: 400px;
             margin: 0 auto;
-            opacity: 0;
-            transform: scale(0.95);
-            animation: scaleIn 0.8s ease-out 0.5s forwards;
         }
 
         .founder-image {
@@ -244,8 +234,6 @@
         .story-container {
             max-width: 900px;
             margin: 0 auto;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease-out 0.4s forwards;
         }
 
         .story-container h2 {
@@ -265,7 +253,7 @@
             margin-bottom: 1.5rem;
         }
 
-        /* ANIMATED COMPONENTS CSS */
+        /* ANIMATED COMPONENTS CSS - EXACT ORIGINAL */
         
         /* Spotlight Background */
         .spotlight-container {
@@ -283,215 +271,455 @@
             to { opacity: 1; }
         }
 
-        .spotlight-left,
-        .spotlight-right {
+        .spotlight-left, .spotlight-right {
             position: absolute;
             top: 0;
-            width: 50%;
-            height: 100%;
-            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            pointer-events: none;
         }
 
         .spotlight-left {
             left: 0;
+            animation: spotlightMoveLeft 7s ease-in-out infinite alternate;
         }
 
         .spotlight-right {
             right: 0;
+            animation: spotlightMoveRight 7s ease-in-out infinite alternate;
+        }
+
+        @keyframes spotlightMoveLeft {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(100px); }
+        }
+
+        @keyframes spotlightMoveRight {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(-100px); }
         }
 
         .spotlight-gradient-1,
         .spotlight-gradient-2,
         .spotlight-gradient-3 {
             position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.3;
+            top: 0;
         }
 
         .spotlight-left .spotlight-gradient-1 {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(30, 58, 95, 0.3), transparent);
-            top: 10%;
-            left: 10%;
-            animation: float 15s ease-in-out infinite;
+            left: 0;
+            width: 560px;
+            height: 1380px;
+            transform: translateY(-350px) rotate(-45deg);
+            background: radial-gradient(68.54% 68.72% at 55.02% 31.46%, hsla(194°, 100%, 50%, 0.08) 0, hsla(194°, 100%, 55%, 0.04) 50%, hsla(194°, 98%, 45%, 0) 80%);
         }
 
         .spotlight-left .spotlight-gradient-2 {
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(44, 95, 141, 0.2), transparent);
-            top: 50%;
-            left: 20%;
-            animation: float 20s ease-in-out infinite reverse;
+            left: 0;
+            width: 240px;
+            height: 1380px;
+            transform: rotate(-45deg) translate(5%, -50%);
+            transform-origin: top left;
+            background: radial-gradient(50% 50% at 50% 50%, hsla(187°, 96%, 85%, 0.08) 0, hsla(200°, 92%, 55%, 0.04) 80%, transparent 100%);
         }
 
         .spotlight-left .spotlight-gradient-3 {
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, rgba(58, 124, 165, 0.25), transparent);
-            bottom: 10%;
-            left: 15%;
-            animation: float 18s ease-in-out infinite;
+            left: 0;
+            width: 240px;
+            height: 1380px;
+            transform: rotate(-45deg) translate(-180%, -70%);
+            transform-origin: top left;
+            background: radial-gradient(50% 50% at 50% 50%, hsla(187°, 96%, 85%, 0.06) 0, hsla(193°, 92%, 76%, 0.06) 80%, transparent 100%);
         }
 
         .spotlight-right .spotlight-gradient-1 {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(30, 58, 95, 0.3), transparent);
-            top: 20%;
-            right: 10%;
-            animation: float 17s ease-in-out infinite;
+            right: 0;
+            width: 560px;
+            height: 1380px;
+            transform: translateY(-350px) rotate(45deg);
+            background: radial-gradient(68.54% 68.72% at 55.02% 31.46%, hsla(206°, 98%, 49%, 0.08) 0, hsla(206°, 98%, 55%, 0.04) 50%, hsla(206°, 98%, 39%, 0) 80%);
         }
 
         .spotlight-right .spotlight-gradient-2 {
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(44, 95, 141, 0.2), transparent);
-            top: 60%;
-            right: 20%;
-            animation: float 22s ease-in-out infinite reverse;
+            right: 0;
+            width: 240px;
+            height: 1380px;
+            transform: rotate(45deg) translate(-5%, -50%);
+            transform-origin: top right;
+            background: radial-gradient(50% 50% at 50% 50%, hsla(206°, 94%, 83%, 0.08) 0, hsla(206°, 93%, 55%, 0.04) 80%, transparent 100%);
         }
 
         .spotlight-right .spotlight-gradient-3 {
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, rgba(58, 124, 165, 0.25), transparent);
-            bottom: 15%;
-            right: 15%;
-            animation: float 19s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0); }
-            25% { transform: translate(20px, -20px); }
-            50% { transform: translate(-20px, 20px); }
-            75% { transform: translate(20px, 20px); }
-        }
-
-        /* About Section Container */
-        .about-section {
-            position: relative;
-            padding: 5rem 0;
-            background: var(--bg-light);
-            overflow: hidden;
-        }
-
-        .about-container {
-            position: relative;
-            z-index: 20;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Mission & Vision Grid */
-        .mission-vision-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            margin-bottom: 5rem;
-        }
-
-        .mission-vision-card {
-            position: relative;
-            background: var(--white);
-            border-radius: 16px;
-            padding: 2.5rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            overflow: hidden;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-
-        .mission-vision-card:nth-child(1) {
-            animation-delay: 0.2s;
-        }
-
-        .mission-vision-card:nth-child(2) {
-            animation-delay: 0.4s;
+            right: 0;
+            width: 240px;
+            height: 1380px;
+            transform: rotate(45deg) translate(180%, -70%);
+            transform-origin: top right;
+            background: radial-gradient(50% 50% at 50% 50%, hsla(206°, 94%, 83%, 0.06) 0, hsla(206°, 93%, 55%, 0.06) 80%, transparent 100%);
         }
 
         /* Border Beam Animation */
         .border-beam-container {
+            pointer-events: none;
             position: absolute;
             inset: 0;
-            pointer-events: none;
-            overflow: hidden;
-            border-radius: 16px;
+            rounded: inherit;
+            border: 1px solid transparent;
+            mask-image: linear-gradient(transparent, transparent), linear-gradient(#000, #000);
+            mask-composite: exclude;
+            -webkit-mask-composite: xor;
+            mask-clip: padding-box, border-box;
+            -webkit-mask-clip: padding-box, border-box;
         }
 
         .border-beam {
             position: absolute;
-            height: 100%;
-            animation: borderBeam 8s linear infinite;
+            aspect-ratio: 1;
+            background: linear-gradient(to left, var(--beam-color-from, #6adafc), var(--beam-color-via, #2d2df7), transparent);
+            animation: borderBeamMove 8s linear infinite;
         }
 
         .border-beam.reverse {
-            animation-direction: reverse;
+            animation: borderBeamMoveReverse 8s linear infinite;
         }
 
-        @keyframes borderBeam {
-            0% {
-                offset-distance: 0%;
-            }
-            100% {
-                offset-distance: 100%;
-            }
+        @keyframes borderBeamMove {
+            0% { offset-distance: 0%; }
+            100% { offset-distance: 100%; }
+        }
+
+        @keyframes borderBeamMoveReverse {
+            0% { offset-distance: 100%; }
+            100% { offset-distance: 0%; }
+        }
+
+        /* Pulse Card Styles - EXACT ORIGINAL */
+        .pulse-card {
+            position: relative;
+            z-index: 30;
+            width: 100%;
+            cursor: pointer;
+            overflow: hidden;
+            border-radius: 1rem;
+            padding: 1.5rem 1.5rem 4rem;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0px 3px 8px rgba(0,0,0,0.04), 0px 12px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .pulse-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.05), rgba(255,255,255,0.2));
+            backdrop-filter: blur(50px);
+        }
+
+        .pulse-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: linear-gradient(to bottom, transparent, transparent, rgba(255,255,255,0.2));
+        }
+
+        .pulse-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.03), 0px 25px 35px rgba(0,0,0,0.2);
+        }
+
+        /* Moving Border on Hover */
+        .pulse-card-border {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            border-radius: inherit;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            -webkit-mask-composite: xor;
+            padding: 2px;
+        }
+
+        .pulse-card-border-inner {
+            position: absolute;
+            inset: -200%;
+            opacity: 0;
+            transition: opacity 0.3s;
+            background: conic-gradient(from 0deg at 50% 50%, transparent 0deg, transparent 340deg, var(--card-color) 360deg);
+            animation: spin 4s linear infinite;
+        }
+
+        .pulse-card:hover .pulse-card-border-inner {
+            opacity: 1;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Card Icon */
+        .pulse-card-icon {
+            position: relative;
+            z-index: 50;
+            display: table;
+            border-radius: 0.75rem;
+            padding-bottom: 0.5rem;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .pulse-card:hover .pulse-card-icon {
+            transform: scale(1.1);
+        }
+
+        .pulse-card-icon::before {
+            content: '';
+            position: absolute;
+            inset: 4.5px;
+            border-radius: inherit;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0.1));
+            backdrop-filter: blur(50px);
+            transition: all 0.3s;
+        }
+
+        .pulse-card-icon-inner {
+            position: relative;
+            z-index: 1;
+            display: block;
+            width: 1.75rem;
+            height: 1.75rem;
+            color: rgba(0,0,0,0.6);
+            transition: color 0.3s;
+        }
+
+        .pulse-card:hover .pulse-card-icon-inner {
+            color: var(--card-color);
+        }
+
+        /* Card Content */
+        .pulse-card-content {
+            position: relative;
+            z-index: 30;
+            margin-top: 0.5rem;
+        }
+
+        .pulse-card-title {
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: rgba(0,0,0,0.8);
+            transition: color 0.3s;
+        }
+
+        .pulse-card:hover .pulse-card-title {
+            color: var(--card-color);
+        }
+
+        .pulse-card-description {
+            margin-top: 0.25rem;
+            font-size: 1rem;
+            color: rgba(0,0,0,0.6);
+            transition: color 0.3s;
+        }
+
+        /* Shine Effect */
+        .pulse-card-shine {
+            position: absolute;
+            inset: 0;
+            z-index: 20;
+            overflow: hidden;
+            border-radius: inherit;
+            opacity: 1;
+            transition: all 0.5s;
+        }
+
+        .pulse-card-shine-inner {
+            position: absolute;
+            bottom: 55%;
+            left: 50%;
+            aspect-ratio: 1;
+            width: 200%;
+            transform: translateX(-50%);
+            border-radius: 50%;
+            filter: blur(40px);
+        }
+
+        /* Variant Colors */
+        .pulse-card.purple {
+            --card-color: rgb(88, 77, 247);
+        }
+
+        .pulse-card.blue {
+            --card-color: rgb(59, 130, 246);
+        }
+
+        .pulse-card.amber {
+            --card-color: rgb(2, 143, 250);
+        }
+
+        .pulse-card.rose {
+            --card-color: rgb(50, 165, 252);
+        }
+
+        .pulse-card.purple .pulse-card-shine-inner {
+            background: conic-gradient(from 205deg, transparent 0deg, hsl(280deg 95% 39%) 20deg, hsl(280deg 100% 85% / 0.3) 280deg, transparent 360deg);
+        }
+
+        .pulse-card.blue .pulse-card-shine-inner {
+            background: conic-gradient(from 205deg, transparent 0deg, hsl(220deg 95% 39%) 20deg, hsl(220deg 100% 85% / 0.3) 280deg, transparent 360deg);
+        }
+
+        .pulse-card.amber .pulse-card-shine-inner {
+            background: conic-gradient(from 205deg, transparent 0deg, hsl(40deg 95% 39%) 20deg, hsl(40deg 100% 85% / 0.3) 280deg, transparent 360deg);
+        }
+
+        .pulse-card.rose .pulse-card-shine-inner {
+            background: conic-gradient(from 205deg, transparent 0deg, hsl(340deg 95% 39%) 20deg, hsl(340deg 100% 85% / 0.3) 280deg, transparent 360deg);
+        }
+
+        /* Mission/Vision Cards - EXACT ORIGINAL */
+        .mission-vision-card {
+            position: relative;
+            display: block;
+            overflow: hidden;
+            border-radius: 1rem;
+            border: 1px solid rgba(226, 232, 240, 0.4);
+            background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+            padding: 2.5rem;
+            backdrop-filter: blur(50px);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .mission-vision-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
         .mission-vision-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 12px;
-            display: flex;
+            display: inline-flex;
+            height: 4rem;
+            width: 4rem;
             align-items: center;
             justify-content: center;
+            border-radius: 1rem;
             margin-bottom: 1.5rem;
-            transition: transform 0.3s;
+            backdrop-filter: blur(10px);
         }
 
         .mission-vision-icon.primary {
-            background: linear-gradient(135deg, rgba(30, 58, 95, 0.1), rgba(30, 58, 95, 0.2));
-            color: var(--primary-color);
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.2), rgba(30, 58, 95, 0.05));
         }
 
         .mission-vision-icon.blue {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.2));
-            color: #3b82f6;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.05));
         }
 
-        .mission-vision-card:hover .mission-vision-icon {
-            transform: scale(1.1) rotate(5deg);
+        .mission-vision-icon svg {
+            width: 2rem;
+            height: 2rem;
+        }
+
+        .mission-vision-icon.primary svg {
+            color: var(--primary-color);
+        }
+
+        .mission-vision-icon.blue svg {
+            color: rgb(59, 130, 246);
         }
 
         .mission-vision-title {
-            font-size: 1.8rem;
+            font-size: 1.875rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            color: var(--text-dark);
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.9), rgba(30, 58, 95, 0.7));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .mission-vision-title.blue {
-            color: #3b82f6;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.9), rgba(59, 130, 246, 0.7));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .mission-vision-description {
-            font-size: 1.05rem;
+            font-size: 1.125rem;
+            line-height: 1.75;
             color: var(--text-light);
-            line-height: 1.7;
         }
 
-        /* Core Values Section */
+        /* About Section - EXACT ORIGINAL */
+        .about-section {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+
+        .about-container {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .about-header {
+            max-width: 42rem;
+            margin: 0 auto 4rem;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .about-title {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,1), rgba(0,0,0,0.8));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-subtitle {
+            margin-top: 1.5rem;
+            font-size: 1.25rem;
+            color: var(--text-light);
+        }
+
+        .mission-vision-grid {
+            position: relative;
+            max-width: 80rem;
+            margin: 0 auto 6rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeInUp 0.8s ease-out 0.2s forwards;
+        }
+
         .values-section {
-            margin-top: 5rem;
+            margin-bottom: 6rem;
         }
 
         .values-header {
-            text-align: center;
             margin-bottom: 3rem;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out 0.4s forwards;
         }
 
         .values-title {
@@ -530,341 +758,6 @@
         .value-card-wrapper:nth-child(2) { animation-delay: 0.7s; }
         .value-card-wrapper:nth-child(3) { animation-delay: 0.8s; }
         .value-card-wrapper:nth-child(4) { animation-delay: 0.9s; }
-
-        /* Pulse Card Styles */
-        .pulse-card {
-            position: relative;
-            background: var(--white);
-            border-radius: 16px;
-            padding: 2rem;
-            overflow: hidden;
-            transition: transform 0.3s;
-        }
-
-        .pulse-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .pulse-card-border {
-            position: absolute;
-            inset: 0;
-            border-radius: 16px;
-            padding: 2px;
-            background: linear-gradient(135deg, transparent, transparent);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-        }
-
-        .pulse-card.purple .pulse-card-border {
-            background: linear-gradient(135deg, rgba(168, 85, 247, 0.4), rgba(168, 85, 247, 0.1));
-        }
-
-        .pulse-card.blue .pulse-card-border {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.4), rgba(59, 130, 246, 0.1));
-        }
-
-        .pulse-card.amber .pulse-card-border {
-            background: linear-gradient(135deg, rgba(245, 158, 11, 0.4), rgba(245, 158, 11, 0.1));
-        }
-
-        .pulse-card.green .pulse-card-border {
-            background: linear-gradient(135deg, rgba(34, 197, 94, 0.4), rgba(34, 197, 94, 0.1));
-        }
-
-        .pulse-card-icon {
-            display: inline-flex;
-            padding: 0.75rem;
-            border-radius: 12px;
-            margin-bottom: 1.5rem;
-        }
-
-        .pulse-card.purple .pulse-card-icon {
-            background: rgba(168, 85, 247, 0.1);
-            color: #a855f7;
-        }
-
-        .pulse-card.blue .pulse-card-icon {
-            background: rgba(59, 130, 246, 0.1);
-            color: #3b82f6;
-        }
-
-        .pulse-card.amber .pulse-card-icon {
-            background: rgba(245, 158, 11, 0.1);
-            color: #f59e0b;
-        }
-
-        .pulse-card.green .pulse-card-icon {
-            background: rgba(34, 197, 94, 0.1);
-            color: #22c55e;
-        }
-
-        .pulse-card-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-            color: var(--text-dark);
-        }
-
-        .pulse-card-description {
-            font-size: 1rem;
-            color: var(--text-light);
-            line-height: 1.6;
-        }
-
-        .pulse-card-shine {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            overflow: hidden;
-            border-radius: 16px;
-        }
-
-        .pulse-card-shine-inner {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transform: translateX(-100%);
-        }
-
-        .pulse-card:hover .pulse-card-shine-inner {
-            animation: shine 1.5s ease-in-out;
-        }
-
-        @keyframes shine {
-            to {
-                transform: translateX(100%);
-            }
-        }
-
-        /* Differentiators Section */
-        .differentiators-section {
-            padding: 5rem 2rem;
-            background: var(--white);
-        }
-
-        .differentiators-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .differentiators-container h2 {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-
-        .differentiators-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-
-        .differentiator-card {
-            background: var(--bg-light);
-            padding: 2rem;
-            border-radius: 12px;
-            border-left: 4px solid var(--accent-color);
-            opacity: 0;
-            transform: translateX(-20px);
-            animation: slideInLeft 0.8s ease-out forwards;
-        }
-
-        .differentiator-card:nth-child(1) { animation-delay: 0.2s; }
-        .differentiator-card:nth-child(2) { animation-delay: 0.3s; }
-        .differentiator-card:nth-child(3) { animation-delay: 0.4s; }
-        .differentiator-card:nth-child(4) { animation-delay: 0.5s; }
-
-        .differentiator-card h3 {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .differentiator-card p {
-            font-size: 1.05rem;
-            color: var(--text-light);
-            line-height: 1.7;
-        }
-
-        /* Experience Section */
-        .experience-section {
-            padding: 5rem 2rem;
-            background: var(--bg-light);
-        }
-
-        .experience-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .experience-container h2 {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 2rem;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .stat-card {
-            background: var(--white);
-            padding: 2.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            opacity: 0;
-            transform: scale(0.9);
-            animation: scaleIn 0.6s ease-out forwards;
-        }
-
-        .stat-card:nth-child(1) { animation-delay: 0.2s; }
-        .stat-card:nth-child(2) { animation-delay: 0.3s; }
-        .stat-card:nth-child(3) { animation-delay: 0.4s; }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--accent-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 1.1rem;
-            color: var(--text-light);
-        }
-
-        /* Associated Business Preview */
-        .associated-preview {
-            padding: 5rem 2rem;
-            background: var(--white);
-            text-align: center;
-        }
-
-        .associated-preview h2 {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-        }
-
-        .associated-preview p {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            max-width: 700px;
-            margin: 0 auto 2rem;
-        }
-
-        .associated-preview .cta-button {
-            display: inline-block;
-            margin-top: 1rem;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: var(--white);
-            padding: 5rem 2rem;
-            text-align: center;
-        }
-
-        .cta-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .cta-section p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-        }
-
-        .cta-section .cta-button {
-            background: var(--white);
-            color: var(--primary-color);
-            font-size: 1.1rem;
-            padding: 1rem 2.5rem;
-        }
-
-        .cta-section .cta-button:hover {
-            background: var(--bg-light);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        /* FAQ Section */
-        .faq-section {
-            padding: 5rem 2rem;
-            background: var(--bg-light);
-        }
-
-        .faq-container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .faq-container h2 {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-
-        .faq-item {
-            background: var(--white);
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-
-        .faq-question {
-            width: 100%;
-            padding: 1.5rem;
-            background: none;
-            border: none;
-            text-align: left;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background 0.3s;
-        }
-
-        .faq-question:hover {
-            background: var(--bg-light);
-        }
-
-        .faq-icon {
-            transition: transform 0.3s;
-        }
-
-        .faq-item.active .faq-icon {
-            transform: rotate(180deg);
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-            padding: 0 1.5rem;
-            color: var(--text-light);
-            font-size: 1rem;
-            line-height: 1.7;
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 500px;
-            padding: 0 1.5rem 1.5rem;
-        }
 
         /* Footer */
         footer {
@@ -912,49 +805,6 @@
             color: rgba(255,255,255,0.8);
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
         /* Responsive */
         @media (min-width: 768px) {
             .founder-container {
@@ -969,12 +819,8 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .differentiators-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(3, 1fr);
+            .about-title {
+                font-size: 3.75rem;
             }
 
             .values-title {
@@ -999,27 +845,21 @@
                 gap: 1rem;
             }
 
-            .page-header h1 {
-                font-size: 2rem;
-            }
-
-            .section-title,
-            .founder-content h2,
-            .story-container h2,
-            .differentiators-container h2,
-            .experience-container h2,
-            .associated-preview h2,
-            .cta-section h2,
-            .faq-container h2 {
-                font-size: 2rem;
+            .about-title {
+                font-size: 2.5rem;
             }
 
             .values-title {
                 font-size: 2rem;
             }
 
-            .stat-number {
-                font-size: 2.5rem;
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .founder-content h2,
+            .story-container h2 {
+                font-size: 2rem;
             }
         }
     </style>
@@ -1115,193 +955,7 @@
         </div>
     </section>
 
-    <!-- ANIMATED SECTION - Mission, Vision & Values -->
-    <section class="about-section">
-        <!-- Spotlight Background -->
-        <div class="spotlight-container">
-            <div class="spotlight-left">
-                <div class="spotlight-gradient-1"></div>
-                <div class="spotlight-gradient-2"></div>
-                <div class="spotlight-gradient-3"></div>
-            </div>
-            <div class="spotlight-right">
-                <div class="spotlight-gradient-1"></div>
-                <div class="spotlight-gradient-2"></div>
-                <div class="spotlight-gradient-3"></div>
-            </div>
-        </div>
-
-        <div class="about-container">
-            <!-- Mission & Vision -->
-            <div class="mission-vision-grid">
-                <!-- Mission Card -->
-                <div class="mission-vision-card">
-                    <div class="border-beam-container">
-                        <div class="border-beam" style="width: 300px; offset-path: rect(0 auto auto 0 round 300px); --beam-color-from: transparent; --beam-color-via: rgba(30, 58, 95, 0.4);"></div>
-                    </div>
-                    <div class="mission-vision-icon primary">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
-                            <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
-                            <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
-                            <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <h2 class="mission-vision-title">Our Mission</h2>
-                        <p class="mission-vision-description">
-                            Our mission is to democratize web development by providing high-quality, customizable components that help developers build stunning websites quickly and efficiently.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Vision Card -->
-                <div class="mission-vision-card">
-                    <div class="border-beam-container">
-                        <div class="border-beam reverse" style="width: 300px; offset-path: rect(0 auto auto 0 round 300px); --beam-color-from: transparent; --beam-color-via: rgba(59, 130, 246, 0.4);"></div>
-                    </div>
-                    <div class="mission-vision-icon blue">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"/>
-                            <circle cx="12" cy="12" r="6"/>
-                            <circle cx="12" cy="12" r="2"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <h2 class="mission-vision-title blue">Our Vision</h2>
-                        <p class="mission-vision-description">
-                            We envision a world where creating beautiful websites is accessible to everyone, regardless of their design or development experience.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Core Values -->
-            <div class="values-section">
-                <div class="values-header">
-                    <h2 class="values-title">Our Core Values</h2>
-                    <p class="values-description">
-                        The principles that guide everything we do and every decision we make.
-                    </p>
-                </div>
-
-                <div class="values-grid">
-                    <!-- Innovation Card -->
-                    <div class="value-card-wrapper">
-                        <div class="pulse-card purple">
-                            <div class="pulse-card-border">
-                                <div class="pulse-card-border-inner"></div>
-                            </div>
-                            <span class="pulse-card-icon">
-                                <span class="pulse-card-icon-inner">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/>
-                                        <path d="M9 18h6"/>
-                                        <path d="M10 22h4"/>
-                                    </svg>
-                                </span>
-                            </span>
-                            <div class="pulse-card-content">
-                                <h3 class="pulse-card-title">Innovation</h3>
-                                <p class="pulse-card-description">
-                                    We constantly push boundaries and explore new possibilities to create cutting-edge solutions.
-                                </p>
-                            </div>
-                            <div class="pulse-card-shine">
-                                <div class="pulse-card-shine-inner"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Collaboration Card -->
-                    <div class="value-card-wrapper">
-                        <div class="pulse-card blue">
-                            <div class="pulse-card-border">
-                                <div class="pulse-card-border-inner"></div>
-                            </div>
-                            <span class="pulse-card-icon">
-                                <span class="pulse-card-icon-inner">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-                                        <circle cx="9" cy="7" r="4"/>
-                                        <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
-                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                                    </svg>
-                                </span>
-                            </span>
-                            <div class="pulse-card-content">
-                                <h3 class="pulse-card-title">Collaboration</h3>
-                                <p class="pulse-card-description">
-                                    We believe in the power of teamwork and diverse perspectives to achieve extraordinary results.
-                                </p>
-                            </div>
-                            <div class="pulse-card-shine">
-                                <div class="pulse-card-shine-inner"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Excellence Card -->
-                    <div class="value-card-wrapper">
-                        <div class="pulse-card amber">
-                            <div class="pulse-card-border">
-                                <div class="pulse-card-border-inner"></div>
-                            </div>
-                            <span class="pulse-card-icon">
-                                <span class="pulse-card-icon-inner">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
-                                        <path d="M5 3v4"/>
-                                        <path d="M19 17v4"/>
-                                        <path d="M3 5h4"/>
-                                        <path d="M17 19h4"/>
-                                    </svg>
-                                </span>
-                            </span>
-                            <div class="pulse-card-content">
-                                <h3 class="pulse-card-title">Excellence</h3>
-                                <p class="pulse-card-description">
-                                    We strive for perfection in everything we do, consistently delivering high-quality work.
-                                </p>
-                            </div>
-                            <div class="pulse-card-shine">
-                                <div class="pulse-card-shine-inner"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Impact Card -->
-                    <div class="value-card-wrapper">
-                        <div class="pulse-card rose">
-                            <div class="pulse-card-border">
-                                <div class="pulse-card-border-inner"></div>
-                            </div>
-                            <span class="pulse-card-icon">
-                                <span class="pulse-card-icon-inner">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <circle cx="12" cy="12" r="10"/>
-                                        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
-                                        <path d="M2 12h20"/>
-                                    </svg>
-                                </span>
-                            </span>
-                            <div class="pulse-card-content">
-                                <h3 class="pulse-card-title">Impact</h3>
-                                <p class="pulse-card-description">
-                                    We measure our success by the positive difference we make in people's lives and businesses.
-                                </p>
-                            </div>
-                            <div class="pulse-card-shine">
-                                <div class="pulse-card-shine-inner"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- <!-- Mission, Vision & Values Section - DESIGN LOCKED -->
+    <!-- ANIMATED SECTION - Mission, Vision & Values - EXACT ORIGINAL DESIGN -->
     <section class="about-section">
         <!-- Spotlight Background -->
         <div class="spotlight-container">
@@ -1454,7 +1108,7 @@
 
                     <!-- Integrity Card -->
                     <div class="value-card-wrapper">
-                        <div class="pulse-card green">
+                        <div class="pulse-card rose">
                             <div class="pulse-card-border">
                                 <div class="pulse-card-border-inner"></div>
                             </div>
@@ -1476,146 +1130,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-    <!-- What Makes Us Different -->
-    <section class="differentiators-section">
-        <div class="differentiators-container">
-            <h2>What Makes Us Different</h2>
-            <div class="differentiators-grid">
-                <div class="differentiator-card">
-                    <h3>Real-World Experience</h3>
-                    <p>
-                        Our insights come from hands-on experience across diverse industries and company stages, from startups to large enterprises. We've been in the trenches and understand what actually works.
-                    </p>
-                </div>
-                <div class="differentiator-card">
-                    <h3>Practical Approach</h3>
-                    <p>
-                        We don't just provide recommendations—we deliver actionable strategies with clear implementation roadmaps. Every solution is designed to be executed, not just discussed.
-                    </p>
-                </div>
-                <div class="differentiator-card">
-                    <h3>Cross-Functional Expertise</h3>
-                    <p>
-                        Combining engineering precision with business strategy, real estate acumen with digital marketing, we offer a unique perspective that bridges technical and commercial domains.
-                    </p>
-                </div>
-                <div class="differentiator-card">
-                    <h3>Personalized Solutions</h3>
-                    <p>
-                        We recognize that every business is unique. Our consulting approach is tailored to your specific context, challenges, and growth objectives—no cookie-cutter solutions.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience & Impact -->
-    <section class="experience-section">
-        <div class="experience-container">
-            <h2>Experience & Impact</h2>
-            <p class="section-content">
-                Our track record speaks to the breadth and depth of our consulting expertise
-            </p>
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">20+</div>
-                    <div class="stat-label">Startups Consulted</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">3rd Gen</div>
-                    <div class="stat-label">Civil Engineer</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">Multi-Crore</div>
-                    <div class="stat-label">Growth Exposure</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Associated Business Preview -->
-    <section class="associated-preview">
-        <h2>Our Associated Businesses</h2>
-        <p>
-            Beyond consulting, we operate complementary businesses that enhance our service offerings and provide integrated solutions for our clients.
-        </p>
-        <a href="associated.html" class="cta-button">Explore Our Businesses</a>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <h2>Ready to Transform Your Business?</h2>
-        <p>Let's discuss how Nimble Panda Solutions can help you achieve your strategic objectives</p>
-        <a href="contact.html" class="cta-button">Schedule a Consultation</a>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="faq-section">
-        <div class="faq-container">
-            <h2>Frequently Asked Questions</h2>
-            
-            <div class="faq-item">
-                <button class="faq-question">
-                    What industries do you specialize in?
-                    <span class="faq-icon">▼</span>
-                </button>
-                <div class="faq-answer">
-                    We work across multiple industries including corporate real estate, construction, technology startups, and retail. Our cross-functional expertise allows us to bring insights from one sector to solve challenges in another.
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-question">
-                    How do you approach a new consulting engagement?
-                    <span class="faq-icon">▼</span>
-                </button>
-                <div class="faq-answer">
-                    We begin with a comprehensive discovery phase to understand your business context, challenges, and objectives. This is followed by strategic analysis, solution design, and implementation support—all tailored to your specific needs.
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-question">
-                    What is your typical engagement duration?
-                    <span class="faq-icon">▼</span>
-                </button>
-                <div class="faq-answer">
-                    Engagement duration varies based on project scope and complexity. We offer both short-term strategic advisory (4-8 weeks) and long-term partnership arrangements (6-12 months) depending on your requirements.
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-question">
-                    Do you work with startups or only established businesses?
-                    <span class="faq-icon">▼</span>
-                </button>
-                <div class="faq-answer">
-                    We work with businesses at all stages—from early-stage startups to established enterprises. Our experience spans bootstrapped companies to SoftBank-funded ventures, allowing us to provide relevant guidance regardless of your company's maturity.
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-question">
-                    What makes your consulting approach different?
-                    <span class="faq-icon">▼</span>
-                </button>
-                <div class="faq-answer">
-                    Our approach combines strategic thinking with practical execution. We don't just provide recommendations—we work alongside you to implement solutions, drawing on real-world experience across diverse industries and company stages.
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-question">
-                    How do you measure success in consulting engagements?
-                    <span class="faq-icon">▼</span>
-                </button>
-                <div class="faq-answer">
-                    Success is measured through clearly defined KPIs established at the start of each engagement. These typically include revenue growth, operational efficiency improvements, market expansion metrics, or other business-specific outcomes aligned with your strategic objectives.
                 </div>
             </div>
         </div>
@@ -1660,28 +1174,10 @@
     </footer>
 
     <script>
-        // FAQ Accordion
-        document.querySelectorAll('.faq-question').forEach(button => {
-            button.addEventListener('click', () => {
-                const faqItem = button.parentElement;
-                const isActive = faqItem.classList.contains('active');
-                
-                // Close all FAQ items
-                document.querySelectorAll('.faq-item').forEach(item => {
-                    item.classList.remove('active');
-                });
-                
-                // Open clicked item if it wasn't active
-                if (!isActive) {
-                    faqItem.classList.add('active');
-                }
-            });
-        });
-
-        // Animate value cards on scroll
+        // Intersection Observer for scroll animations - EXACT ORIGINAL
         const observerOptions = {
-            threshold: 0.2,
-            rootMargin: '0px 0px -100px 0px'
+            threshold: 0.3,
+            rootMargin: '0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -1692,6 +1188,7 @@
             });
         }, observerOptions);
 
+        // Observe value cards
         document.querySelectorAll('.value-card-wrapper').forEach(card => {
             observer.observe(card);
         });
