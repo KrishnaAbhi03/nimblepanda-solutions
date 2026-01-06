@@ -759,6 +759,273 @@
         .value-card-wrapper:nth-child(3) { animation-delay: 0.8s; }
         .value-card-wrapper:nth-child(4) { animation-delay: 0.9s; }
 
+        /* NEW SECTIONS - ADDED BELOW */
+
+        /* What Makes Us Different Section */
+        .differentiators-section {
+            background: var(--white);
+            padding: 5rem 2rem;
+        }
+
+        .differentiators-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .differentiators-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .differentiators-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .differentiators-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .differentiator-card {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s;
+        }
+
+        .differentiator-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .differentiator-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .differentiator-card p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* Experience & Impact Section */
+        .impact-section {
+            background: var(--bg-light);
+            padding: 5rem 2rem;
+        }
+
+        .impact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .impact-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .impact-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .impact-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s;
+        }
+
+        .impact-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .impact-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .impact-label {
+            font-size: 1.2rem;
+            color: var(--text-light);
+        }
+
+        /* Associated Businesses Section */
+        .associated-section {
+            background: var(--white);
+            padding: 5rem 2rem;
+        }
+
+        .associated-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .associated-container h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .associated-container p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .associated-cta {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .associated-cta:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 5rem 2rem;
+        }
+
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .cta-container h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-container p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: var(--white);
+            color: var(--primary-color);
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: var(--bg-light);
+            padding: 5rem 2rem;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .faq-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.5rem;
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .faq-question:hover {
+            color: var(--accent-color);
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .faq-answer-content {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
         /* Footer */
         footer {
             background: var(--primary-color);
@@ -819,6 +1086,14 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
+            .differentiators-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .impact-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
             .about-title {
                 font-size: 3.75rem;
             }
@@ -859,6 +1134,14 @@
 
             .founder-content h2,
             .story-container h2 {
+                font-size: 2rem;
+            }
+
+            .differentiators-header h2,
+            .impact-header h2,
+            .associated-container h2,
+            .cta-container h2,
+            .faq-header h2 {
                 font-size: 2rem;
             }
         }
@@ -1135,6 +1418,157 @@
         </div>
     </section>
 
+    <!-- NEW SECTIONS START HERE -->
+
+    <!-- What Makes Us Different -->
+    <section class="differentiators-section">
+        <div class="differentiators-container">
+            <div class="differentiators-header">
+                <h2>What Makes Us Different</h2>
+            </div>
+            <div class="differentiators-grid">
+                <div class="differentiator-card">
+                    <h3>Real-World Experience</h3>
+                    <p>Our insights come from hands-on experience across diverse industries and business stages, from bootstrapped startups to multi-crore enterprises. We've been in the trenches and understand what actually works.</p>
+                </div>
+                <div class="differentiator-card">
+                    <h3>Practical Approach</h3>
+                    <p>We don't just provide theoretical frameworks. Every recommendation is grounded in practical implementation, with clear action steps and measurable outcomes that drive real business results.</p>
+                </div>
+                <div class="differentiator-card">
+                    <h3>Cross-Functional Expertise</h3>
+                    <p>Combining engineering precision with business strategy, sales acumen, and marketing insight, we bring a unique multidisciplinary perspective to every challenge.</p>
+                </div>
+                <div class="differentiator-card">
+                    <h3>Personalized Solutions</h3>
+                    <p>No cookie-cutter approaches. We take time to understand your unique context, challenges, and goals, crafting tailored strategies that align with your vision and resources.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience & Impact -->
+    <section class="impact-section">
+        <div class="impact-container">
+            <div class="impact-header">
+                <h2>Experience & Impact</h2>
+            </div>
+            <div class="impact-grid">
+                <div class="impact-card">
+                    <div class="impact-number">20+</div>
+                    <div class="impact-label">Startups Consulted</div>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-number">3rd Gen</div>
+                    <div class="impact-label">Civil Engineer</div>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-number">Multi-Crore</div>
+                    <div class="impact-label">Growth Exposure</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Associated Businesses -->
+    <section class="associated-section">
+        <div class="associated-container">
+            <h2>Our Associated Businesses</h2>
+            <p>Discover the diverse portfolio of ventures and partnerships that complement our consulting expertise.</p>
+            <a href="associated.html" class="associated-cta">Explore Our Businesses</a>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <h2>Ready to Transform Your Business?</h2>
+            <p>Let's discuss how strategic consulting can help you achieve your growth objectives and overcome your business challenges.</p>
+            <a href="contact.html" class="cta-btn">Schedule a Consultation</a>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="faq-container">
+            <div class="faq-header">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>What types of businesses do you work with?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        We work with businesses across all stages—from early-stage startups to established enterprises. Our experience spans multiple industries including real estate, construction, technology, and service-based businesses.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>How is your consulting approach different?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        We combine strategic thinking with practical implementation. Our recommendations are based on real-world experience, not just theory, and we focus on actionable strategies that deliver measurable results.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>What services do you offer?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Our core services include business strategy development, financial advisory, market expansion planning, operational optimization, brand consulting, and sales strategy. We tailor our approach to your specific needs.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>How long does a typical engagement last?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Engagement duration varies based on project scope and objectives. We offer both short-term strategic projects (4-8 weeks) and long-term advisory partnerships. We'll recommend the best approach during our initial consultation.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>What results can I expect?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Results vary by engagement, but our clients typically see improved operational efficiency, clearer strategic direction, enhanced market positioning, and measurable revenue growth. We establish clear KPIs at the start of every project.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>How do I get started?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Simply reach out through our contact page to schedule an initial consultation. We'll discuss your challenges, goals, and how we can help. The first consultation is complimentary and helps us both determine if we're a good fit.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <div class="footer-content">
@@ -1191,6 +1625,24 @@
         // Observe value cards
         document.querySelectorAll('.value-card-wrapper').forEach(card => {
             observer.observe(card);
+        });
+
+        // FAQ Accordion functionality
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                const isActive = faqItem.classList.contains('active');
+                
+                // Close all FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
         });
     </script>
 </body>
