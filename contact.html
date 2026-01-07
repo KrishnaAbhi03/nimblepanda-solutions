@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Contact Nimble Panda Solutions for professional business consulting services. Get in touch with our expert team today.">
     <title>Contact Us - Nimble Panda Solutions</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -13,693 +12,428 @@
             box-sizing: border-box;
         }
         
+        :root {
+            --primary-color: #1e3a5f;
+            --secondary-color: #2c5f8d;
+            --accent-color: #3a7ca5;
+            --text-dark: #2d3748;
+            --text-light: #4a5568;
+            --bg-light: #f7fafc;
+            --white: #ffffff;
+            --border-color: #e2e8f0;
+        }
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
+            color: var(--text-dark);
             background-color: #0a0a0a;
-            color: #ffffff;
+        }
+        
+        /* Header Styles */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--accent-color);
+        }
+        
+        .cta-button {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 0.7rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .cta-button:hover {
+            background: var(--secondary-color);
         }
 
-        /* ContactUs1 Component Styles - EXACT DUPLICATION - DARK THEME */
-        .contact-us-section {
-            background: #0a0a0a;
+        /* Hero Section Styles */
+        .hero-section {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            padding: 6rem 2rem 4rem;
+            text-align: center;
             position: relative;
-            width: 100%;
             overflow: hidden;
-            padding: 4rem 0;
-            min-height: 100vh;
         }
 
-        @media (min-width: 768px) {
-            .contact-us-section {
-                padding: 6rem 0;
-            }
-        }
-
-        .gradient-blur-1 {
+        .hero-section::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
-            height: 500px;
-            width: 500px;
-            border-radius: 50%;
-            opacity: 0.2;
-            filter: blur(120px);
-            background: radial-gradient(circle at center, #3a7ca5, transparent 70%);
-        }
-
-        .gradient-blur-2 {
-            position: absolute;
             right: 0;
             bottom: 0;
-            height: 300px;
-            width: 300px;
-            border-radius: 50%;
-            opacity: 0.1;
-            filter: blur(100px);
-            background: radial-gradient(circle at center, #3a7ca5, transparent 70%);
-        }
-
-        .contact-container {
-            position: relative;
-            z-index: 10;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        @media (min-width: 768px) {
-            .contact-container {
-                padding: 0 1.5rem;
-            }
-        }
-
-        .contact-card {
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(20, 20, 20, 0.5);
-            max-width: 80rem;
-            margin: 0 auto;
-            overflow: hidden;
-            border-radius: 28px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(8px);
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-        }
-
-        @media (min-width: 768px) {
-            .contact-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .form-section {
-            position: relative;
-            padding: 1.5rem;
-        }
-
-        @media (min-width: 768px) {
-            .form-section {
-                padding: 2.5rem;
-            }
-        }
-
-        .form-header {
-            display: flex;
-            width: 100%;
-            gap: 0.5rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.5s ease-out 0.1s forwards;
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .form-title-contact {
-            background: linear-gradient(to right, #ffffff, rgba(255, 255, 255, 0.8));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.5rem;
-            font-size: 2.25rem;
-            font-weight: 700;
-            letter-spacing: -0.025em;
-        }
-
-        @media (min-width: 768px) {
-            .form-title-contact {
-                font-size: 3rem;
-            }
-        }
-
-        .form-title-us {
-            position: relative;
-            z-index: 10;
-            width: 100%;
-            color: #3a7ca5;
-            font-size: 2.25rem;
-            font-weight: 700;
-            letter-spacing: -0.025em;
-            font-style: italic;
-        }
-
-        @media (min-width: 768px) {
-            .form-title-us {
-                font-size: 3rem;
-            }
-        }
-
-        .sparkles-container {
-            position: absolute;
-            inset: 0;
-            top: 0;
-            height: 6rem;
-            width: 100%;
+            background: radial-gradient(circle at 50% 0%, rgba(58, 124, 165, 0.1), transparent 70%);
             pointer-events: none;
         }
 
-        .sparkles-canvas {
-            width: 100%;
-            height: 100%;
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
-        .contact-form {
-            margin-top: 2rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.5s ease-out 0.3s forwards;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff 0%, #3a7ca5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 1.5rem;
+            line-height: 1.2;
         }
 
-        @media (min-width: 768px) {
-            .form-row {
-                grid-template-columns: repeat(2, 1fr);
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 4rem 1.5rem 3rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
             }
         }
 
-        .form-group {
-            opacity: 0;
-            transform: translateY(10px);
+        /* Contact Section Container */
+        .contact-section-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 1rem;
+            background: #0a0a0a;
         }
 
-        .form-group.animate-1 {
-            animation: fadeInUp 0.5s ease-out 0.4s forwards;
+        /* Footer Styles */
+        footer {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 3rem 2rem 1.5rem;
         }
-
-        .form-group.animate-2 {
-            animation: fadeInUp 0.5s ease-out 0.5s forwards;
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
-
-        .form-group.animate-3 {
-            animation: fadeInUp 0.5s ease-out 0.6s forwards;
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
         }
-
-        .form-label {
-            display: block;
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
             margin-bottom: 0.5rem;
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: #e5e5e5;
         }
-
-        .form-input,
-        .form-textarea {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 0.5rem;
-            font-size: 0.875rem;
-            font-family: inherit;
-            background: rgba(30, 30, 30, 0.8);
-            color: #ffffff;
-            transition: all 0.2s;
+        
+        .footer-section a {
+            color: var(--white);
+            text-decoration: none;
+            transition: opacity 0.3s;
         }
-
-        .form-input::placeholder,
-        .form-textarea::placeholder {
-            color: rgba(255, 255, 255, 0.4);
+        
+        .footer-section a:hover {
+            opacity: 0.8;
         }
-
-        .form-input:focus,
-        .form-textarea:focus {
-            outline: none;
-            border-color: #3a7ca5;
-            box-shadow: 0 0 0 3px rgba(230, 10, 100, 0.2);
-            background: rgba(40, 40, 40, 0.9);
-        }
-
-        .form-textarea {
-            height: 10rem;
-            resize: none;
-        }
-
-        .submit-button-wrapper {
-            width: 100%;
-            transition: transform 0.2s;
-        }
-
-        .submit-button-wrapper:hover {
-            transform: scale(1.02);
-        }
-
-        .submit-button-wrapper:active {
-            transform: scale(0.98);
-        }
-
-        .submit-button {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            background: linear-gradient(to bottom, #3a7ca5, #01598f);
-            color: white;
-            border: none;
-            border-radius: 0.5rem;
-            font-size: 0.875rem;
-            font-weight: 600;
-            cursor: pointer;
-            box-shadow: 0px 2px 0px 0px rgba(255, 255, 255, 0.3) inset;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
-        .submit-button:hover {
-            background: linear-gradient(to bottom, #0aa0fc, #0286d6);
-        }
-
-        .submit-button:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
-        .loader-icon {
-            width: 1rem;
-            height: 1rem;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .check-icon {
-            width: 1rem;
-            height: 1rem;
-        }
-
-        .globe-section {
-            position: relative;
-            margin: 2rem 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            padding-right: 2rem;
-            opacity: 0;
-            transform: translateX(20px);
-            animation: fadeInRight 0.5s ease-out 0.5s forwards;
-        }
-
-        @keyframes fadeInRight {
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .globe-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .globe-card {
-            position: relative;
+        
+        .footer-bottom {
+            max-width: 1200px;
             margin: 0 auto;
-            height: 350px;
-            min-height: 15rem;
-            max-width: 450px;
-            overflow: hidden;
-            border-radius: 1.5rem;
-            border: 1px solid rgba(12, 150, 235, 0.3);
-            background: linear-gradient(to bottom, #e60a64, rgba(12, 150, 235, 0.05));
-            padding: 1.5rem;
-            font-size: 1.875rem;
-            letter-spacing: -0.025em;
-            color: white;
-            line-height: 1.05;
-        }
-
-        @media (min-width: 768px) {
-            .globe-card {
-                height: 450px;
-                min-height: 20rem;
-                padding: 2rem;
-                font-size: 2.25rem;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .globe-card {
-                font-size: 3rem;
-            }
-        }
-
-        .globe-container {
-            position: absolute;
-            right: -5rem;
-            bottom: -5rem;
-            z-index: 10;
-            margin: 0 auto;
-            display: flex;
-            height: 100%;
-            width: 100%;
-            max-width: 300px;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.7s;
-        }
-
-        @media (min-width: 768px) {
-            .globe-container {
-                right: -7rem;
-                bottom: -7rem;
-                max-width: 550px;
-            }
-        }
-
-        .globe-container:hover {
-            transform: scale(1.05);
-        }
-
-        .globe-canvas {
-            width: 100%;
-            height: 100%;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <!-- ContactUs1 Component Section - EXACT DUPLICATION - DARK THEME -->
-    <section class="contact-us-section">
-        <div class="gradient-blur-1"></div>
-        <div class="gradient-blur-2"></div>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">Nimble Panda Solutions</a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="associated.html">Associated Business</a>
+                <a href="contact.html" class="cta-button">Contact Us</a>
+            </nav>
+        </div>
+    </header>
 
-        <div class="contact-container">
-            <div class="contact-card">
-                <div class="contact-grid">
-                    <!-- Form Section -->
-                    <div class="form-section">
-                        <div class="form-header">
-                            <h2 class="form-title-contact">Contact</h2>
-                            <span class="form-title-us">Us</span>
-                            <div class="sparkles-container">
-                                <canvas id="sparkles-canvas" class="sparkles-canvas"></canvas>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Let's Get in Touch</h1>
+            <p class="hero-subtitle">
+                Have a question or want to work together? Fill out the form below and we'll get back to you as soon as possible.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Section (EXACT CODE PROVIDED) -->
+    <div class="contact-section-wrapper">
+        <section style="width: 100%; max-width: 56rem; padding: 0 0.5rem;">
+            <h2 style="margin-top: 1rem; margin-bottom: 1.25rem; background: linear-gradient(to bottom right, #d1d5db, #93c5fd, #374151); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-align: center; font-size: 2.25rem; font-weight: 700; line-height: 1;">
+                Let's Get in Touch
+            </h2>
+            <p style="color: #9ca3af; margin-bottom: 1.5rem; text-align: center;">
+                Fill out the form below and we'll get back to you as soon as possible.
+            </p>
+            <div style="background-image: radial-gradient(164.75% 100% at 50% 0, #272f3c 0, #0b1224 48.73%); margin: 0 auto 1.5rem; display: grid; width: 100%; align-items: start; gap: 3rem; border-radius: 0.5rem; border: 1px solid; background-color: rgba(255, 255, 255, 0.1); padding: 2.5rem 1rem 1.5rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);">
+                <style>
+                    @media (min-width: 768px) {
+                        .contact-grid {
+                            grid-template-columns: repeat(2, 1fr);
+                        }
+                    }
+                    @media (min-width: 1024px) {
+                        .contact-grid {
+                            padding-left: 3rem;
+                            padding-right: 3rem;
+                        }
+                    }
+                </style>
+                <div class="contact-grid" style="display: grid; grid-template-columns: 1fr; gap: 3rem;">
+                    <form style="display: flex; flex-direction: column; gap: 2rem; color: #cbd5e1;" onsubmit="handleContactSubmit(event)">
+                        <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 1.125rem;">
+                            <label for="name">Name</label>
+                            <input
+                                id="name"
+                                type="text"
+                                required
+                                style="display: flex; height: 2.5rem; width: 100%; border-radius: 0.375rem; border: 1px solid #334155; background-color: #020617; padding: 0.75rem; font-size: 0.875rem; box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.5); outline: none; color: #fff;"
+                                placeholder="Enter your name"
+                                name="name"
+                            />
+                        </div>
+
+                        <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 1.125rem;">
+                            <label for="email">Email</label>
+                            <input
+                                id="email"
+                                placeholder="Enter your email"
+                                type="email"
+                                style="display: flex; height: 2.5rem; width: 100%; border-radius: 0.375rem; border: 1px solid #334155; background-color: #020617; padding: 0.75rem; font-size: 0.875rem; box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.5); outline: none; color: #fff;"
+                                name="email"
+                                required
+                            />
+                        </div>
+
+                        <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 1.125rem;">
+                            <label for="message">Message</label>
+                            <textarea
+                                style="display: flex; min-height: 100px; width: 100%; border-radius: 0.375rem; border: 1px solid #334155; background-color: #020617; padding: 0.75rem; font-size: 0.875rem; color: #fff; box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.5); outline: none; margin-bottom: 1.25rem;"
+                                id="message"
+                                placeholder="Enter your message"
+                                name="message"
+                            ></textarea>
+                        </div>
+
+                        <button
+                            style="position: relative; display: block; height: 2.5rem; width: 100%; border-radius: 0.375rem; background: linear-gradient(to bottom right, #1e293b, #334155); padding: 0.5rem; text-align: center; font-weight: 500; color: #fff; box-shadow: inset 0px 1px 0px 0px #27272a, inset 0px -1px 0px 0px #27272a; transition: all 0.3s ease-in-out; border: none; cursor: pointer;"
+                            type="submit"
+                            id="submit-btn"
+                        >
+                            <span id="button-text">Send</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: inline; margin-left: 0.5rem; height: 1rem;">
+                                <path d="m22 2-7 20-4-9-9-4Z"></path>
+                                <path d="M22 2 11 13"></path>
+                            </svg>
+                        </button>
+                    </form>
+
+                    <div>
+                        <h3 style="margin-bottom: 2.5rem; font-size: 1.5rem; font-weight: 600; color: #cbd5e1;">
+                            Connect with Us
+                        </h3>
+
+                        <div style="margin-bottom: 3rem; display: flex; gap: 2rem;">
+                            <a href="#" style="display: flex; height: 2.5rem; width: 2.5rem; align-items: center; justify-content: center; border-radius: 9999px; border: 1px solid #475569; box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.5); transition: all 0.3s ease-in-out; text-decoration: none;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                                </svg>
+                            </a>
+                            <div style="font-size: 1rem; color: #cbd5e1;">
+                                <p>Email to us at</p>
+                                <p>subha9.5roy350@gmail.com</p>
                             </div>
                         </div>
 
-                        <form class="contact-form" id="contact-form">
-                            <div class="form-row">
-                                <div class="form-group animate-1">
-                                    <label for="name" class="form-label">Name</label>
-                                    <input
-                                        type="text"
-                                        id="name"
-                                        class="form-input"
-                                        placeholder="Enter your name"
-                                        required
-                                    />
-                                </div>
-
-                                <div class="form-group animate-2">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        class="form-input"
-                                        placeholder="Enter your email"
-                                        required
-                                    />
-                                </div>
+                        <div style="margin-bottom: 3rem; display: flex; gap: 2rem;">
+                            <a href="#" style="display: flex; height: 2.5rem; width: 2.5rem; align-items: center; justify-content: center; border-radius: 9999px; border: 1px solid #475569; box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.5); transition: all 0.3s ease-in-out; text-decoration: none;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                </svg>
+                            </a>
+                            <div style="font-size: 1rem; color: #cbd5e1;">
+                                <p>Call us at</p>
+                                <p>XXXXX XXXXX</p>
                             </div>
+                        </div>
 
-                            <div class="form-group animate-3">
-                                <label for="message" class="form-label">Message</label>
-                                <textarea
-                                    id="message"
-                                    class="form-textarea"
-                                    placeholder="Enter your message"
-                                    required
-                                ></textarea>
+                        <div style="margin-bottom: 3rem; display: flex; gap: 2rem;">
+                            <a href="#" style="display: flex; height: 2.5rem; width: 2.5rem; align-items: center; justify-content: center; border-radius: 9999px; border: 1px solid #475569; padding: 0.5rem; box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.5); transition: all 0.3s ease-in-out; text-decoration: none;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                            </a>
+                            <div style="font-size: 1rem; color: #cbd5e1;">
+                                <p>Location at</p>
+                                <p>Techno Main Salt Lake, Sector-V, Kolkata-700091</p>
                             </div>
+                        </div>
 
-                            <div class="submit-button-wrapper">
-                                <button type="submit" class="submit-button" id="submit-btn">
-                                    <span id="button-text">Send Message</span>
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-
-                    <!-- Globe Section -->
-                    <div class="globe-section">
-                        <div class="globe-wrapper">
-                            <article class="globe-card">
-                                Presenting you with the best UI possible.
-                                <div class="globe-container">
-                                    <canvas id="globe-canvas" class="globe-canvas"></canvas>
-                                </div>
-                            </article>
+                        <div style="display: flex; gap: 3rem; padding-top: 1.75rem; padding-bottom: 1.75rem;">
+                            <a href="#" style="display: flex; height: 2.5rem; width: 2.5rem; align-items: center; justify-content: center; border-radius: 9999px; border: 1px solid #475569; background-color: #1f2937; transition: all 0.3s ease-in-out; text-decoration: none;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                                </svg>
+                            </a>
+                            <a href="#" style="display: flex; height: 2.5rem; width: 2.5rem; align-items: center; justify-content: center; border-radius: 9999px; border: 1px solid #475569; background-color: #1f2937; transition: all 0.3s ease-in-out; text-decoration: none;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                                </svg>
+                            </a>
+                            <a href="#" style="display: flex; height: 2.5rem; width: 2.5rem; align-items: center; justify-content: center; border-radius: 9999px; border: 1px solid #334155; background-color: #1f2937; transition: all 0.3s ease-in-out; text-decoration: none;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                                </svg>
+                            </a>
+                            <a href="#" style="display: flex; height: 2.5rem; width: 2.5rem; align-items: center; justify-content: center; border-radius: 9999px; border: 1px solid #334155; background-color: #1f2937; transition: all 0.3s ease-in-out; text-decoration: none;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                                    <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                                </svg>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Nimble Panda Solutions</h3>
+                <p>Professional business consulting for agile and sustainable growth.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="associated.html">Associated Business</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Information</h3>
+                <ul>
+                    <li>Email: amritabhishekpanda@gmail.com</li>
+                    <li>Call: +91-9777456611</li>
+                    <li>Professional Consulting Services</li>
+                    <li>Trusted Business Advisory</li>
+                </ul>
+            </div>
         </div>
-    </section>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 Nimble Panda Solutions. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script>
-        // SparklesCore Implementation
-        class SparklesCore {
-            constructor(canvasId, options) {
-                this.canvas = document.getElementById(canvasId);
-                this.ctx = this.canvas.getContext('2d');
-                this.options = {
-                    minSize: options.minSize || 0.6,
-                    maxSize: options.maxSize || 1.4,
-                    particleDensity: options.particleDensity || 500,
-                    particleColor: options.particleColor || '#e60a64'
-                };
-                this.particles = [];
-                this.init();
-            }
-
-            init() {
-                this.canvas.width = this.canvas.offsetWidth;
-                this.canvas.height = this.canvas.offsetHeight;
-                this.createParticles();
-                this.animate();
-            }
-
-            createParticles() {
-                const area = this.canvas.width * this.canvas.height;
-                const count = Math.floor(area / this.options.particleDensity);
-                
-                for (let i = 0; i < count; i++) {
-                    this.particles.push({
-                        x: Math.random() * this.canvas.width,
-                        y: Math.random() * this.canvas.height,
-                        size: Math.random() * (this.options.maxSize - this.options.minSize) + this.options.minSize,
-                        speedX: (Math.random() - 0.5) * 0.5,
-                        speedY: (Math.random() - 0.5) * 0.5,
-                        opacity: Math.random()
-                    });
-                }
-            }
-
-            animate() {
-                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-                
-                this.particles.forEach(particle => {
-                    particle.x += particle.speedX;
-                    particle.y += particle.speedY;
-                    
-                    if (particle.x < 0 || particle.x > this.canvas.width) particle.speedX *= -1;
-                    if (particle.y < 0 || particle.y > this.canvas.height) particle.speedY *= -1;
-                    
-                    particle.opacity += (Math.random() - 0.5) * 0.1;
-                    particle.opacity = Math.max(0.1, Math.min(1, particle.opacity));
-                    
-                    this.ctx.beginPath();
-                    this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-                    this.ctx.fillStyle = this.options.particleColor;
-                    this.ctx.globalAlpha = particle.opacity;
-                    this.ctx.fill();
-                });
-                
-                this.ctx.globalAlpha = 1;
-                requestAnimationFrame(() => this.animate());
-            }
-        }
-
-        // Earth Globe Implementation with Pink/Red Wireframe Dots
-        class Earth {
-            constructor(canvasId, options) {
-                this.canvas = document.getElementById(canvasId);
-                this.options = {
-                    scale: options.scale || 1.1,
-                    baseColor: options.baseColor || [1, 0, 0.3],
-                    markerColor: options.markerColor || [0, 0, 0],
-                    glowColor: options.glowColor || [1, 0.3, 0.4]
-                };
-                this.init();
-            }
-
-            init() {
-                this.scene = new THREE.Scene();
-                this.camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
-                this.renderer = new THREE.WebGLRenderer({ 
-                    canvas: this.canvas, 
-                    alpha: true,
-                    antialias: true 
-                });
-                
-                this.renderer.setSize(this.canvas.offsetWidth, this.canvas.offsetHeight);
-                this.camera.position.z = 2;
-
-                // Create wireframe sphere with dots
-                const geometry = new THREE.SphereGeometry(1 * this.options.scale, 64, 64);
-                
-                // Create points material for dotted wireframe effect
-                const pointsMaterial = new THREE.PointsMaterial({
-                    color: new THREE.Color(...this.options.baseColor),
-                    size: 0.02,
-                    transparent: true,
-                    opacity: 0.8,
-                    sizeAttenuation: true
-                });
-                
-                this.globe = new THREE.Points(geometry, pointsMaterial);
-                this.scene.add(this.globe);
-
-                // Add wireframe lines
-                const wireframeGeometry = new THREE.WireframeGeometry(geometry);
-                const wireframeMaterial = new THREE.LineBasicMaterial({
-                    color: new THREE.Color(...this.options.baseColor),
-                    transparent: true,
-                    opacity: 0.3
-                });
-                const wireframe = new THREE.LineSegments(wireframeGeometry, wireframeMaterial);
-                this.scene.add(wireframe);
-                this.wireframe = wireframe;
-
-                // Add lights
-                const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-                this.scene.add(ambientLight);
-
-                const pointLight = new THREE.PointLight(0xff0066, 1);
-                pointLight.position.set(5, 5, 5);
-                this.scene.add(pointLight);
-
-                // Add glow
-                const glowGeometry = new THREE.SphereGeometry(1.15 * this.options.scale, 64, 64);
-                const glowMaterial = new THREE.MeshBasicMaterial({
-                    color: new THREE.Color(...this.options.glowColor),
-                    transparent: true,
-                    opacity: 0.15,
-                    side: THREE.BackSide
-                });
-                const glow = new THREE.Mesh(glowGeometry, glowMaterial);
-                this.scene.add(glow);
-
-                this.animate();
-            }
-
-            animate() {
-                requestAnimationFrame(() => this.animate());
-                this.globe.rotation.y += 0.002;
-                if (this.wireframe) {
-                    this.wireframe.rotation.y += 0.002;
-                }
-                this.renderer.render(this.scene, this.camera);
-            }
-        }
-
-        // Form Handling
-        const form = document.getElementById('contact-form');
-        const submitBtn = document.getElementById('submit-btn');
-        const buttonText = document.getElementById('button-text');
-
-        form.addEventListener('submit', async (e) => {
+        function handleContactSubmit(e) {
             e.preventDefault();
             
-            // Show loading state
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                message: document.getElementById('message').value
+            };
+            
+            console.log('Form submitted:', formData);
+            
+            const submitBtn = document.getElementById('submit-btn');
+            const buttonText = document.getElementById('button-text');
+            
             submitBtn.disabled = true;
-            buttonText.innerHTML = `
-                <svg class="loader-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-                Sending...
-            `;
-
-            try {
-                // Simulate form submission
-                const formData = {
-                    name: document.getElementById('name').value,
-                    email: document.getElementById('email').value,
-                    message: document.getElementById('message').value
-                };
-                
-                console.log('Form submitted:', formData);
-                await new Promise(resolve => setTimeout(resolve, 1000));
-
-                // Show success state
-                buttonText.innerHTML = `
-                    <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    Message Sent!
-                `;
-
-                // Reset form
-                form.reset();
-
-                // Reset button after 5 seconds
+            buttonText.textContent = 'Sending...';
+            
+            setTimeout(() => {
+                buttonText.textContent = 'Sent!';
                 setTimeout(() => {
+                    buttonText.textContent = 'Send';
                     submitBtn.disabled = false;
-                    buttonText.textContent = 'Send Message';
-                }, 5000);
-
-            } catch (error) {
-                console.error('Error submitting form:', error);
-                submitBtn.disabled = false;
-                buttonText.textContent = 'Send Message';
-            }
-        });
-
-        // Initialize components
-        window.addEventListener('DOMContentLoaded', () => {
-            // Initialize Sparkles
-            new SparklesCore('sparkles-canvas', {
-                minSize: 0.6,
-                maxSize: 1.4,
-                particleDensity: 500,
-                particleColor: '#e60a64'
-            });
-
-            // Initialize Earth Globe
-            new Earth('globe-canvas', {
-                scale: 1.1,
-                baseColor: [1, 0, 0.3],
-                markerColor: [0, 0, 0],
-                glowColor: [1, 0.3, 0.4]
-            });
-        });
-
-        // Handle window resize
-        window.addEventListener('resize', () => {
-            const sparklesCanvas = document.getElementById('sparkles-canvas');
-            sparklesCanvas.width = sparklesCanvas.offsetWidth;
-            sparklesCanvas.height = sparklesCanvas.offsetHeight;
-        });
+                    e.target.reset();
+                }, 2000);
+            }, 1500);
+        }
     </script>
 </body>
 </html>
