@@ -36,89 +36,83 @@
         }
         
         /* Header */
-        /* HEADER */
-.site-header {
+        /* Header */
+header {
+  background: var(--white);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
   position: sticky;
   top: 0;
-  z-index: 999;
-  background: #ffffff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  z-index: 1000;
 }
 
-/* HEADER ROW */
-.header-inner {
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.2rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Navigation */
+nav {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 1rem 1.2rem;
+  gap: 2rem;
 }
 
-/* LOGO */
-.logo {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #1e3a5f;
+nav a {
+  color: var(--text-dark);
   text-decoration: none;
-}
-
-/* HAMBURGER */
-.hamburger {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.hamburger span {
-  display: block;
-  width: 26px;
-  height: 3px;
-  background: #000;
-  margin: 5px 0;
-  border-radius: 2px;
-}
-
-/* MOBILE MENU */
-.mobile-nav {
-  display: none;
-  flex-direction: column;
-  background: #ffffff;
-  padding: 1rem 0;
-  border-top: 1px solid #eee;
-}
-
-.mobile-nav a {
-  padding: 0.9rem 1.2rem;
-  text-decoration: none;
-  color: #1e3a5f;
   font-weight: 500;
 }
 
-.mobile-nav a:hover {
-  background: #f5f7fa;
+/* Hamburger Icon */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
 }
 
-/* CTA */
-.mobile-nav .cta {
-  margin: 0.8rem 1rem;
-  background: #1e3a5f;
-  color: #fff;
-  text-align: center;
-  padding: 0.8rem;
-  border-radius: 6px;
+.menu-toggle span {
+  height: 3px;
+  width: 25px;
+  background: #000;
+  margin: 4px 0;
+  border-radius: 2px;
 }
 
-/* ACTIVE STATE */
-.mobile-nav.active {
-  display: flex;
-}
-
-/* MOBILE ONLY */
+/* ================= MOBILE ================= */
 @media (max-width: 768px) {
-  .hamburger {
-    display: block;
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1.5rem 0;
+    display: none;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  }
+
+  nav.active {
+    display: flex;
+  }
+
+  .cta-button {
+    width: 90%;
+    text-align: center;
   }
 }
+
 
         
         /* Container */
@@ -1505,43 +1499,28 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="site-header">
-      <div class="header-inner">
-    
-        <!-- Logo -->
-        <a href="index.html" class="logo">
-          Nimble Panda Solutions
-        </a>
-    
-        <!-- Hamburger -->
-        <button class="hamburger" id="hamburger" aria-label="Menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+<header>
+  <div class="header-container">
+    <a href="index.html" class="logo">Nimble Panda Solutions</a>
 
-        <!-- Navigation -->
-        <nav id="navMenu">
-          <a href="index.html">Home</a>
-          <a href="about.html" class="active">About Us</a>
-          <a href="associated.html">Associated Business</a>
-          <a href="contact.html">Contact Us</a>
-          <a href="contact.html" class="cta-button">Get Consultation</a>
-        </nav>
-    
-      </div>
+    <!-- Hamburger -->
+    <div class="menu-toggle" id="menuToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
 
-    
-      <!-- Mobile Menu -->
-      <nav class="mobile-nav" id="mobileNav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About Us</a>
-        <a href="associated.html">Associated Business</a>
-        <a href="contact.html">Contact Us</a>
-        <a href="contact.html" class="cta">Get Consultation</a>
-      </nav>
-    </header>
+    <!-- Navigation -->
+    <nav id="navMenu">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About Us</a>
+      <a href="associated.html">Associated Business</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="contact.html" class="cta-button">Get Consultation</a>
+    </nav>
+  </div>
+</header>
+
 
 
 
@@ -2455,11 +2434,11 @@
 
         // Header
       
-          const hamburger = document.getElementById("hamburger");
-          const mobileNav = document.getElementById("mobileNav");
+          const menuToggle = document.getElementById("menuToggle");
+          const navMenu = document.getElementById("navMenu");
         
-          hamburger.addEventListener("click", () => {
-            mobileNav.classList.toggle("active");
+          menuToggle.addEventListener("click", () => {
+            navMenu.classList.toggle("active");
           });
     </script>
 </body>
