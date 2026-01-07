@@ -37,20 +37,20 @@
         
         /* Header */
         header {
-            background: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+          background: var(--white);
+          box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+          position: sticky;
+          top: 0;
+          z-index: 1000;
         }
         
         .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1.2rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 1.2rem 1.5rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
         }
         
         .logo {
@@ -60,17 +60,32 @@
             text-decoration: none;
         }
         
+        /* Navigation */
         nav {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
+          display: flex;
+          align-items: center;
+          gap: 2rem;
         }
         
         nav a {
-            color: var(--text-dark);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
+          color: var(--text-dark);
+          text-decoration: none;
+          font-weight: 500;
+        }
+        
+        /* Hamburger Icon */
+        .menu-toggle {
+          display: none;
+          flex-direction: column;
+          cursor: pointer;
+        }
+        
+        .menu-toggle span {
+          height: 3px;
+          width: 25px;
+          background: #000;
+          margin: 4px 0;
+          border-radius: 2px;
         }
         
         nav a:hover {
@@ -314,9 +329,32 @@
                 gap: 1rem;
             }
             
-            nav {
+            .menu-toggle {
+                display: flex;
+              }
+            
+              nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #fff;
                 flex-direction: column;
-                gap: 1rem;
+                align-items: center;
+                gap: 1.2rem;
+                padding: 1.5rem 0;
+                display: none;
+                box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+              }
+            
+              nav.active {
+                display: flex;
+              }
+            
+              .cta-button {
+                width: 90%;
+                text-align: center;
+              }
             }
             
             .section-title {
@@ -1452,19 +1490,28 @@
     </style>
 </head>
 <body>
-   <!-- Header -->
-    <header>
-        <div class="header-container">
-            <a href="index.html" class="logo">Nimble Panda Solutions</a>
-            <nav>
-                <a href="index.html">Home</a>
-                <a href="about.html" class="active">About Us</a>
-                <a href="associated.html">Associated Business</a>
-                <a href="contact.html">Contact Us</a>
-                <a href="contact.html" class="cta-button">Get Consultation</a>
-            </nav>
+   <header>
+      <div class="header-container">
+        <a href="index.html" class="logo">Nimble Panda Solutions</a>
+    
+        <!-- Hamburger -->
+        <div class="menu-toggle" id="menuToggle">
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
+    
+        <!-- Navigation -->
+        <nav id="navMenu">
+          <a href="index.html">Home</a>
+          <a href="about.html" class="active">About Us</a>
+          <a href="associated.html">Associated Business</a>
+          <a href="contact.html">Contact Us</a>
+          <a href="contact.html" class="cta-button">Get Consultation</a>
+        </nav>
+      </div>
     </header>
+
 
     <!-- MINIMAL HERO SECTION - DO NOT MODIFY -->
     <div class="font-primary relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-[#1a1d18] via-black to-[#2a2e26] text-[#e6e1d7]" style="background: linear-gradient(135deg, #3d4a5c 0%, #0c203b 50%, #38424f 100%); color: #e6e1d7; min-height: 100vh; width: 100%; overflow: hidden; position: relative;">
