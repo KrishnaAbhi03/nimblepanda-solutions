@@ -433,7 +433,7 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            gap: 2.5rem;
             margin-bottom: 2rem;
         }
         
@@ -442,12 +442,17 @@
             font-size: 1.2rem;
         }
         
+        .footer-section p {
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+        
         .footer-section ul {
             list-style: none;
         }
         
         .footer-section ul li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.7rem;
         }
         
         .footer-section a {
@@ -458,6 +463,16 @@
         
         .footer-section a:hover {
             opacity: 0.8;
+        }
+        .footer-section ul li a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            opacity: 1;
         }
         
         .footer-bottom {
