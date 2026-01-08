@@ -34,7 +34,7 @@
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 9999;
+  z-index: 10000;
   background: #ffffff;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
@@ -130,6 +130,24 @@
   display: flex;
   flex-direction: column;
 }
+
+/* FIX DESKTOP NAV VISIBILITY */
+@media (min-width: 769px) {
+  .desktop-nav {
+    display: flex !important;
+    position: relative;
+    z-index: 9999;
+  }
+
+  .mobile-nav {
+    display: none !important;
+  }
+
+  .hamburger {
+    display: none !important;
+  }
+}
+
         
         .cta-button {
             background: var(--primary-color);
@@ -390,7 +408,7 @@
         /* Responsive */
         @media (max-width: 768px) {
   .desktop-nav {
-    display: none;
+    display: block;
   }
 
   .hamburger {
