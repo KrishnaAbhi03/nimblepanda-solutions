@@ -39,102 +39,41 @@
             z-index: 1000;
         }
         
-        .site-header {
-          position: sticky;
-          top: 0;
-          z-index: 1000;
-          background: #ffffff;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-        
-        /* HEADER ROW */
-        .header-inner {
-          max-width: 1200px;
-          margin: auto;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 1rem 1.5rem;
-        }
-        
-        /* LOGO */
-        .logo {
-          font-size: 1.2rem;
-          font-weight: 700;
-          color: #1e3a5f;
-          text-decoration: none;
-        }
-        
-        /* DESKTOP NAV */
-        .desktop-nav {
-          display: flex;
-          align-items: center;
-          gap: 2rem;
-        }
-        
-        .desktop-nav a {
-          text-decoration: none;
-          color: #1e3a5f;
-          font-weight: 500;
-        }
-        
-        .desktop-nav a:hover {
-          color: #3a7ca5;
-        }
-        
-        /* CTA */
-        .desktop-nav .cta {
-          background: #1e3a5f;
-          color: #fff;
-          padding: 0.6rem 1rem;
-          border-radius: 6px;
-        }
-        
-        /* HAMBURGER */
-        .hamburger {
-          display: none;
-          background: none;
-          border: none;
-          cursor: pointer;
-        }
-        
-        .hamburger span {
-          display: block;
-          width: 26px;
-          height: 3px;
-          background: #000;
-          margin: 5px 0;
-          border-radius: 2px;
-        }
-        
-        /* MOBILE NAV */
-        .mobile-nav {
-          display: none;
-          flex-direction: column;
-          background: #ffffff;
-          border-top: 1px solid #eee;
-        }
-        
-        .mobile-nav a {
-          padding: 1rem 1.5rem;
-          text-decoration: none;
-          color: #1e3a5f;
-          font-weight: 500;
-        }
-        
-        .mobile-nav .cta {
-          margin: 1rem;
-          text-align: center;
-          background: #1e3a5f;
-          color: #fff;
-          padding: 0.8rem;
-          border-radius: 6px;
-        }
-        
-        /* ACTIVE MOBILE MENU */
-        .mobile-nav.active {
-          display: flex;
-        }
+.site-header {
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.desktop-nav {
+  display: flex;
+  gap: 2rem;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.mobile-nav {
+  display: none;
+  flex-direction: column;
+  background: #fff;
+  padding: 1rem 2rem;
+}
         
         .cta-button {
             background: var(--primary-color);
@@ -393,14 +332,18 @@
         }
         
         /* Responsive */
-        /* MOBILE BREAKPOINT */
+        /* MOBILE ONLY */
         @media (max-width: 768px) {
           .desktop-nav {
             display: none;
           }
         
-          .hamburger {
+          .menu-toggle {
             display: block;
+          }
+        
+          .mobile-nav.active {
+            display: flex;
           }
         }
             
@@ -420,42 +363,32 @@
     </style>
 </head>
 <body>
-   <!-- Header -->
-   <header class="site-header">
-      <div class="header-inner">
-    
-        <!-- Logo -->
-        <a href="index.html" class="logo">
-          Nimble Panda Solutions
-        </a>
-    
-        <!-- Desktop Navigation -->
-        <nav class="desktop-nav">
-          <a href="index.html">Home</a>
-          <a href="about.html">About Us</a>
-          <a href="associated.html">Associated Business</a>
-          <a href="contact.html">Contact Us</a>
-          <a href="contact.html" class="cta">Get Consultation</a>
-        </nav>
-    
-        <!-- Hamburger (Mobile Only) -->
-        <button class="hamburger" id="hamburger" aria-label="Menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-    
-      </div>
-    
-      <!-- Mobile Menu -->
-      <nav class="mobile-nav" id="mobileNav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About Us</a>
-        <a href="associated.html">Associated Business</a>
-        <a href="contact.html">Contact Us</a>
-        <a href="contact.html" class="cta">Get Consultation</a>
-      </nav>
-    </header>
+<header class="site-header">
+  <div class="header-container">
+    <div class="logo">Nimble Panda Solutions</div>
+
+    <button class="menu-toggle" aria-label="Open Menu">
+      ☰
+    </button>
+
+    <nav class="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="associated.html">Associated Business</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="contact.html" class="cta-button">Get Consultation</a>
+    </nav>
+  </div>
+
+  <nav class="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="associated.html">Associated Business</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="contact.html" class="cta-button">Get Consultation</a>
+  </nav>
+</header>
+
 
     <!-- Page Header -->
     <section class="page-header">
@@ -646,14 +579,13 @@
             <p>&copy; 2024 Nimble Panda Solutions. All rights reserved.</p>
         </div>
     </footer>
-    <script>
-                // Menu for mobile 
-        const hamburger = document.getElementById("hamburger");
-        const mobileNav = document.getElementById("mobileNav");
-        
-        hamburger.addEventListener("click", () => {
-            mobileNav.classList.toggle("active");
-        });
-    </script>
+<script>
+  const toggle = document.querySelector('.menu-toggle');
+  const mobileNav = document.querySelector('.mobile-nav');
+
+  toggle.addEventListener('click', () => {
+    mobileNav.classList.toggle('active');
+  });
+</script>
 </body>
 </html>
