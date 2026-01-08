@@ -74,73 +74,102 @@
 
         /* === HEADER FIX === */
 
-.site-header {
-  background: var(--white);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-/* Desktop Nav (unchanged behavior) */
-.nav-desktop {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-}
-
-/* Hamburger */
-.hamburger {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.hamburger span {
-  display: block;
-  width: 26px;
-  height: 3px;
-  background: var(--primary-color);
-  margin: 5px 0;
-  border-radius: 2px;
-}
-
-/* Mobile Nav */
-.nav-mobile {
-  display: none;
-  flex-direction: column;
-  background: var(--white);
-  border-top: 1px solid var(--border-color);
-}
-
-.nav-mobile a {
-  padding: 1rem 2rem;
-  text-decoration: none;
-  color: var(--text-dark);
-  font-weight: 500;
-}
-
-/* Active Mobile Menu */
-.nav-mobile.active {
-  display: flex;
-}
-
-/* ===== MOBILE ONLY ===== */
-@media (max-width: 768px) {
-
-  .nav-desktop {
-    display: none;
-  }
-
-  .hamburger {
-    display: block;
-  }
-
-  /* .header-container {
-    flex-direction: row;
-  } */
-}
+        .site-header {
+          position: sticky;
+          top: 0;
+          z-index: 1000;
+          background: #ffffff;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        /* HEADER ROW */
+        .header-inner {
+          max-width: 1200px;
+          margin: auto;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 1rem 1.5rem;
+        }
+        
+        /* LOGO */
+        .logo {
+          font-size: 1.2rem;
+          font-weight: 700;
+          color: #1e3a5f;
+          text-decoration: none;
+        }
+        
+        /* DESKTOP NAV */
+        .desktop-nav {
+          display: flex;
+          align-items: center;
+          gap: 2rem;
+        }
+        
+        .desktop-nav a {
+          text-decoration: none;
+          color: #1e3a5f;
+          font-weight: 500;
+        }
+        
+        .desktop-nav a:hover {
+          color: #3a7ca5;
+        }
+        
+        /* CTA */
+        .desktop-nav .cta {
+          background: #1e3a5f;
+          color: #fff;
+          padding: 0.6rem 1rem;
+          border-radius: 6px;
+        }
+        
+        /* HAMBURGER */
+        .hamburger {
+          display: none;
+          background: none;
+          border: none;
+          cursor: pointer;
+        }
+        
+        .hamburger span {
+          display: block;
+          width: 26px;
+          height: 3px;
+          background: #000;
+          margin: 5px 0;
+          border-radius: 2px;
+        }
+        
+        /* MOBILE NAV */
+        .mobile-nav {
+          display: none;
+          flex-direction: column;
+          background: #ffffff;
+          border-top: 1px solid #eee;
+        }
+        
+        .mobile-nav a {
+          padding: 1rem 1.5rem;
+          text-decoration: none;
+          color: #1e3a5f;
+          font-weight: 500;
+        }
+        
+        .mobile-nav .cta {
+          margin: 1rem;
+          text-align: center;
+          background: #1e3a5f;
+          color: #fff;
+          padding: 0.8rem;
+          border-radius: 6px;
+        }
+        
+        /* ACTIVE MOBILE MENU */
+        .mobile-nav.active {
+          display: flex;
+        }
 
         
         .cta-button {
@@ -428,22 +457,24 @@
 </head>
 <body>
     <!-- Header -->
-    <header class="site-header">
-      <div class="header-container">
+   <header class="site-header">
+      <div class="header-inner">
     
         <!-- Logo -->
-        <a href="index.html" class="logo">Nimble Panda Solutions</a>
+        <a href="index.html" class="logo">
+          Nimble Panda Solutions
+        </a>
     
-        <!-- Desktop Nav -->
-        <nav class="nav-desktop">
+        <!-- Desktop Navigation -->
+        <nav class="desktop-nav">
           <a href="index.html">Home</a>
           <a href="about.html">About Us</a>
-          <a href="associated.html" class="active">Associated Business</a>
+          <a href="associated.html">Associated Business</a>
           <a href="contact.html">Contact Us</a>
-          <a href="contact.html" class="cta-button">Get Consultation</a>
+          <a href="contact.html" class="cta">Get Consultation</a>
         </nav>
     
-        <!-- Hamburger -->
+        <!-- Hamburger (Mobile Only) -->
         <button class="hamburger" id="hamburger" aria-label="Menu">
           <span></span>
           <span></span>
@@ -453,12 +484,12 @@
       </div>
     
       <!-- Mobile Menu -->
-      <nav class="nav-mobile" id="mobileNav">
+      <nav class="mobile-nav" id="mobileNav">
         <a href="index.html">Home</a>
         <a href="about.html">About Us</a>
-        <a href="associated.html" class="active">Associated Business</a>
+        <a href="associated.html">Associated Business</a>
         <a href="contact.html">Contact Us</a>
-        <a href="contact.html" class="cta-button">Get Consultation</a>
+        <a href="contact.html" class="cta">Get Consultation</a>
       </nav>
     </header>
 
@@ -653,12 +684,13 @@
         </div>
     </footer>
     <script>
-      const hamburger = document.getElementById("hamburger");
-      const mobileNav = document.getElementById("mobileNav");
-    
-      hamburger.addEventListener("click", () => {
-        mobileNav.classList.toggle("active");
-      });
+        // Menu for mobile 
+        const hamburger = document.getElementById("hamburger");
+        const mobileNav = document.getElementById("mobileNav");
+        
+        hamburger.addEventListener("click", () => {
+            mobileNav.classList.toggle("active");
+        });
     </script>
 
 </body>
